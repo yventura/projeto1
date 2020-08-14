@@ -8,70 +8,73 @@
         <div class="card">
           <div class="card-header card-header-primary">
             <h4 class="card-title ">Laudos</h4>
-            <p class="card-category"> Listagem contendo todos os laudos criados</p>
           </div>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table">
                 <thead class=" text-primary">
                   <th>
-                    ID
+                    Nome
                   </th>
                   <th>
-                    Nº Laudo
+                    Data
                   </th>
                   <th>
-                    Nº Chamado
+                    Vistorias Processos
                   </th>
                   <th>
-                   Tipo de Laudo
+                   Vistoria VRE
                   </th>
                   <th>
-                    Situação
+                    Viabilidade VRE
                   </th>
                   <th>
-                    Ações
+                    Ciências
+                  </th>
+                  <th>
+                    Intimações
+                  </th>
+                  <th>
+                    Plantão Interno
+                  </th>
+                  <th>
+                    Atendimento Guichê
+                  </th>
+                  <th>
+                    Observação 
                   </th>
                 </thead>
                 <tbody>
                   <tr>
-                  <td>
-                        2
+                    <td>
+                        Joao Miguel da Cruz
                     </td>
                     <td>
                         02/2020
                     </td>
                     <td>
-                        56002
+                        5
                     </td>
                     <td>
-                        Perda Total
+                        21
                     </td>
                     <td>
-                        Aguardando
+                        4
                     </td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-primary"><i class="material-icons">edit</i></a>
-                    </td>
-                  </tr>
-                  <tr>
-                  <td>
-                        3
+                        5
                     </td>
                     <td>
-                        03/2020
+                        5
                     </td>
                     <td>
-                        56003
+                        1
                     </td>
                     <td>
-                        Perda Total
+                        1
                     </td>
                     <td>
-                        Teste
-                    </td>
-                    <td>
-                        <a href="#" class="btn btn-sm btn-primary"><i class="material-icons">edit</i></a>
+                        <a href="#" class="btn btn-sm btn-primary"><i class="material-icons">visibility</i></a>
                     </td>
                   </tr>
                 </tbody>

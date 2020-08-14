@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'equipamentosAdd', 'titlePage' => __('Criar Laudo')])
+@extends('layouts.app', ['activePage' => 'equipamentosAdd', 'titlePage' => __(' ')])
 
 @section('content')
   <div class="content">
@@ -8,156 +8,121 @@
         <div class="col-md-12">
           
             @csrf
-
+            <!-- Comercio Fixo - Processos Físicos e via rápida empresa redesim -->
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">{{ __('Dados do Laudo') }}</h4>
-                <p class="card-category">{{ __('Dados para criação do laudo de um equipamento') }}</p>
+                <h4 class="card-title">{{ __('Comercio Fixo') }}</h4>
               </div>
-              <div class="card-body ">
-              <!-- Secretaria e departamento -->
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Secretaria') }}</label>
-                  <div class="col-sm-4">
-                    <div class="form-group{{ $errors->has('secretaria') ? ' has-danger' : '' }}">
-                      <select class="form-control{{ $errors->has('secretaria') ? ' is-invalid' : '' }}" name="secretaria" id="input-secretaria" required="true" aria-required="true">
-                        <option value="1">Secretaria de Administração</option>
-                        <option value="2">Secretaria de Saúde</option>
-                        <option value="3">Secretaria de Finanças</option>
-                      <select>
-                      @if ($errors->has('secretaria'))
-                        <span id="name-error" class="error text-danger" for="input-secretaria">{{ $errors->first('secretaria') }}</span>
-                      @endif
-                    </div>
-                  </div>
+              <div class="card-body">
+              
+            <div class="row">
 
-                  <label class="col-sm-2 col-form-label">{{ __('Departamento') }}</label>
-                  <div class="col-sm-3">
-                    <div class="form-group{{ $errors->has('departamento') ? ' has-danger' : '' }}">
-                      <select class="form-control{{ $errors->has('departamento') ? ' is-invalid' : '' }}" name="departamento" id="input-departamento" required="true" aria-required="true">
-                        <option value="1">Tecnologia da Informação</option>
-                        <option value="2">Recursos Humanos</option>
-                        <option value="3">Garagem</option>
-                      <select>
-                      @if ($errors->has('departamento'))
-                        <span id="name-error" class="error text-danger" for="input-departamento">{{ $errors->first('departamento') }}</span>
+                  <label class="col-sm-2 col-form-label">{{ __('Data') }}</label>
+                <div class="col-sm-2">
+                  <div class="form-group{{ $errors->has('data') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('data') ? ' is-invalid' : '' }}" name="data" id="input-data" type="date" max='{{ date("Y-m-d") }}' required="true" />
+                      @if ($errors->has('data'))
+                        <span id="data-error" class="error text-danger" for="input-data">{{ $errors->first('data') }}</span>
                       @endif
                     </div>
-                  </div>
                 </div>
-                <!-- /Fim Secretaria e Departamento -->
-                <!-- Dados do Laudo (Chamado, Tipo, Email Solicitante) -->
-                <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Email solicitante') }}</label>
-                  <div class="col-sm-3">
-                    <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" id="input-email" type="email" placeholder="{{ __('Email') }}" value="{{ old('email', auth()->user()->email) }}" />
-                      @if ($errors->has('email'))
-                        <span id="email-error" class="error text-danger" for="input-email">{{ $errors->first('email') }}</span>
+                 
+                    <label class="col-sm-2 col-form-label">{{ __('Vistoria Processos') }}</label>
+                  <div class="col-sm-2">
+                    <div class="form-group{{ $errors->has('vistoria') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('vistoria') ? ' is-invalid' : '' }}" name="vistoria" id="input-vistoria" type="number" placeholder="{{ __('Vistoria Processos') }}" />
+                      @if ($errors->has('vistoria'))
+                        <span id="vistoria-error" class="error text-danger" for="input-vistoria">{{ $errors->first('vistoria') }}</span>
                       @endif
                     </div>
                   </div>
                 </div>
 
                 <div class="row">
-                  <label class="col-sm-2 col-form-label">{{ __('Numero do Chamado') }}</label>
-                  <div class="col-sm-3">
-                    <div class="form-group{{ $errors->has('chamado') ? ' has-danger' : '' }}">
-                      <input class="form-control{{ $errors->has('chamado') ? ' is-invalid' : '' }}" name="chamado" id="input-chamado" type="chamado" placeholder="{{ __('Nº Chamado') }}" value="" required="true" />
-                      @if ($errors->has('chamado'))
-                        <span id="chamado-error" class="error text-danger" for="input-chamado">{{ $errors->first('chamado') }}</span>
+                  <label class="col-sm-2 col-form-label">{{ __('Vistoria VRE') }}</label>
+                  <div class="col-sm-2">
+                    <div class="form-group{{ $errors->has('vistoriavre') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('vistoriavre') ? ' is-invalid' : '' }}" name="vistoriavre" id="input-vistoriavre" type="number" placeholder="{{ __('Vistoria VRE') }}" />
+                      @if ($errors->has('vistoriavre'))
+                        <span id="vistoriavre-error" class="error text-danger" for="input-vistoriavre">{{ $errors->first('vistoriavre') }}</span>
                       @endif
                     </div>
                   </div>
-                  <label class="col-sm-2 col-form-label">{{ __('Tipo de Laudo') }}</label>
-                  <div class="col-sm-3">
-                    <div class="form-group{{ $errors->has('tipo_laudo') ? ' has-danger' : '' }}">
-                      <select class="form-control{{ $errors->has('tipo_laudo') ? ' is-invalid' : '' }}" name="tipo_laudo" id="input-tipo_laudo" required="true" aria-required="true">
-                        <option value="1">Tecnologia da Informação</option>
-                        <option value="2">Recursos Humanos</option>
-                        <option value="3">Garagem</option>
-                      <select>
-                      @if ($errors->has('tipo_laudo'))
-                        <span id="name-error" class="error text-danger" for="input-tipo_laudo">{{ $errors->first('tipo_laudo') }}</span>
+
+                  <label class="col-sm-2 col-form-label">{{ __('Viabilidade VRE') }}</label>
+                  <div class="col-sm-2">
+                    <div class="form-group{{ $errors->has('viabilidade') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('viabilidade') ? ' is-invalid' : '' }}" name="viabilidade" id="input-viabilidade" type="number" placeholder="{{ __('Viabilidade VRE') }}" />
+                      @if ($errors->has('viabilidade'))
+                        <span id="viabilidade-error" class="error text-danger" for="input-viabilidade">{{ $errors->first('viabilidade') }}</span>
                       @endif
                     </div>
                   </div>
                 </div>
-                <!-- /Fim Dados do Laudo -->
+
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Ciencia') }}</label>
+                  <div class="col-sm-2">
+                    <div class="form-group{{ $errors->has('ciencia') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('ciencia') ? ' is-invalid' : '' }}" name="ciencia" id="input-ciencia" type="number" placeholder="{{ __('Ciencia') }}" />
+                      @if ($errors->has('ciencia'))
+                        <span id="ciencia-error" class="error text-danger" for="input-ciencia">{{ $errors->first('ciencia') }}</span>
+                      @endif
+                    </div>
+                  </div>
+
+                  <label class="col-sm-2 col-form-label">{{ __('Intimacao') }}</label>
+                  <div class="col-sm-2">
+                    <div class="form-group{{ $errors->has('intimacao') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('intimacao') ? ' is-invalid' : '' }}" name="intimacao" id="input-intimacao" type="number" placeholder="{{ __('Intimacao') }}" />
+                      @if ($errors->has('intimacao'))
+                        <span id="intimacao-error" class="error text-danger" for="input-intimacao">{{ $errors->first('intimacao') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Plantao Interno') }}</label>
+                  <div class="col-sm-2">
+                    <div class="form-group{{ $errors->has('plantao') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('plantao') ? ' is-invalid' : '' }}" name="plantao" id="input-plantao" type="number" placeholder="{{ __('Plantao Interno') }}" />
+                      @if ($errors->has('plantao'))
+                        <span id="plantao-error" class="error text-danger" for="input-plantao">{{ $errors->first('plantao') }}</span>
+                      @endif
+                    </div>
+                  </div>
+
+                  <label class="col-sm-2 col-form-label">{{ __('Atendimento Guiche') }}</label>
+                  <div class="col-sm-2">
+                    <div class="form-group{{ $errors->has('guiche') ? ' has-danger' : '' }}">
+                      <input class="form-control{{ $errors->has('guiche') ? ' is-invalid' : '' }}" name="guiche" id="input-guiche" type="number" placeholder="{{ __('Atendimento Guiche') }}" />
+                      @if ($errors->has('guiche'))
+                        <span id="guiche-error" class="error text-danger" for="input-guiche">{{ $errors->first('guiche') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>      
+ 
+                <div class="row">
+                  <label class="col-sm-2 col-form-label">{{ __('Observacao') }}</label>
+                  <div class="col-lg-6">
+                    <div class="form-group{{ $errors->has('observacao') ? ' has-danger' : '' }}">
+                      <textarea class="form-control{{ $errors->has('observacao') ? ' is-invalid' : '' }}" name="observacao" id="textarea-observacao" type="text" placeholder="{{ __('Observacao') }}" />
+                      </textarea>
+                      @if ($errors->has('observacao'))
+                        <span id="observacao-error" class="error text-danger" for="input-observacao">{{ $errors->first('observacao') }}</span>
+                      @endif
+                    </div>
+                  </div>
+                </div>
                 
-              </div>
-            </div>
-        </div>
-      </div>
-
-      <!-- Equipamentos -->
-      <div class="row">
-        <div class="col-md-12">
-            <div class="card ">
-              <div class="card-header card-header-primary">
-                <h4 class="card-title">{{ __('Equipamentos') }}</h4>
-                <p class="card-category">{{ __('Equipamentos com defeitos e a respectiva solução') }}</p>
-              </div>
-              <div class="card-body ">
-                <div class="row">
-                    <label class="col-sm-2 col-form-label" for="input-current-password">{{ __('Tipo de Identificação') }}</label>
-                    <div class="col-sm-2">
-                        <div class="form-group{{ $errors->has('tipo_identificacao') ? ' has-danger' : '' }}">
-                        <select class="form-control{{ $errors->has('tipo_identificacao') ? ' is-invalid' : '' }}" name="tipo_identificacao" id="input-tipo_identificacao" required="true" aria-required="true">
-                            <option value="NS">Numero de Serie</option>
-                            <option value="PAT">Patrimônio</option>
-                            <option value="NTI">NTI</option>
-                        <select>
-                        @if ($errors->has('tipo_identificacao'))
-                            <span id="name-error" class="error text-danger" for="input-tipo_identificacao">{{ $errors->first('tipo_identificacao') }}</span>
-                        @endif
-                        </div>
-                    </div>
-                    <label class="col-sm-2 col-form-label" for="input-current-password">{{ __('Identificação') }}</label>
-                    <div class="col-sm-5">
-                        <div class="form-group{{ $errors->has('identificacao') ? ' has-danger' : '' }}">
-                        <input class="form-control{{ $errors->has('identificacao') ? ' is-invalid' : '' }}" name="identificacao" id="input-identificacao" type="text" placeholder="{{ __('Identificacao') }}" value="" required />
-                        @if ($errors->has('identificacao'))
-                            <span id="name-error" class="error text-danger" for="input-identificacao">{{ $errors->first('identificacao') }}</span>
-                        @endif
-                        </div>
-                    </div>
-                </div>
                 <div class="card-footer ml-auto mr-auto">
-                    <button type="button" class="btn btn-primary">{{ __('Adicionar Problema') }}</button>
+                  <button type="submit" class="btn btn-success">{{ __('Insere Equipamento') }}</button>
                 </div>
-
-
-                <div class="row">
-                    <div class="col-sm-11">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead class=" text-primary">
-                                    <th>Descrição</th>
-                                    <th>Defeito</th>
-                                    <th>Solução</th>
-                                    <th>Ações</th>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Placa mãe intermitente</td>
-                                    <td>Placa mãe b450 gaming</td>
-                                    <td>Substituição por uma nova</td>
-                                    <td>
-                                        <a href="#" class="btn btn-sm btn-danger" onClick="confirm('Tem certeza que deseja deletar esse problema?')"><i class="material-icons">delete</i></a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-              </div>
-              <div class="card-footer ml-auto mr-auto">
-                <button type="submit" class="btn btn-success">{{ __('Insere Equipamento') }}</button>
+                <!-- Fim Dados -->
               </div>
             </div>
-          </form>
         </div>
       </div>
     </div>

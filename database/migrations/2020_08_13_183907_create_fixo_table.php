@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class DummyClass extends Migration
+class CreateFixoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +13,9 @@ class DummyClass extends Migration
      */
     public function up()
     {
-        {{schema_up}}
+        Schema::table('fixo', function (Blueprint $table) {
+            //
+        });
     }
 
     /**
@@ -22,6 +25,8 @@ class DummyClass extends Migration
      */
     public function down()
     {
-        {{schema_down}}
+        Schema::table('fixo', function (Blueprint $table) {
+            //
+        });
     }
 }

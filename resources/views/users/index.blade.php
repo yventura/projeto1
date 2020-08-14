@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'edit', 'titlePage' => __('Controle de Usuario')])
+@extends('layouts.app', ['activePage' => 'profile', 'titlePage' => __('Controle de Usuario')])
 
 @section('content')
 <br>
@@ -12,9 +12,9 @@
               <table class="table table-hover">
               <thead class="text-warning">
                 <th>Usuario</th>
-                <th>Cargo</th>
-                <th>Setor</th>
-                <th class="text-center">Edita</th>
+                <th>Cargo  </th>
+                <th>Setor  </th>
+                <th class="text-center">Edita</th >
                 <th class="text-center">Deleta</th>
               </thead>
             <tbody>

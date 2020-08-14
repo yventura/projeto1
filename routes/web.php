@@ -32,6 +32,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
+
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('table-list', function () {
 		return view('pages.table_list');
@@ -79,6 +80,12 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('laudo/adicionar');
 
 				 /* Fim - Rotas Pagina Laudos           */
+				 /* Começo - Rotas Crud       */    
+	Route::get('usuario/adicionar', function () {
+		return view('usuario.add');
+	})->name('usuario/adicionar');
+
+				 /* Fim - Rotas Crud           */
 				/* Começo - Rotas Pagina Relatorios     */
     Route::get('page/relatorios', function () {
 		return view('pages.relatorios');

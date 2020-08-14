@@ -6,21 +6,15 @@
   -->
   <div class="logo">
     <a href="#" class="simple-text logo-normal">
-      {{ __('LCSPMG') }}
+      {{ __('SOF') }}
     </a>
+    
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="nav-item{{ $activePage == 'dashboard' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('home') }}">
-          <i class="material-icons">dashboard</i>
-            <p>{{ __('Pagina Inicial') }}</p>
-        </a>
-      </li>
       <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
-        <i class="material-icons">persons</i>
-          <p>{{ __('Perfil') }}
+          <p>{{ __('Controle de Usuários') }}
             <b class="caret"></b>
           </p>
         </a>
@@ -28,14 +22,14 @@
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('profile.edit') }}">
-                <span class="sidebar-mini"> EP </span>
-                <span class="sidebar-normal">{{ __('Editar Perfil') }} </span>
+                <i class="material-icons">add_user</i>
+                <span class="sidebar-normal">{{ __('Criar Usuario') }} </span>
               </a>
             </li>
             <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('user.index') }}">
-                <span class="sidebar-mini"> UM </span>
-                <span class="sidebar-normal"> {{ __('Controle de Usuários') }} </span>
+                <i class="material-icons">persons</i>
+                <span class="sidebar-normal"> {{ __('Usuarios Cadastrados') }} </span>
               </a>
             </li>
           </ul>
@@ -43,8 +37,7 @@
       </li>
       <li class="nav-item {{ ($activePage == 'equipamentosIndex' || $activePage == 'equipamentosAdd') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#hardwares" aria-expanded="true">
-        <i class="material-icons">devices</i>
-          <p>{{ __('Hardwares') }}
+          <p>{{ __('Nova Ocorrencia') }}
             <b class="caret"></b>
           </p>
         </a>
@@ -52,14 +45,14 @@
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'equipamentosAdd' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('equipamentos.create') }}">
-                <i class="material-icons">add_to_queue</i>
-                <span class="sidebar-normal">{{ __('Adicionar Equipamento') }} </span>
+                <i class="material-icons">add</i>
+                <span class="sidebar-normal">{{ __('Comercio Fixo') }} </span>
               </a>
             </li>
             <li class="nav-item{{ $activePage == 'equipamentosIndex' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('equipamentos.index') }}">
-                <i class="material-icons">list_alt</i>
-                <span class="sidebar-normal"> {{ __('Listar Equipamentos') }} </span>
+                <i class="material-icons">add</i>
+                <span class="sidebar-normal"> {{ __('Item 2') }} </span>
               </a>
             </li>
           </ul>
@@ -67,8 +60,7 @@
       </li>
       <li class="nav-item {{ ($activePage == 'laudosIndex' || $activePage == 'laudoAdd') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laudos" aria-expanded="true">
-        <i class="material-icons">devices</i>
-          <p>{{ __('Laudos') }}
+          <p>{{ __('Relatorios') }}
             <b class="caret"></b>
           </p>
         </a>
@@ -76,30 +68,24 @@
           <ul class="nav">
             <li class="nav-item{{ $activePage == 'laudoAdd' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('laudos.create') }}">
-              <span class="sidebar-mini"> CL </span>
-                <span class="sidebar-normal">{{ __('Criar Laudo') }} </span>
+                <i class="material-icons">list</i>
+                <span class="sidebar-normal">{{ __('Relatorio Diario') }} </span>
               </a>
             </li>
             <li class="nav-item{{ $activePage == 'laudosIndex' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('laudos.index') }}">
-              <span class="sidebar-mini"> LL </span>
-                <span class="sidebar-normal"> {{ __('Lista de Laudos') }} </span>
+                <i class="material-icons">list</i>
+                <span class="sidebar-normal"> {{ __('Relatorio Semanal') }} </span>
               </a>
             </li>
-            <li class="nav-item{{ $activePage == 'laudos/envia' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('laudos/envia') }}">
-              <span class="sidebar-mini"> EL </span>
-                <span class="sidebar-normal"> {{ __('Enviar Laudo') }} </span>
+            <li class="nav-item{{ $activePage == 'laudosIndex' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('laudos.index') }}">
+                <i class="material-icons">list</i>
+                <span class="sidebar-normal"> {{ __('Todos os Relatorios') }} </span>
               </a>
             </li>
           </ul>
         </div>
-      </li>
-      <li class="nav-item{{ $activePage == 'page/relatorios' ? ' active' : '' }}">
-        <a class="nav-link" href="{{ route('page/relatorios') }}">
-          <i class="material-icons">bar_chart</i>
-            <p>{{ __('Relatórios') }}</p>
-        </a>
       </li>
     </ul>
   </div>
