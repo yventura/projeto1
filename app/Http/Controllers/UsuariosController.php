@@ -3,24 +3,35 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Http\Requests\UserRequest;
+use App\Http\Requests\ProfileRequest;
+use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Hash;
 
-class UserController extends Controller
+class ProfileController extends Controller
 {
-    /**
-     * Display a listing of the users
-     *
-     * @param  \App\User  $model
-     * @return \Illuminate\View\View
-     */
-    public function index(User $model)
+    public function __construct()
     {
-        return view('users.index', ['users' => $model->paginate(15)]);
+        $this->middleware('auth');
     }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        //return view('profile.edit');
+        dd('teste');
     }
 
     /**
@@ -31,8 +42,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
-        $user = new User($request -> all());
+        //
     }
 
     /**
@@ -41,7 +51,7 @@ class UserController extends Controller
      * @param  \App\Laudo  $laudo
      * @return \Illuminate\Http\Response
      */
-    public function show(Laudo $laudo)
+    public function show($id)
     {
         //
     }
@@ -50,7 +60,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function edit()
+    public function edit($id)
     {
         //
     }
@@ -65,6 +75,4 @@ class UserController extends Controller
     {
        //
     }
-  
-    
 }

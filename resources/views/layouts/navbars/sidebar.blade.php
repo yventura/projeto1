@@ -12,22 +12,22 @@
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="nav-item {{ ($activePage == 'profile' || $activePage == 'user-management') ? ' active' : '' }}">
+      <li class="nav-item {{ ($activePage == 'usuarioCreate' || $activePage == 'user_management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
           <p>{{ __('Controle de Usuários') }}
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse {{ ($activePage == 'profile' || $activePage == 'user-management') ? 'show' : '' }}" id="laravelExample">
+        <div class="collapse {{ ($activePage == 'usuarioCreate' || $activePage == 'user_management') ? 'show' : '' }}" id="laravelExample">
           <ul class="nav">
-            <li class="nav-item{{ $activePage == 'profile' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('profile.edit') }}">
+            <li class="nav-item{{ $activePage == 'usuarioCreate' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('usuario.create') }}">
                 <i class="material-icons">add_user</i>
                 <span class="sidebar-normal">{{ __('Criar Usuario') }} </span>
               </a>
             </li>
-            <li class="nav-item{{ $activePage == 'user-management' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('user.index') }}">
+            <li class="nav-item{{ $activePage == 'user_management' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('usuario.index') }}">
                 <i class="material-icons">persons</i>
                 <span class="sidebar-normal"> {{ __('Usuarios Cadastrados') }} </span>
               </a>

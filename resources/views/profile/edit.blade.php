@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <form method="post" action="{{ route('profile.update') }}" autocomplete="off" class="form-horizontal">
+          <form method="post" action="{{ route('profile.edit') }}" autocomplete="off" class="form-horizontal">
             @csrf
             @method('put')
 
@@ -72,7 +72,9 @@
                 </div>
               </div>
               <div class="card-footer ml-auto mr-auto">
+                
                 <button type="submit" class="btn btn-primary">{{ __('Confirma') }}</button>
+                
               </div>
             </div>
           </form>

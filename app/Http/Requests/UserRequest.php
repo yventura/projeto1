@@ -34,6 +34,9 @@ class UserRequest extends FormRequest
             ],
             'password' => [
                 $this->route()->user ? 'nullable' : 'required', 'confirmed', 'min:6'
+            ],
+            'prontuario' => [
+                'required', 'min:8'
             ]
         ];
     }
