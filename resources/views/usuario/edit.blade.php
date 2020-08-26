@@ -1,15 +1,16 @@
-@extends('layouts.app', ['activePage' => 'usuarioCreate', 'titlePage' => __(' ')])
+@extends('layouts.app', ['activePage' => 'usuarioEdit', 'titlePage' => __(' ')])
 
 @section('content')
 <div class="content">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <form name="formCad" id="formCad" method="post" action="{{ route('usuario.store') }}">
+          <form name="formEdit" id="formEdit" method="post" action="{{ url("usuario/$usuario->id") }}">
+            @method('PUT')
             @csrf
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">@if(isset($usuario))Editar Usuario @else Cadastrar Usuario @endif</h4>
+                <h4 class="card-title">Editar Usuario</h4>
               </div>
               <div class="card-body ">
                 @if (session('status'))
@@ -28,7 +29,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Nome') }}</label>
                   <div class="col-sm-4">
                   <div class="form-group">
-                      <input class="form-control" name="name" id="input-name" type="text" placeholder="{{ __('Nome') }}" required="true" aria-required="true"/>
+                      <input class="form-control" name="name" id="input-name" type="text" placeholder="{{ __('Nome') }}"  value="{{$usuario->name ?? ''}}" required="true" aria-required="true"/>
                      </div>
                   </div>
                 </div>
@@ -36,7 +37,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Email') }}</label>
                   <div class="col-sm-4">
                     <div class="form-group">
-                      <input class="form-control" name="email" id="input-email" type="email" placeholder="{{ __('Email') }}" required />
+                      <input class="form-control" name="email" id="input-email" type="email" placeholder="{{ __('Email') }}" value="{{$usuario->email ?? ''}}" required />
                      </div>
                   </div>
                 </div>
@@ -44,7 +45,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Senha') }}</label>
                   <div class="col-sm-4">
                     <div class="form-group">
-                      <input class="form-control" name="password" id="input-password" type="password" placeholder="{{ __('Password') }}" required />
+                      <input class="form-control" name="password" id="input-password" type="password" placeholder="{{ __('Password') }}" value="{{$usuario->password ?? ''}}" required />
                     </div>
                   </div>
                 </div>
@@ -52,7 +53,7 @@
                   <label class="col-sm-2 col-form-label">{{ __('Prontuario') }}</label>
                   <div class="col-sm-4">
                     <div class="form-group">
-                      <input class="form-control" name="prontuario" id="input-prontuario" type="text" placeholder="{{ __('Prontuario') }}" required />
+                      <input class="form-control" name="prontuario" id="input-prontuario" type="text" placeholder="{{ __('Prontuario') }}" value="{{$usuario->prontuario ?? ''}}" required />
                     </div>
                   </div>
                 </div>

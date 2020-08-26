@@ -103,7 +103,8 @@ class TesteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $usuario=$this->objUser->find($id);
+        return view('usuario.edit', compact('usuario'));
     }
 
     /**
@@ -115,7 +116,13 @@ class TesteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->objUser->where(['id'=>$id])->update([
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'password' => Hash::make($request['password']),
+            'prontuario'=>$request->prontuario
+        ]);
+        return redirect('usuario');
     }
 
     /**
@@ -126,6 +133,6 @@ class TesteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

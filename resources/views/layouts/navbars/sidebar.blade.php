@@ -20,12 +20,14 @@
         </a>
         <div class="collapse {{ ($activePage == 'usuarioCreate' || $activePage == 'user_management') ? 'show' : '' }}" id="laravelExample">
           <ul class="nav">
+          <!--
             <li class="nav-item{{ $activePage == 'usuarioCreate' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('usuario.create') }}">
                 <i class="material-icons">add_user</i>
                 <span class="sidebar-normal">{{ __('Criar Usuario') }} </span>
               </a>
             </li>
+            -->
             <li class="nav-item{{ $activePage == 'user_management' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('usuario.index') }}">
                 <i class="material-icons">persons</i>

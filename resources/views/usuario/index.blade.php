@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'usuario', 'titlePage' => __('Controle de Usuario')])
+@extends('layouts.app', ['activePage' => 'usuario', 'titlePage' => __(' ')])
 
 @section('content')
 <br>
@@ -17,10 +17,10 @@
             <div class="card-body table-responsive">
               <table class="table table-hover">
               <thead class="text-warning">
-                <th>Id      </th>
                 <th>Nome      </th>
                 <th>E-mail    </th>
                 <th>Prontuario</th>
+                <th class="text-center">Editar</th>
                 <th class="text-center">Deleta</th>
               </thead>
             <tbody>
@@ -28,14 +28,18 @@
               
               
               <tr>
-                  <td scope="row">{{$usuarios->id}}</td>
                   <td scope="row">{{$usuarios->name}}</td>
                   <td scope="row">{{$usuarios->email}}</td>
                   <td scope="row">{{$usuarios->prontuario}}</td>
                 </td>
+                <td class="td-actions text-center">
+                <a href="{{url("usuario/$usuarios->id/edit")}}"> 
+                  <button class="btn btn-dark ">Editar</button>
+                </a>   
+                </td>
                 <td class="td-actions text-center"> 
-                <a href="{{url($usuarios->prontuario)}}"> 
-                  <button class="btn btn-dark ">visualisar</button>
+                <a  class="js-del" href="{{url("usuario/$usuarios->id")}}"> 
+                  <button class="btn btn-dark ">Deletar</button>
                 </a>  
                 </td>
               </tr>
