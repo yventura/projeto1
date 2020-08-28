@@ -20,32 +20,29 @@
                 <th>Nome      </th>
                 <th>E-mail    </th>
                 <th>Prontuario</th>
+                <th>Nivel     </th>
+                <th>Status    </th>
                 <th class="text-center">Editar</th>
-                <th class="text-center">Deleta</th>
               </thead>
             <tbody>
               @foreach($users as $usuarios)
-              
-              
+
               <tr>
                   <td scope="row">{{$usuarios->name}}</td>
                   <td scope="row">{{$usuarios->email}}</td>
                   <td scope="row">{{$usuarios->prontuario}}</td>
+                  <td scope="row">{{$usuarios->nomeNivel($usuarios->nivel) }}</td>
+                  <td scope="row">{{$usuarios->nomeStatus($usuarios->status) }}</td>
                 </td>
                 <td class="td-actions text-center">
-                <a href="{{url("usuario/$usuarios->id/edit")}}"> 
-                  <button class="btn btn-dark ">Editar</button>
-                </a>   
-                </td>
-                <td class="td-actions text-center"> 
-                <a  class="js-del" href="{{url("usuario/$usuarios->id")}}"> 
-                  <button class="btn btn-dark ">Deletar</button>
-                </a>  
+                <a href="{{url("usuario/$usuarios->id/edit")}}">
+                  <button class="btn btn-primary ">Editar</button>
+                </a>
                 </td>
               </tr>
-              @endforeach 
-              
-               
+              @endforeach
+
+
             </tbody>
               </table>
             </div>

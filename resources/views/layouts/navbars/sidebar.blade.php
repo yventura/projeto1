@@ -8,26 +8,18 @@
     <a href="#" class="simple-text logo-normal">
       {{ __('SOF') }}
     </a>
-    
+
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="nav-item {{ ($activePage == 'usuarioCreate' || $activePage == 'user_management') ? ' active' : '' }}">
+      <li class="nav-item {{ ($activePage == 'user_management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
           <p>{{ __('Controle de Usuários') }}
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse {{ ($activePage == 'usuarioCreate' || $activePage == 'user_management') ? 'show' : '' }}" id="laravelExample">
+        <div class="collapse {{ ($activePage == 'user_management') ? 'show' : '' }}" id="laravelExample">
           <ul class="nav">
-          <!--
-            <li class="nav-item{{ $activePage == 'usuarioCreate' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('usuario.create') }}">
-                <i class="material-icons">add_user</i>
-                <span class="sidebar-normal">{{ __('Criar Usuario') }} </span>
-              </a>
-            </li>
-            -->
             <li class="nav-item{{ $activePage == 'user_management' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('usuario.index') }}">
                 <i class="material-icons">persons</i>
@@ -37,6 +29,7 @@
           </ul>
         </div>
       </li>
+
       <li class="nav-item {{ ($activePage == 'equipamentosIndex' || $activePage == 'equipamentosAdd') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#hardwares" aria-expanded="true">
           <p>{{ __('Nova Ocorrencia') }}

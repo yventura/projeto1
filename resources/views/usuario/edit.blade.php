@@ -57,27 +57,53 @@
                     </div>
                   </div>
                 </div>
-                <!-- 
-                <div class="row">
-                <label class="col-sm-2 col-form-label">{{ __('Nivel') }}</label>
-                <div class="col-sm-4">
-                    <div class="form-group{{ $errors->has('nivel') ? ' has-danger' : '' }}">
-                      <select class="form-control{{ $errors->has('nivel') ? ' is-invalid' : '' }}" name="nivel" id="input-nivel" required="true" aria-required="true">
-                        <option value="1">Admin</option>
-                        <option value="2">Especial</option>
-                        <option value="3">Padrao</option>
-                      <select>
-                      @if ($errors->has('nivel'))
-                        <span id="name-error" class="error text-danger" for="input-nivel">{{ $errors->first('nivel') }}</span>
-                      @endif
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label">{{ __('Nivel') }}</label>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <select class="form-control" name="nivel" id="input-nivel" required="true" aria-required="true"  required>
+                                    <option value="{{"$usuario->nivel" }} "> {{$usuario->nomeNivel($usuario->nivel) }} </option>
+
+                                    @if( $usuario->nivel == 0 ){
+                                        <option value="1">Supervisor   </option>
+                                        <option value="2">Padrao       </option>
+                                    @endif
+                                    @if($usuario->nivel == 1)
+                                        <option value="0">Administrdor</option>
+                                        <option value="2">Padrao       </option>
+                                    @endif
+                                    @if($usuario->nivel == 2)
+                                        <option value="0">Administrdor</option>
+                                        <option value="1">Supervisor   </option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                -->
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label">{{ __('Status') }}</label>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <select class="form-control" name="status" id="input-status" required="true" aria-required="true" required>
+                                    <option value="{{"$usuario->status" }} "> {{$usuario->nomeStatus($usuario->status) }} </option>
+                                    @if($usuario->status == 0){
+                                    <option value="1">Desabilitado   </option>
+                                   }
+                                    @endif
+                                    @if($usuario->status == 1)
+                                   {
+                                    <option value="0">Habilitado   </option>
+                                   }
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                    </div>
               </div>
               <div class="card-footer ml-auto mr-auto">
-                
+
                 <button type="submit" class="btn btn-primary">{{ __('Confirma') }}</button>
-                
+
               </div>
             </div>
           </form>

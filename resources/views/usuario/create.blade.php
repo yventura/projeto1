@@ -9,7 +9,7 @@
             @csrf
             <div class="card ">
               <div class="card-header card-header-primary">
-                <h4 class="card-title">@if(isset($usuario))Editar Usuario @else Cadastrar Usuario @endif</h4>
+                <h4 class="card-title">Cadastrar Usuario</h4>
               </div>
               <div class="card-body ">
                 @if (session('status'))
@@ -56,27 +56,35 @@
                     </div>
                   </div>
                 </div>
-                <!-- 
                 <div class="row">
+
                 <label class="col-sm-2 col-form-label">{{ __('Nivel') }}</label>
                 <div class="col-sm-4">
-                    <div class="form-group{{ $errors->has('nivel') ? ' has-danger' : '' }}">
-                      <select class="form-control{{ $errors->has('nivel') ? ' is-invalid' : '' }}" name="nivel" id="input-nivel" required="true" aria-required="true">
-                        <option value="1">Admin</option>
-                        <option value="2">Especial</option>
-                        <option value="3">Padrao</option>
-                      <select>
-                      @if ($errors->has('nivel'))
-                        <span id="name-error" class="error text-danger" for="input-nivel">{{ $errors->first('nivel') }}</span>
-                      @endif
+                    <div class="form-group">
+                      <select class="form-control" name="nivel" id="nivel" required >
+                        <option value=" ">Selecione:</option>
+                        <option value="0">Administrador</option>
+                        <option value="1">Supervisor   </option>
+                        <option value="2">Padrao       </option>
+                      </select>
                     </div>
                   </div>
-                -->
               </div>
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label">{{ __('Status') }}</label>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <select class="form-control" name="status" id="input-status" required >
+                                    <option value="0">Habilitado      </option>
+                                    <option value="1">Desabilitado    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
               <div class="card-footer ml-auto mr-auto">
-                
+
                 <button type="submit" class="btn btn-primary">{{ __('Confirma') }}</button>
-                
+
               </div>
             </div>
           </form>

@@ -17,7 +17,7 @@ class User extends Authenticatable
      */
     protected $table = 'users';
     protected $fillable = [
-        'name', 'email', 'password', 'prontuario',
+        'name', 'email', 'password', 'prontuario', 'nivel', 'status' ,
     ];
 
     /**
@@ -37,4 +37,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function nomeNivel($nivel){
+        if($nivel == 0){
+            return "Administrador";
+        } else if($nivel == 1){
+            return "Supervisor";
+        } else {
+            return "Padrão";
+        }
+    }
+    public function nomeStatus($status){
+        if($status == 0){
+            return "Habilitado";
+        } else {
+            return "Desabilitado";
+        }
+
+    }
 }

@@ -5,6 +5,8 @@ use App\User;
 use App\UserModel;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\Providers\NivelServiceProvider;
+use App\Providers\StatusServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -15,9 +17,6 @@ use Illuminate\Http\Request;
 class TesteController extends Controller
 {
     private $objUser;
-    private $objUserModel;
-
-    
 
     protected function validator(array $data)
     {
@@ -26,6 +25,8 @@ class TesteController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'prontuario' => ['required', 'string', 'min:8'],
+            'nivel' => ['required', 'int'],
+            'status' => ['required', 'int'],
         ]);
     }
 
@@ -60,7 +61,7 @@ class TesteController extends Controller
     {
         $usuario=$this->objUser->all();
 
-        
+
         return view(('usuario.create'), compact('usuario'));
     }
 
@@ -70,15 +71,19 @@ class TesteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+
     public function store(Request $request)
     {
         $cad=$this->objUser->create([
-          
+
             'name'=>$request->name,
             'email'=>$request->email,
             'password' => Hash::make($request['password']),
-            'prontuario'=>$request->prontuario
-           
+            'prontuario'=>$request->prontuario,
+            'nivel'=>$request->nivel,
+            'status'=>$request->status
+
 
         ]);
         if($cad){return redirect('usuario');}
@@ -120,7 +125,9 @@ class TesteController extends Controller
             'name'=>$request->name,
             'email'=>$request->email,
             'password' => Hash::make($request['password']),
-            'prontuario'=>$request->prontuario
+            'prontuario'=>$request->prontuario,
+            'nivel'=>$request->nivel,
+            'status'=>$request->status
         ]);
         return redirect('usuario');
     }
@@ -133,6 +140,6 @@ class TesteController extends Controller
      */
     public function destroy($id)
     {
-        
+
     }
 }
