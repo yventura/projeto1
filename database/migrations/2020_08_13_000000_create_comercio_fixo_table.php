@@ -16,13 +16,13 @@ class CreateComercioFixoTable extends Migration
         Schema::create('comercio_fixo', function (Blueprint $table) {
             $table->id();
             $table->timestamp('data');
-            $table->string('vistoria_processos');
-            $table->string('vistoria_vre');
-            $table->string('viabilidade_vre');
-            $table->string('ciencia');
-            $table->string('intimacao');
-            $table->string('plantao_interno');
-            $table->string('atendimento_guiche');
+            $table->integer('vistoria_processos');
+            $table->integer('vistoria_vre');
+            $table->integer('viabilidade_vre');
+            $table->integer('ciencia');
+            $table->integer('intimacao');
+            $table->integer('plantao_interno');
+            $table->integer('atendimento_guiche');
             $table->string('observacao')->nullable();
             $table->timestamps();
         });

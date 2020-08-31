@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'equipamentosIndex', 'titlePage' => __('Listagem dos Laudos')])
+@extends('layouts.app', ['activePage' => 'comerciofixoIndex', 'titlePage' => __(' ')])
 
 @section('content')
 <div class="content">
@@ -7,7 +7,7 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">Laudos</h4>
+            <h4 class="card-title ">Comercio Fixo</h4>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -41,7 +41,7 @@
                     Atendimento Guichê
                   </th>
                   <th>
-                    Observação 
+                    Observação
                   </th>
                 </thead>
                 <tbody>

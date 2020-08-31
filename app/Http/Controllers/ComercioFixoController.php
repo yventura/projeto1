@@ -2,19 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use App\ComercioFixo;
 use Illuminate\Http\Request;
+use App\ComercioFixo;
+use App\User;
 
-class SendController extends Controller
+class ComercioFixoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    private $objFixo;
+    private $objUser;
+
+    public function __construct()
+    {
+        $this->objFixo = new ComercioFixo();
+        $this->objUser      = new User();
+    }
+
     public function index()
     {
-        //
+        $comerciofixo=$this->objFixo->all();
+        return view('comerciofixo.index', compact('comerciofixo'));
+        //dd($this->objFixo->all());
     }
 
     /**
@@ -24,7 +36,7 @@ class SendController extends Controller
      */
     public function create()
     {
-        //
+        return view('comerciofixo.add');
     }
 
     /**
@@ -35,16 +47,30 @@ class SendController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cad=$this->objFixo->create([
+
+            'date'=>$request->date,
+            'vistoria_processos'=>$request->vistoria,
+            'vistoria_vre'=>$request->vistoriavre,
+            'viabilidade_vre'=>$request->viabilidade,
+            'ciencia'=>$request->ciencia,
+            'intimacao'=>$request->intimacao,
+            'plantao_interno'=>$request->plantao,
+            'atendimento_guiche'=>$request->guiche,
+            'observacao'=>$request->observacao
+
+
+        ]);
+        if($cad){return redirect('comerciofixo');}
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\SendLaudo  $sendLaudo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(SendLaudo $sendLaudo)
+    public function show($id)
     {
         //
     }
@@ -52,10 +78,10 @@ class SendController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\SendLaudo  $sendLaudo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(SendLaudo $sendLaudo)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +90,10 @@ class SendController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\SendLaudo  $sendLaudo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, SendLaudo $sendLaudo)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +101,10 @@ class SendController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\SendLaudo  $sendLaudo
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SendLaudo $sendLaudo)
+    public function destroy($id)
     {
         //
     }

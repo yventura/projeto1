@@ -30,53 +30,35 @@
         </div>
       </li>
 
-      <li class="nav-item {{ ($activePage == 'equipamentosIndex' || $activePage == 'equipamentosAdd') ? ' active' : '' }}">
+      <li class="nav-item {{ ($activePage == 'comerciofixoIndex' || $activePage == 'addCFixo') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#hardwares" aria-expanded="true">
           <p>{{ __('Nova Ocorrencia') }}
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse {{ ($activePage == 'equipamentosIndex' || $activePage == 'equipamentosAdd') ? 'show' : '' }}" id="hardwares">
+        <div class="collapse {{ ($activePage == 'comerciofixoIndex' || $activePage == 'ComercioFixoAdd') ? 'show' : '' }}" id="hardwares">
           <ul class="nav">
-            <li class="nav-item{{ $activePage == 'equipamentosAdd' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('equipamentos.create') }}">
+            <li class="nav-item{{ $activePage == 'ComercioFixoAdd' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('comerciofixo.create') }}">
                 <i class="material-icons">add</i>
                 <span class="sidebar-normal">{{ __('Comercio Fixo') }} </span>
-              </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'equipamentosIndex' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('equipamentos.index') }}">
-                <i class="material-icons">add</i>
-                <span class="sidebar-normal"> {{ __('Item 2') }} </span>
               </a>
             </li>
           </ul>
         </div>
       </li>
-      <li class="nav-item {{ ($activePage == 'laudosIndex' || $activePage == 'laudoAdd') ? ' active' : '' }}">
+      <li class="nav-item {{ ($activePage == 'comerciofixoIndex') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laudos" aria-expanded="true">
-          <p>{{ __('Relatorios') }}
+          <p>{{ __('Relatorios Semanais') }}
             <b class="caret"></b>
           </p>
         </a>
-        <div class="collapse {{ ($activePage == 'laudoAdd' || $activePage == 'laudosIndex') ? 'show' : '' }}" id="laudos">
+        <div class="collapse {{ ($activePage == 'comerciofixoIndex') ? 'show' : '' }}" id="laudos">
           <ul class="nav">
-            <li class="nav-item{{ $activePage == 'laudoAdd' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('laudos.create') }}">
+            <li class="nav-item{{ $activePage == 'comerciofixoIndex' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('comerciofixo.index') }}">
                 <i class="material-icons">list</i>
-                <span class="sidebar-normal">{{ __('Relatorio Diario') }} </span>
-              </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'laudosIndex' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('laudos.index') }}">
-                <i class="material-icons">list</i>
-                <span class="sidebar-normal"> {{ __('Relatorio Semanal') }} </span>
-              </a>
-            </li>
-            <li class="nav-item{{ $activePage == 'laudosIndex' ? ' active' : '' }}">
-              <a class="nav-link" href="{{ route('laudos.index') }}">
-                <i class="material-icons">list</i>
-                <span class="sidebar-normal"> {{ __('Todos os Relatorios') }} </span>
+                <span class="sidebar-normal"> {{ __('Relatorio - Comercio Fixo') }} </span>
               </a>
             </li>
           </ul>

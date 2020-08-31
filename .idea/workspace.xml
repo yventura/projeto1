@@ -142,12 +142,20 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Providers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/relatorios" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\projeto1\resources\views\Ocorrencias\ComercioFixo" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\projeto1\app\Providers" />
+      <recent name="C:\xampp\htdocs\projeto1\resources\views\relatorios" />
+      <recent name="C:\xampp\htdocs\projeto1\resources\views\comerciofixo" />
+      <recent name="C:\xampp\htdocs\projeto1\app\Http\Controllers" />
+      <recent name="C:\xampp\htdocs\projeto1\resources\views\Ocorrencias\ComercioFixo" />
+      <recent name="C:\xampp\htdocs\projeto1\resources\views\Ocorrencias" />
     </key>
   </component>
   <component name="RunManager">
@@ -165,7 +173,9 @@
       <option name="presentableId" value="Default" />
       <updated>1598536409204</updated>
       <workItem from="1598536412333" duration="13274000" />
-      <workItem from="1598615911120" duration="6205000" />
+      <workItem from="1598615911120" duration="6383000" />
+      <workItem from="1598623228145" duration="5552000" />
+      <workItem from="1598887807434" duration="14050000" />
     </task>
     <servers />
   </component>
@@ -173,6 +183,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598900639293">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1598900639293" />
     <state x="794" y="443" key="NewPhpFileDialog" timestamp="1598540298486">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -181,9 +195,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1598537091113" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1598620918867">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1598903326816">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1598620918867" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1598903326816" />
   </component>
 </project>

@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\User;
-use App\UserModel;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use App\Providers\NivelServiceProvider;
-use App\Providers\StatusServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -46,8 +43,6 @@ class TesteController extends Controller
      //   dd($this->objUser->all());
 
         $data['users'] = User::all();
-        //$usuario=$this->objUser->all();
-        //return view('index', compact('usuario'));
         return view('usuario.index')->with($data);
 
         }

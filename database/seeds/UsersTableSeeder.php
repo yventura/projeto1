@@ -19,7 +19,7 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('secret'),
             'prontuario' => '154399',
             'nivel'      => '0',
-            'status'     => '1',
+            'status'     => '0',
             'created_at' => now(),
             'updated_at' => now()
         ]);
