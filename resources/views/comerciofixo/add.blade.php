@@ -21,7 +21,7 @@
                 <div class="col-sm-2">
                   <div class="form-group">
                       <input class="form-control" name="data" id="input-data" type="date" max='{{ date("Y-m-d") }}' required />
-                    </div>
+                  </div>
                 </div>
 
                     <label class="col-sm-2 col-form-label">{{ __('Vistoria Processos') }}</label>
@@ -53,7 +53,6 @@
                   <div class="col-sm-2">
                     <div class="form-group">
                       <input class="form-control" name="ciencia" id="input-ciencia" placeholder="{{ __('Ciencia') }}" />
-
                     </div>
                   </div>
 
@@ -90,12 +89,10 @@
                   </div>
                 </div>
 
-                <div class="card-footer ml-auto mr-auto">
-                  <button type="submit" class="btn btn-success">{{ __('Insere Equipamento') }}</button>
+                <div class="text-center mt-3 mb-4">
+                  <button type="submit" class="btn btn-success ">{{ __('Gerar Ocorrencia') }}</button>
                 </div>
                 <!-- Fim Dados -->
-              </div>
-            </div>
         </div>
       </div>
     </div>

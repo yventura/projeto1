@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\ComercioFixo;
 use App\User;
 
@@ -18,7 +19,7 @@ class ComercioFixoController extends Controller
 
     public function __construct()
     {
-        $this->objFixo = new ComercioFixo();
+        $this->objFixo      = new ComercioFixo();
         $this->objUser      = new User();
     }
 
@@ -26,7 +27,6 @@ class ComercioFixoController extends Controller
     {
         $comerciofixo=$this->objFixo->all();
         return view('comerciofixo.index', compact('comerciofixo'));
-        //dd($this->objFixo->all());
     }
 
     /**
@@ -47,6 +47,7 @@ class ComercioFixoController extends Controller
      */
     public function store(Request $request)
     {
+
         $cad=$this->objFixo->create([
 
             'date'=>$request->date,
