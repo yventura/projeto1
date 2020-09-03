@@ -38,40 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('pages.table_list');
 	})->name('table');
 
-	// UPGRADE -> VIEW
-	Route::get('upgrade', function () {
-		return view('pages.upgrade');
-	})->name('upgrade');
-
-
-	             /* Yuri                                */
-                 /* Começo - Rotas Pagina Laudos        */
-
-	Route::get('laudos/index', function () {
-		return view('laudos.index');
-	})->name('laudos/index');
-
-	Route::get('laudos/envia', function () {
-		return view('laudos.envia');
-	})->name('laudos/envia');
-
-	Route::get('laudo/adicionar', function () {
-		return view('laudos.add');
-	})->name('laudo/adicionar');
-
-	Route::get('laudo/adicionar', function () {
-		return view('users.create');
-	})->name('laudo/adicionar');
-
-				 /* Fim - Rotas Pagina Laudos           */
-				/* Começo - Rotas Pagina Relatorios     */
-    Route::get('page/relatorios', function () {
-		return view('pages.relatorios');
-	})->name('page/relatorios');
-	            /* Fim - Rotas Pagina Relatorios        */
 });
-
-
 
 
 Route::group(['middleware' => 'auth'], function () {
@@ -80,9 +47,10 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 	//Para CRUD
-	Route::resource('laudos', 'LaudoController');
 	Route::resource('usuario','TesteController');
+    Route::get('comerciofixo/semanal', ['as' => 'comerciofixo.semanal', 'uses' => 'ComercioFixoController@semanal']);
     Route::resource('comerciofixo','ComercioFixoController');
 	//Para API
+    Route::post('api/comerciofixo/semanal', ['as' => 'api.semanal', 'uses' => 'ComercioFixoController@semanalApi']);
 });
 

@@ -12,6 +12,7 @@
   </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
+
       <li class="nav-item {{ ($activePage == 'user_management') ? ' active' : '' }}">
         <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
           <p>{{ __('Controle de Usuários') }}
@@ -58,7 +59,13 @@
             <li class="nav-item{{ $activePage == 'comerciofixoIndex' ? ' active' : '' }}">
               <a class="nav-link" href="{{ route('comerciofixo.index') }}">
                 <i class="material-icons">list</i>
-                <span class="sidebar-normal"> {{ __('Relatorio - Comercio Fixo') }} </span>
+                <span class="sidebar-normal"> {{ __('Relatorio Diario - Comercio Fixo') }} </span>
+              </a>
+            </li>
+            <li class="nav-item{{ $activePage == 'comerciofixoSemanal' ? ' active' : '' }}">
+              <a class="nav-link" href="{{ route('comerciofixo.semanal') }}">
+                <i class="material-icons">list</i>
+                <span class="sidebar-normal"> {{ __('Relatorio Customizado - Comercio Fixo') }} </span>
               </a>
             </li>
           </ul>

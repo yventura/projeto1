@@ -16,11 +16,10 @@
               <div class="card-body">
 
             <div class="row">
-
-                  <label class="col-sm-2 col-form-label">{{ __('Data') }}</label>
+                <label class="col-sm-2 col-form-label">{{ __('Data') }}</label>
                 <div class="col-sm-2">
                   <div class="form-group">
-                      <input class="form-control" name="data" id="input-data" type="date" max='{{ date("Y-m-d") }}' required />
+                      <input class="form-control" name="data" id="input-data" type="date" value="{{ date('Y-m-d') }}" readonly/>
                   </div>
                 </div>
 

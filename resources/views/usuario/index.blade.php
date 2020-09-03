@@ -17,11 +17,11 @@
             <div class="card-body table-responsive">
               <table class="table table-hover">
               <thead class="text-warning">
-                <th>Nome      </th>
-                <th>E-mail    </th>
+                <th>Nome</th>
+                <th>E-mail</th>
                 <th>Prontuario</th>
-                <th>Nivel     </th>
-                <th>Status    </th>
+                <th>Nivel</th>
+                <th>Status</th>
                 <th class="text-center">Editar</th>
               </thead>
             <tbody>
