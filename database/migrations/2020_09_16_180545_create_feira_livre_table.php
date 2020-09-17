@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFixoTable extends Migration
+class CreateFeiraLivreTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateFixoTable extends Migration
      */
     public function up()
     {
-        Schema::table('fixo', function (Blueprint $table) {
-            //
+        Schema::create('feira_livre', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +26,6 @@ class CreateFixoTable extends Migration
      */
     public function down()
     {
-        Schema::table('fixo', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('feira_livre');
     }
 }

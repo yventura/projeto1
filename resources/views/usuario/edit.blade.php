@@ -64,17 +64,17 @@
                                 <select class="form-control" name="nivel" id="input-nivel" required="true" aria-required="true"  required>
                                     <option value="{{"$usuario->nivel" }} "> {{$usuario->nomeNivel($usuario->nivel) }} </option>
 
-                                    @if( $usuario->nivel == 0 ){
-                                        <option value="1">Supervisor   </option>
-                                        <option value="2">Padrao       </option>
+                                    @if( $usuario->nivel == 0 )
+                                        <option value="1">Supervisor</option>
+                                        <option value="2">Padrao</option>
                                     @endif
                                     @if($usuario->nivel == 1)
                                         <option value="0">Administrdor</option>
-                                        <option value="2">Padrao       </option>
+                                        <option value="2">Padrao</option>
                                     @endif
                                     @if($usuario->nivel == 2)
                                         <option value="0">Administrdor</option>
-                                        <option value="1">Supervisor   </option>
+                                        <option value="1">Supervisor</option>
                                     @endif
                                 </select>
                             </div>
@@ -85,15 +85,12 @@
                         <div class="col-sm-4">
                             <div class="form-group">
                                 <select class="form-control" name="status" id="input-status" required="true" aria-required="true" required>
-                                    <option value="{{"$usuario->status" }} "> {{$usuario->nomeStatus($usuario->status) }} </option>
-                                    @if($usuario->status == 0){
-                                    <option value="1">Desabilitado   </option>
-                                   }
+                                    <option value="{{"$usuario->status" }} "> {{$usuario->nomeStatus($usuario->status) }}</option>
+                                    @if($usuario->status == 0)
+                                        <option value="1">Desabilitado</option>
                                     @endif
                                     @if($usuario->status == 1)
-                                   {
-                                    <option value="0">Habilitado   </option>
-                                   }
+                                        <option value="0">Habilitado</option>
                                     @endif
                                 </select>
                             </div>
@@ -101,9 +98,7 @@
                     </div>
               </div>
               <div class="card-footer ml-auto mr-auto">
-
                 <button type="submit" class="btn btn-primary">{{ __('Confirma') }}</button>
-
               </div>
             </div>
           </form>

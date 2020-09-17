@@ -30,7 +30,7 @@ class TesteController extends Controller
 
     public function __construct()
     {
-        $this->objUser      = new User();
+        $this->objUser = new User();
         $this->middleware('auth');
     }
     /**

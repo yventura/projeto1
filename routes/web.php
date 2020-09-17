@@ -50,7 +50,12 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::resource('usuario','TesteController');
     Route::get('comerciofixo/semanal', ['as' => 'comerciofixo.semanal', 'uses' => 'ComercioFixoController@semanal']);
     Route::resource('comerciofixo','ComercioFixoController');
+    Route::resource('noturno', 'NoturnoController');
+    Route::resource('livre','LivreController');
+   // Route::get('praias/index', ['as' => 'praias.index', 'uses' => 'PraiasController@semana']);
+    Route::resource('praias', 'PraiasController');
 	//Para API
     Route::post('api/comerciofixo/semanal', ['as' => 'api.semanal', 'uses' => 'ComercioFixoController@semanalApi']);
+    //Route::post('api/praias/index', ['as' => 'api.semana', 'uses' => 'PraiasController@semanaApi']);
 });
 

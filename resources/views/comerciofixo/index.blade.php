@@ -7,17 +7,17 @@
       <div class="col-md-12">
         <div class="card">
           <div class="card-header card-header-primary">
-            <h4 class="card-title ">Comercio Fixo</h4>
+            <h4 class="card-title">Comercio Fixo</h4>
           </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table">
-              <thead class=" text-primary">
+              <thead class="text-primary">
                   <th>Data</th>
                   <th>Vistorias Processos</th>
                   <th>Vistoria VRE</th>
                   <th>Viabilidade VRE</th>
-                  <th>Ciências </th>
+                  <th>Ciências</th>
                   <th>Intimações</th>
                   <th>Plantão Interno</th>
                   <th>Atendimento Guichê</th>
@@ -28,7 +28,7 @@
                     <tr>
                         <td scope="row">{{date('d/m/Y', strtotime($comerciof->data))}}</td>
                         <td scope="row">{{$comerciof->vistoria_processos}}</td>
-                        <td scope="row">{{$comerciof->vistoria_vre}} </td>
+                        <td scope="row">{{$comerciof->vistoria_vre}}</td>
                         <td scope="row">{{$comerciof->viabilidade_vre}}</td>
                         <td scope="row">{{$comerciof->ciencia}}</td>
                         <td scope="row">{{$comerciof->intimacao}}</td>
@@ -79,6 +79,22 @@
         <h4 class="card-title ">Relatorio Semanal</h4>
       </div>
       <div class="card-body">
+          <div class="row">
+              <label class="col-sm-2 col-form-label">{{ __('Data Inicial:') }}</label>
+              <div class="col-sm-3">
+                  <div class="form-group">
+                      <input class="form-control" name="data" id="input-data-inicial" type="date" max="{{ date('Y-m-d') }}" />
+                  </div>
+              </div>
+
+              <label class="col-sm-2 col-form-label">{{ __('Data Final:') }}</label>
+              <div class="col-sm-3">
+                  <div class="form-group">
+                      <input class="form-control" name="data" id="input-data-final" type="date" max="{{ date('Y-m-d') }}" />
+                  </div>
+              </div>
+              <button type="button" id="gerarRelatorio" class="btn btn-success">Filtrar</button>
+          </div>
         <div class="table-responsive">
           <table class="table">
             <thead class=" text-primary">
@@ -92,7 +108,7 @@
                 <th>Atendimento Guichê </th>
             </thead>
             <tbody>
-                @foreach( $comerciosTotal as $comercio)
+                @foreach($comerciosTotal as $comercio)
                   <tr>
                       <td scope="row">{{$comercio->data}}</td>
                       <td scope="row">{{$comercio->vistoria_processos}}</td>

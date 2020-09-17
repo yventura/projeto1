@@ -3,6 +3,24 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="3e04b48d-9af4-4c1d-b2b1-fbcce681f0f7" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,14 +44,15 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/app/Http/Controllers/ComercioFixoController.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/database/migrations/2020_08_13_183907_create_fixo_table.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/resources/views/comerciofixo/add.blade.php" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/resources/views/comerciofixo/index.blade.php" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/resources/views/usuario/create.blade.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/app/Http/Controllers/PraiasController.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/routes/web.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/resources/views/comerciofixo/semanal.blade.php" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -150,20 +169,21 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/comerciofixo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\projeto1\resources\views\comerciofixo" />
-      <recent name="C:\xampp\htdocs\projeto1\resources\views\relatorios" />
-      <recent name="C:\xampp\htdocs\projeto1\app\Http\Controllers" />
-      <recent name="C:\xampp\htdocs\projeto1\resources\views\Ocorrencias\ComercioFixo" />
-      <recent name="C:\xampp\htdocs\projeto1\resources\views\Ocorrencias" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\projeto1\app" />
       <recent name="C:\xampp\htdocs\projeto1\resources\views\Ocorrencias\ComercioFixo" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\projeto1\app\Http\Controllers" />
+      <recent name="C:\xampp\htdocs\projeto1\resources\views\livre" />
+      <recent name="C:\xampp\htdocs\projeto1\resources\views\noturno" />
+      <recent name="C:\xampp\htdocs\projeto1\database\migrations" />
+      <recent name="C:\xampp\htdocs\projeto1\resources\views\comerciofixo" />
     </key>
   </component>
   <component name="RunManager">
@@ -183,29 +203,47 @@
       <workItem from="1598536412333" duration="13274000" />
       <workItem from="1598615911120" duration="6383000" />
       <workItem from="1598623228145" duration="5552000" />
-      <workItem from="1598887807434" duration="53196000" />
+      <workItem from="1598887807434" duration="88006000" />
+      <workItem from="1599745066560" duration="36000" />
+      <workItem from="1599745147230" duration="2000" />
+      <workItem from="1599745159542" duration="49156000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1598900639293">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600349181770">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1598900639293" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1598540298486">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1600349181770" />
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599244922490" />
+    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1600349176262">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1598540298486" />
-    <state x="616" y="242" key="run.anything.popup" timestamp="1599100433145">
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1600349176262" />
+    <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599244498977" />
+    <state x="616" y="242" key="run.anything.popup" timestamp="1599766634247">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1599100433145" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599097407255">
+    <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1599766634247" />
+    <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599245764932" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600303493335">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1599097407255" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1600303493335" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599245877712" />
   </component>
 </project>

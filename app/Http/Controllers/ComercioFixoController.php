@@ -22,13 +22,13 @@ class ComercioFixoController extends Controller
 
     public function __construct()
     {
-        $this->objFixo      = new ComercioFixo();
-        $this->objUser      = new User();
+        $this->objFixo = new ComercioFixo();
+        $this->objUser = new User();
     }
 
     public function index()
     {
-        $comerciofixo=$this->objFixo->paginate(10);
+        $comerciofixo = $this->objFixo->paginate(5);
         $comerciosDiarios = $this->objFixo->all();
         $comerciosTotal = null;
         $datas_unicas = array();
@@ -92,13 +92,10 @@ class ComercioFixoController extends Controller
                 'atendimento_guiche' => $dados['atendimento_guiche']
             ];
         }
-
-
-
         return view('comerciofixo.index', compact('comerciofixo'))->with('comerciosTotal', $comerciosTotal);
     }
 
-    /**
+     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -176,9 +173,10 @@ class ComercioFixoController extends Controller
     }
 
     public function semanal() {
+
         $comerciosFixos = null;
         if (!empty($Request)) {
-            $comercioFixos = $this->objFixo->paginate(10);
+            $comercioFixos = $this->objFixo->paginate(5);
             dd($request);
             die();
         }
@@ -186,14 +184,23 @@ class ComercioFixoController extends Controller
         return view("comerciofixo.semanal", compact($comerciosFixos));
     }
 
+    public function Sem() {
+        $comerciofixo  = $this->objFixo->paginate(5);
+
+        return view("comerciofixo", compact($comerciofixo));
+    }
+
     protected function semanalApi(Request $request) {
         $inicio = $request->inicio;
         $fim = $request->fim." 23:59:00";
 
         //Valores manuais
-        /*$inicio = "2020-09-01";
+
+        /*
+        $inicio = "2020-09-01";
         $fim = "2020-09-02 23:59:00";
         */
+
         $retorno = array();
 
         $comerciosFixos = $this->objFixo->whereBetween('data', [$inicio, $fim])->get();
