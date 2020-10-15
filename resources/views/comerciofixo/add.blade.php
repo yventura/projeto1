@@ -80,6 +80,34 @@
                 </div>
 
                 <div class="row">
+                    <label class="col-sm-2 col-form-label">{{ __('Triagem/Pesquisa/Despachos') }}</label>
+                    <div class="col-sm-2">
+                       <div class="form-group">
+                           <select class="form-control" name="desc_09" id="desc_09" required >
+                               <option value="0">Despachos</option>
+                               <option value="1">Pesquisas</option>
+                               <option value="2">Infração</option>
+                           </select>
+                       </div>
+                       <div class="form-group">
+                         <input class="form-control" name="valor_09" id="input-valor_09" placeholder="{{ __('Triagem/Pesquisa/Despachos') }}" />
+                       </div>
+                    </div>
+
+                    <label class="col-sm-2 col-form-label">{{ __('Procedimento Administrativo') }}</label>
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <select class="form-control" name="desc_10" id="desc_10" required >
+                                <option value="0">Ex Oficio</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                           <input class="form-control" name="valor_10" id="input-valor_10" placeholder="{{ __('Atendimento Guiche') }}" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
                   <label class="col-sm-2 col-form-label">{{ __('Observacao') }}</label>
                   <div class="col-lg-6">
                     <div class="form-group">

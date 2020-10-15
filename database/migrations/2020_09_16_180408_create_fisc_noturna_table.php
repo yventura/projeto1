@@ -15,6 +15,11 @@ class CreateFiscNoturnaTable extends Migration
     {
         Schema::create('fisc_noturna', function (Blueprint $table) {
             $table->id();
+            $table->timestamp('data');
+            $table->integer('paralisacao_evento')->nullable();
+            $table->integer('atendimento_denuncia')->nullable();
+            $table->integer('comercio_ambulante')->nullable();
+            $table->integer('atendimento_processos')->nullable();
             $table->timestamps();
         });
     }

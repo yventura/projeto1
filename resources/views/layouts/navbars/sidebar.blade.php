@@ -34,14 +34,14 @@
       </div>
 
       <div>
-        <li class="nav-item {{ ($activePage == 'praiasAdd' || $activePage == 'comerciofixoAdd' || $activePage == 'noturnoAdd' || $activePage == 'livreAdd') ? ' active' : '' }}">
+        <li class="nav-item {{ ($activePage == 'comercio_ambulante_Add' || $activePage == 'comerciofixoAdd' || $activePage == 'noturnoAdd' || $activePage == 'livreAdd') ? ' active' : '' }}">
           <a class="nav-link" data-toggle="collapse" href="#ocorrencia" aria-expanded="true">
             <p>{{ __('Nova Ocorrencia') }}
               <b class="caret"></b>
             </p>
           </a>
 
-          <div class="collapse {{ ($activePage == 'praiasAdd' || $activePage == 'comerciofixoAdd' || $activePage == 'noturnoAdd' || $activePage == 'livreAdd') ? 'show' : '' }}" id="ocorrencia">
+          <div class="collapse {{ ($activePage == 'comercio_ambulante_Add' || $activePage == 'comerciofixoAdd' || $activePage == 'noturnoAdd' || $activePage == 'livreAdd') ? 'show' : '' }}" id="ocorrencia">
             <ul class="nav">
               <li class="nav-item{{ $activePage == 'comerciofixoAdd' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('comerciofixo.create') }}">
@@ -49,8 +49,8 @@
                   <span class="sidebar-normal">{{ __('Comercio Fixo') }} </span>
                 </a>
               </li>
-              <li class="nav-item{{ $activePage == 'praiasAdd' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('praias.create') }}">
+              <li class="nav-item{{ $activePage == 'comercio_ambulante_Add' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('comercio_ambulante.create') }}">
                   <i class="material-icons">add</i>
                   <span class="sidebar-normal">{{ __('Praia') }} </span>
                 </a>
@@ -97,15 +97,15 @@
         </li>
         <!-- Fim da View do Comercio Fixo-->
         <!-- Começo da View do Praias-->
-        <li class="nav-item {{ ($activePage == 'praiasIndex') ? ' active' : '' }}">
-          <a class="nav-link" data-toggle="collapse" href="#praias" aria-expanded="true">
-            <p>{{ __('Praias') }}</p>
+        <li class="nav-item {{ ($activePage == 'comercio_ambulante_Index') ? ' active' : '' }}">
+          <a class="nav-link" data-toggle="collapse" href="#comercio_ambulante" aria-expanded="true">
+            <p>{{ __('Comercio Ambulante') }}</p>
           </a>
 
-          <div class="collapse {{ ($activePage == 'praiasIndex') ? 'show' : '' }}" id="praias">
+          <div class="collapse {{ ($activePage == 'comercio_ambulante_Index') ? 'show' : '' }}" id="comercio_ambulante">
             <ul class="nav">
-              <li class="nav-item{{ $activePage == 'praiasIndex' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('praias.index') }}">
+              <li class="nav-item{{ $activePage == 'comercio_ambulante_Index' ? ' active' : '' }}">
+                <a class="nav-link" href="{{ route('comercio_ambulante.index') }}">
                   <i class="material-icons">list</i>
                   <span class="sidebar-normal"> {{ __('Relatorio - Praia') }} </span>
                 </a>
@@ -116,7 +116,7 @@
         <!-- Fim da View do Praias-->
         <!-- Começo da View do Fisc. Noturna-->
         <li class="nav-item {{ ($activePage == 'noturnoIndex') ? ' active' : '' }}">
-          <a class="nav-link" data-toggle="collapse" href="#fiscalizacao_noturna" aria-expanded="true">
+          <a class="nav-link" data-toggle="collapse" href="#noturno" aria-expanded="true">
             <p>{{ __('Fiscalizacao Noturna') }}</p>
           </a>
 
@@ -134,7 +134,7 @@
         <!-- Fim da View do Fisc. Noturna-->
         <!-- Começo da View do Feira. Livre-->
         <li class="nav-item {{ ($activePage == 'livreIndex' ) ? ' active' : '' }}">
-          <a class="nav-link" data-toggle="collapse" href="#feira_livre" aria-expanded="true">
+          <a class="nav-link" data-toggle="collapse" href="#livre" aria-expanded="true">
             <p>{{ __('Feira Livre') }}</p>
           </a>
 
@@ -149,7 +149,7 @@
             </ul>
           </div>
         </li>
-        <!-- Fim da View do Feira Livre-->
+          <!-- Fim da View do Feira Livre-->
       </div>
     </ul>
   </div>

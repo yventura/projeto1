@@ -29,7 +29,7 @@
                                             <option value="1">Pitangueiras</option>
                                             <option value="2">Astúrias</option>
                                             <option value="3">Enseada</option>
-                                        </select>
+                                       </select>
                                     </div>
 
                                     <label class="col-sm-2 col-form-label">{{ __('Orientação Ret. Cadeiras') }}</label>

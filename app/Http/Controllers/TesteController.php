@@ -55,8 +55,6 @@ class TesteController extends Controller
     public function create()
     {
         $usuario=$this->objUser->all();
-
-
         return view(('usuario.create'), compact('usuario'));
     }
 

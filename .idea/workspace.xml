@@ -50,7 +50,7 @@
     <setting file="file://$PROJECT_DIR$/resources/views/comerciofixo/index.blade.php" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/resources/views/usuario/create.blade.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/app/Http/Controllers/PraiasController.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/app/Http/Controllers/ComercioAmbulanteController.php" root0="SKIP_INSPECTION" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/routes/web.php" root0="SKIP_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/resources/views/comerciofixo/semanal.blade.php" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
@@ -169,7 +169,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/noturno" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -179,18 +179,27 @@
       <recent name="C:\xampp\htdocs\projeto1\resources\views\Ocorrencias\ComercioFixo" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\projeto1\resources\views\noturno" />
       <recent name="C:\xampp\htdocs\projeto1\app\Http\Controllers" />
       <recent name="C:\xampp\htdocs\projeto1\resources\views\livre" />
-      <recent name="C:\xampp\htdocs\projeto1\resources\views\noturno" />
       <recent name="C:\xampp\htdocs\projeto1\database\migrations" />
       <recent name="C:\xampp\htdocs\projeto1\resources\views\comerciofixo" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="PHPUnit.ExampleTest">
+    <configuration name="ExampleTest" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="Tests\Feature\ExampleTest" file="$PROJECT_DIR$/tests/Feature/ExampleTest.php" scope="Class" />
+      <method v="2" />
+    </configuration>
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner scope="XML" />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.ExampleTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -206,7 +215,12 @@
       <workItem from="1598887807434" duration="88006000" />
       <workItem from="1599745066560" duration="36000" />
       <workItem from="1599745147230" duration="2000" />
-      <workItem from="1599745159542" duration="49156000" />
+      <workItem from="1599745159542" duration="63884000" />
+      <workItem from="1600958148298" duration="28847000" />
+      <workItem from="1601388968569" duration="1563000" />
+      <workItem from="1601390619623" duration="21049000" />
+      <workItem from="1602005989663" duration="889000" />
+      <workItem from="1602159963586" duration="47999000" />
     </task>
     <servers />
   </component>
@@ -223,27 +237,43 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="-1334" y="198" key="#Inspections" timestamp="1602255619790">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1334" y="198" key="#Inspections/0.0.1366.728/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1602255619790" />
+    <state x="586" y="198" key="#Inspections/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1601319695952" />
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600349181770">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1600349181770" />
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599244922490" />
+    <state x="881" y="127" key="FileChooserDialogImpl" timestamp="1600784955693">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="881" y="127" key="FileChooserDialogImpl/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1600784955693" />
     <state x="794" y="443" key="NewPhpFileDialog" timestamp="1600349176262">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1600349176262" />
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599244498977" />
-    <state x="616" y="242" key="run.anything.popup" timestamp="1599766634247">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1239" y="261" width="540" height="524" key="StructurePopup" timestamp="1602781968477">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="-1239" y="261" width="540" height="524" key="StructurePopup/0.0.1366.728/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1602781968477" />
+    <state x="-1304" y="242" key="run.anything.popup" timestamp="1602254537990">
+      <screen x="-1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-1304" y="242" key="run.anything.popup/0.0.1366.728/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1602254537990" />
     <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1599766634247" />
     <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599245764932" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1600303493335">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1602784682077">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1600303493335" />
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1602784682077" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1601042574335" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599245877712" />
   </component>
 </project>
