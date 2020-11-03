@@ -37,9 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('table-list', function () {
 		return view('pages.table_list');
 	})->name('table');
-
 });
-
 
 Route::group(['middleware' => 'auth'], function () {
 	//Route::resource('user', 'UserController', ['except' => ['show']]);
@@ -51,7 +49,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('comerciofixo/semanal', ['as' => 'comerciofixo.semanal', 'uses' => 'ComercioFixoController@semanal']);
     Route::resource('comerciofixo','ComercioFixoController');
     Route::resource('noturno', 'NoturnoController');
-    Route::resource('livre','LivreController');
+    Route::get('noturno/index', ['as' => 'noturno.index', 'uses' => 'NoturnoController@semanal']);
+    Route::resource('feira_livre','LivreController');
     Route::resource('comercio_ambulante', 'ComercioAmbulanteController');
 	//Para API
     Route::post('api/comerciofixo/semanal', ['as' => 'api.semanal', 'uses' => 'ComercioFixoController@semanalApi']);

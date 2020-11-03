@@ -88,7 +88,7 @@
                                        <input class="form-control" name="data-fin" id="input-data-fin" type="date" max="{{ date('Y-m-d') }}" />
                                     </div>
                                 </div>
-                                <button type="button" id="gerarRela" class="btn btn-success">Gerar Relatorio</button>
+                                <button type="button" id="geraRelatorio" class="btn btn-success">Gerar Relatorio</button>
                             </div>
                         </form>
                     </div>
@@ -121,9 +121,9 @@
         </div>
     </div>
 
-    <script type="text/javascript">
 
-        $("#gerarRela").click(function() {
+    <script type="text/javascript">
+        $("#geraRelatorio").click(function() {
             let data_ini = document.getElementById('input-data-ini').value;
             let data_fin = document.getElementById('input-data-fin').value;
             let error = 0;
@@ -160,7 +160,7 @@
                     error: function(){
                         alert("Erro");
                     }
-                })
+                });
             }
         });
 

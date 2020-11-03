@@ -39,20 +39,33 @@ class User extends Authenticatable
     ];
 
     public function nomeNivel($nivel){
-        if($nivel == 0){
-            return "Administrador";
-        } else if($nivel == 1){
-            return "Supervisor";
-        } else {
-            return "Padrão";
+
+        switch ($nivel)
+        {
+            case 0:
+                echo "Administrador";
+                break;
+
+            case 1:
+                echo "Supervisor";
+                break;
+
+            case 2:
+                echo "Padrão";
+                break;
         }
     }
     public function nomeStatus($status){
-        if($status == 0){
-            return "Habilitado";
-        } else {
-            return "Desabilitado";
-        }
 
+        switch ($status)
+        {
+            case 0:
+                echo "Habilitado";
+                break;
+
+            case 1:
+                echo "Desabilitado";
+                break;
+        }
     }
 }

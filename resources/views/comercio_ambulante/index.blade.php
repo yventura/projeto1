@@ -93,7 +93,6 @@
 
                             @foreach($comercio_ambulanteTotal as $comercio )
                                 <tr>
-
                                         <td scope="row">{{$comercio->data}}</td>
                                         <td scope="row">{{$comercio->valor_ca_01}}</td>
                                         <td scope="row">{{$comercio->valor_ca_02}}</td>
@@ -104,11 +103,7 @@
                                         <td scope="row">Vistoria - {{$comercio->valor_ca_07_1}}<br>Cientificação - {{$comercio->valor_ca_07_2}}<br>Apreensão - {{$comercio->valor_ca_07_3}}</td>
                                         <td scope="row">Vistoria - {{$comercio->valor_ca_08_1}}<br>Cientificação - {{$comercio->valor_ca_08_2}}<br>Apreensão - {{$comercio->valor_ca_08_3}}</td>
                                         <td scope="row">{{$comercio->valor_ca_09}}</td>
-
-
-
                                 </tr>
-
                             @endforeach
                             </tbody>
                         </table>

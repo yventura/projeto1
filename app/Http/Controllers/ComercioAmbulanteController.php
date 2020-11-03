@@ -109,10 +109,8 @@ class ComercioAmbulanteController extends Controller
                     $valor_ca_08_3 += $comercioA->valor_ca_08;
 
                 }
-                 /*if($somente == '1'){
-                    $desc_03 += $comercioA->desc_03;
-                }
-    */ // Somando Descrição
+
+                // Somando Descrição
 
                     $soma_diaria[$somente_data] = array(
                         'valor_ca_01' => $valor_ca_01,
@@ -131,10 +129,7 @@ class ComercioAmbulanteController extends Controller
                         'valor_ca_08_2' => $valor_ca_08_2,
                         'valor_ca_08_3' => $valor_ca_08_3,
                         'valor_ca_09' => $valor_ca_09
-
-
                     );
-
                 }
             }
         }
@@ -149,17 +144,17 @@ class ComercioAmbulanteController extends Controller
               'valor_ca_03_1' => $dados['valor_ca_03_1'],
               'valor_ca_03_2' => $dados['valor_ca_03_2'],
               'valor_ca_03_3' => $dados['valor_ca_03_3'],
-                'valor_ca_04' => $dados['valor_ca_04'],
-                'valor_ca_05' => $dados['valor_ca_05'],
-                'valor_ca_06_1' => $dados['valor_ca_06_1'],
-                'valor_ca_06_2' => $dados['valor_ca_06_2'],
-                'valor_ca_07_1' => $dados['valor_ca_07_1'],
-                'valor_ca_07_2' => $dados['valor_ca_07_2'],
-                'valor_ca_07_3' => $dados['valor_ca_07_3'],
-                'valor_ca_08_1' => $dados['valor_ca_08_1'],
-                'valor_ca_08_2' => $dados['valor_ca_08_2'],
-                'valor_ca_08_3' => $dados['valor_ca_08_3'],
-                'valor_ca_09' => $dados['valor_ca_09']
+              'valor_ca_04' => $dados['valor_ca_04'],
+              'valor_ca_05' => $dados['valor_ca_05'],
+              'valor_ca_06_1' => $dados['valor_ca_06_1'],
+              'valor_ca_06_2' => $dados['valor_ca_06_2'],
+              'valor_ca_07_1' => $dados['valor_ca_07_1'],
+              'valor_ca_07_2' => $dados['valor_ca_07_2'],
+              'valor_ca_07_3' => $dados['valor_ca_07_3'],
+              'valor_ca_08_1' => $dados['valor_ca_08_1'],
+              'valor_ca_08_2' => $dados['valor_ca_08_2'],
+              'valor_ca_08_3' => $dados['valor_ca_08_3'],
+              'valor_ca_09' => $dados['valor_ca_09']
             ];
         }
 

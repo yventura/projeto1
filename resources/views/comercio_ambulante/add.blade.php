@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-12">
                     @csrf
-                    <!-- Comercio Fixo - Processos Físicos e via rápida empresa redesim -->
+                    <!-- Comercio Ambulante -->
                         <div class="card ">
                             <div class="card-header card-header-primary">
                                 <h4 class="card-title">{{ __('Comercio Ambulante') }}</h4>
@@ -47,7 +47,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <select class="form-control" name="desc_03" id="input-desc_03" required>
-                                            <option value="">Nenhum</option>
+                                            <option value="">Selecione</option>
                                             <option value="1">Tendas</option>
                                             <option value="2">Camping</option>
                                             <option value="3">Churrasco</option>
@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <select class="form-control" name="desc_06" id="input-desc_06" required>
-                                            <option value="">Nenhum</option>
+                                            <option value="">Selecione</option>
                                             <option value="1">Praias</option>
                                             <option value="2">VC</option>
                                         </select>
@@ -90,7 +90,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <select class="form-control" name="desc_07" id="input-desc_07" required>
-                                            <option value="">Nenhum</option>
+                                            <option value="">Selecione</option>
                                             <option value="1">Vistorias</option>
                                             <option value="2">Ciências</option>
                                             <option value="3">Apreensão</option>
@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="col-sm-2">
                                         <select class="form-control" name="desc_08" id="input-desc_08" required>
-                                            <option value="">Nenhum</option>
+                                            <option value="">Selecione</option>
                                             <option value="1">Vistorias</option>
                                             <option value="2">Ciências</option>
                                             <option value="3">Apreensão</option>

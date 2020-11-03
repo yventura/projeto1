@@ -140,7 +140,7 @@ class NoturnoController extends Controller
 
         $noturnos = $this->objNoturno->Model::query()->whereBetween('data', [$inicio, $fim])->get();
 
-        //
+
         $paralisacao_evento = 0;
         $comercio_ambulante = 0;
         $atendimento_processos = 0;
@@ -154,10 +154,10 @@ class NoturnoController extends Controller
         }
 
         $retorno[] = (object)[
-            'paralisacao_evento' =>$paralisacao_evento,
-            'comercio_ambulante' =>$comercio_ambulante,
-            'atendimento_processos' =>$atendimento_processos,
-            'atendimento_denuncia' =>$atendimento_denuncia
+            'paralisacao_evento' => $paralisacao_evento,
+            'comercio_ambulante' => $comercio_ambulante,
+            'atendimento_processos' => $atendimento_processos,
+            'atendimento_denuncia' => $atendimento_denuncia
         ];
         return json_encode($retorno);
     }

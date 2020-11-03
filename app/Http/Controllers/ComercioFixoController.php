@@ -2,103 +2,136 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\ComercioFixo;
-use App\User;
-use PhpParser\Node\Expr\Cast\Object_;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
+use Illuminate\View\View;
 
 class ComercioFixoController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
-    private $objFixo;
-    private $objUser;
+    private $objComercio_Fixo;
 
 
 
     public function __construct()
     {
-        $this->objFixo = new ComercioFixo();
-        $this->objUser = new User();
+        $this->objComercio_Fixo = new ComercioFixo();
     }
 
     public function index()
     {
-        $comerciofixo = $this->objFixo->paginate(5);
-        $comerciosDiarios = $this->objFixo->all();
-        $comerciosTotal = null;
+        //$comerciofixo = $this->objFixo->paginate(5);
+
+        $comerciofixo = $this->objComercio_Fixo->all();
         $datas_unicas = array();
         $soma_diaria = array();
-        $error = 0;
 
         //Salva as datas de forma unica
-        foreach ($comerciosDiarios as $comercio) {
-            $somente_data = date('d/m/Y', strtotime($comercio->data));
-            if (!in_array($somente_data, $datas_unicas)) {
-                $datas_unicas[] = $somente_data;
+        foreach ($comerciofixo as $comercio) {
+            $somente = date('d/m/Y', strtotime($comercio->data));
+
+            if (!in_array($somente, $datas_unicas)) {
+                $datas_unicas[] = $somente;
             }
         }
 
         //Faz a somatoria com base na data
         foreach ($datas_unicas as $data) {
             //Seta as variaveis de soma em 0
-            $vistoria_processos = 0;
-            $vistoria_vre = 0;
-            $viabilidade_vre = 0;
-            $ciencia = 0;
-            $intimacao = 0;
-            $plantao_interno = 0;
-            $atendimento_guiche = 0;
+            $valor_cf_01 = 0;
+            $valor_cf_02 = 0;
+            $valor_cf_03 = 0;
+            $valor_cf_04 = 0;
+            $valor_cf_05 = 0;
+            $valor_cf_06 = 0;
+            $valor_cf_07 = 0;
+            $valor_cf_08_1 = 0;
+            $valor_cf_08_2 = 0;
+            $valor_cf_08_3 = 0;
+            $valor_cf_09_1 = 0;
 
             foreach ($comerciofixo as $comercio) {
-                $somente_data = date('d/m/Y', strtotime($comercio->data));
-                if ($somente_data == $data) {
-                    $vistoria_processos += $comercio->vistoria_processos;
-                    $vistoria_vre += $comercio->vistoria_vre;
-                    $viabilidade_vre += $comercio->viabilidade_vre;
-                    $ciencia += $comercio->ciencia;
-                    $intimacao += $comercio->intimacao;
-                    $plantao_interno += $comercio->plantao_interno;
-                    $atendimento_guiche += $comercio->atendimento_guiche;
+                $somente = date('d/m/Y', strtotime($comercio->data));
+                $somente_08 = $comercio->desc_08;
+                $somente_09 = $comercio->desc_09;
 
-                    $soma_diaria[$somente_data] = array(
-                        'vistoria_processos' => $vistoria_processos,
-                        'vistoria_vre' => $vistoria_vre,
-                        'viabilidade_vre' => $viabilidade_vre,
-                        'ciencia' => $ciencia,
-                        'intimacao' => $intimacao,
-                        'plantao_interno' => $plantao_interno,
-                        'atendimento_guiche' => $atendimento_guiche
+                if ($somente == $data) {
+                    $valor_cf_01 += $comercio->valor_cf_01;
+                    $valor_cf_02 += $comercio->valor_cf_02;
+                    $valor_cf_03 += $comercio->valor_cf_03;
+                    $valor_cf_04 += $comercio->valor_cf_04;
+                    $valor_cf_05 += $comercio->valor_cf_05;
+                    $valor_cf_06 += $comercio->valor_cf_06;
+                    $valor_cf_07 += $comercio->valor_cf_07;
+
+                    if($somente_08 == '1' && $somente_08 != '0') {
+                        $valor_cf_08_1 += $comercio->valor_cf_08;
+
+                    } else if($somente_08 == '2' && $somente_08 != '0'){
+                        $valor_cf_08_2 += $comercio->valor_cf_08;
+
+                    } else if($somente_08 == '3' && $somente_08 != '0'){
+                        $valor_cf_08_3 += $comercio->valor_cf_08;
+
+                    }
+
+                    if($somente_09 == '1' && $somente_09 != '0') {
+                        $valor_cf_09_1 += $comercio->valor_cf_09;
+                    }
+
+                    $soma_diaria[$somente] = array(
+                        'valor_cf_01' => $valor_cf_01,
+                        'valor_cf_02' => $valor_cf_02,
+                        'valor_cf_03' => $valor_cf_03,
+                        'valor_cf_04' => $valor_cf_04,
+                        'valor_cf_05' => $valor_cf_05,
+                        'valor_cf_06' => $valor_cf_06,
+                        'valor_cf_07' => $valor_cf_07,
+                        'valor_cf_08_1' => $valor_cf_08_1,
+                        'valor_cf_08_2' => $valor_cf_08_2,
+                        'valor_cf_08_3' => $valor_cf_08_3,
+                        'valor_cf_09_1' => $valor_cf_09_1
                     );
                 }
             }
         }
 
+
+
         //Faz a leitura dos dados diarios e adiciona a variavel final em forma de objeto
         foreach ($soma_diaria as $data => $dados) {
             //Cria um array de objetos
-            $comerciosTotal[] = (object)[
+            $comercio_FixoTotal[] = (object)[
                 'data' => $data,
-                'vistoria_processos' => $dados['vistoria_processos'],
-                'vistoria_vre' => $dados['vistoria_vre'],
-                'viabilidade_vre' => $dados['viabilidade_vre'],
-                'ciencia' => $dados['ciencia'],
-                'intimacao' => $dados['intimacao'],
-                'plantao_interno' => $dados['plantao_interno'],
-                'atendimento_guiche' => $dados['atendimento_guiche']
+                'valor_cf_01' => $dados['valor_cf_01'],
+                'valor_cf_02' => $dados['valor_cf_02'],
+                'valor_cf_03' => $dados['valor_cf_03'],
+                'valor_cf_04' => $dados['valor_cf_04'],
+                'valor_cf_05' => $dados['valor_cf_05'],
+                'valor_cf_06' => $dados['valor_cf_06'],
+                'valor_cf_07' => $dados['valor_cf_07'],
+                'valor_cf_08_1' => $dados['valor_cf_08_1'],
+                'valor_cf_08_2' => $dados['valor_cf_08_2'],
+                'valor_cf_08_3' => $dados['valor_cf_08_3'],
+                'valor_cf_09_1' => $dados['valor_cf_09_1']
             ];
         }
-        return view('comerciofixo.index', compact('comerciofixo'))->with('comerciosTotal', $comerciosTotal);
+        return view('comerciofixo.index', compact('comerciofixo'))->with('comercio_FixoTotal', $comercio_FixoTotal);
     }
 
      /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|Response|View
      */
     public function create()
     {
@@ -108,21 +141,24 @@ class ComercioFixoController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Application|RedirectResponse|Response|Redirector
      */
     public function store(Request $request)
     {
         $cad=$this->objFixo->create([
             'date'=>$request->date,
-            'vistoria_processos'=>$request->vistoria,
-            'vistoria_vre'=>$request->vistoriavre,
-            'viabilidade_vre'=>$request->viabilidade,
-            'ciencia'=>$request->ciencia,
-            'intimacao'=>$request->intimacao,
-            'plantao_interno'=>$request->plantao,
-            'atendimento_guiche'=>$request->guiche,
-            'observacao'=>$request->observacao
+            'valor_cf_01'=>$request->valor_cf_01,
+            'valor_cf_02'=>$request->valor_cf_02,
+            'valor_cf_03'=>$request->valor_cf_03,
+            'valor_cf_04'=>$request->valor_cf_04,
+            'valor_cf_05'=>$request->valor_cf_05,
+            'valor_cf_06'=>$request->valor_cf_06,
+            'valor_cf_07'=>$request->valor_cf_07,
+            'valor_cf_08'=>$request->valor_cf_08,
+            'desc_08'=>$request->desc_08,
+            'valor_cf_09'=>$request->valor_cf_09,
+            'desc_09'=>$request->desc_09
         ]);
         if($cad){return redirect('comerciofixo');}
     }
@@ -130,10 +166,10 @@ class ComercioFixoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return void
      */
-    public function show($id)
+    public function show(int $id)
     {
         //
     }
@@ -141,10 +177,10 @@ class ComercioFixoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return void
      */
-    public function edit($id)
+    public function edit(int $id)
     {
         //
     }
@@ -152,11 +188,11 @@ class ComercioFixoController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return void
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         //
     }
@@ -164,76 +200,13 @@ class ComercioFixoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return void
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         //
     }
 
-    public function semanal() {
 
-        $comerciosFixos = null;
-        if (!empty($Request)) {
-            $comercioFixos = $this->objFixo->paginate(5);
-            dd($request);
-            die();
-        }
-
-        return view("comerciofixo.semanal", compact($comerciosFixos));
-    }
-
-    public function Sem() {
-        $comerciofixo  = $this->objFixo->paginate(5);
-
-        return view("comerciofixo", compact($comerciofixo));
-    }
-
-    protected function semanalApi(Request $request) {
-        $inicio = $request->inicio;
-        $fim = $request->fim." 23:59:00";
-
-        //Valores manuais
-
-        /*
-        $inicio = "2020-09-01";
-        $fim = "2020-09-02 23:59:00";
-        */
-
-        $retorno = array();
-
-        $comerciosFixos = $this->objFixo->whereBetween('data', [$inicio, $fim])->get();
-
-        //Seta as variaveis de soma em 0
-        $vistoria_processos = 0;
-        $vistoria_vre = 0;
-        $viabilidade_vre = 0;
-        $ciencia = 0;
-        $intimacao = 0;
-        $plantao_interno = 0;
-        $atendimento_guiche = 0;
-
-        foreach ($comerciosFixos as $comercio) {
-            $vistoria_processos += $comercio->vistoria_processos;
-            $vistoria_vre += $comercio->vistoria_vre;
-            $viabilidade_vre += $comercio->viabilidade_vre;
-            $ciencia += $comercio->ciencia;
-            $intimacao += $comercio->intimacao;
-            $plantao_interno += $comercio->plantao_interno;
-            $atendimento_guiche += $comercio->atendimento_guiche;
-        }
-
-        $retorno[] = (object)[
-            'vistoria_processos' => $vistoria_processos,
-            'vistoria_vre' => $vistoria_vre,
-            'viabilidade_vre' => $viabilidade_vre,
-            'ciencia' =>$ciencia,
-            'intimacao' => $intimacao,
-            'plantao_interno' => $plantao_interno,
-            'atendimento_guiche' => $atendimento_guiche
-        ];
-
-        return json_encode($retorno);
-    }
 }

@@ -4,76 +4,78 @@
 <div class="content">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-12">
         <div class="card">
-          <div class="card-header card-header-primary">
-            <h4 class="card-title ">Comercio Fixo</h4>
-          </div>
-        <div class="card-body">
-            <form action="{{ route('comerciofixo.semanal') }}" method="post" id="formGerar">
-                {{ csrf_field() }}
-                <div class="row">
-                    <label class="col-sm-2 col-form-label">{{ __('Data Inicial:') }}</label>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <input class="form-control" name="data" id="input-data-inicial" type="date" max="{{ date('Y-m-d') }}" />
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Comercio Fixo</h4>
+            </div>
+            <div class="card-body">
+                <form action="{{ route('comerciofixo.semanal') }}" method="post" id="formGerar">
+                    {{ csrf_field() }}
+                    <div class="row">
+                        <label class="col-sm-2 col-form-label">{{ __('Data Inicial:') }}</label>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <input class="form-control" name="data" id="input-data-inicial" type="date" max="{{ date('Y-m-d') }}" />
+                            </div>
+                        </div>
+
+                        <label class="col-sm-2 col-form-label">{{ __('Data Final:') }}</label>
+                        <div class="col-sm-3">
+                            <div class="form-group">
+                                <input class="form-control" name="data" id="input-data-final" type="date" max="{{ date('Y-m-d') }}" />
+                            </div>
+                        </div>
+
+                        <button type="button" id="gerarRelatorio" class="btn btn-success">Gerar Relatorio</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Relatorio Semanal</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table" id="tableRetorno">
+                                <thead class=" text-primary">
+                                <th>Vistorias Processos</th>
+                                <th>Vistoria VRE       </th>
+                                <th>Viabilidade VRE    </th>
+                                <th>Ciências           </th>
+                                <th>Intimações         </th>
+                                <th>Plantão Interno    </th>
+                                <th>Atendimento Guichê </th>
+                                </thead>
+                                <tbody>
+                                @if(!empty($comerciosFixos))
+                                    @foreach( $comerciosFixos as $comercio)
+                                        <tr>
+                                            <td scope="row">{{$comercio->vistoria_processos}}</td>
+                                            <td scope="row">{{$comercio->vistoria_vre}}      </td>
+                                            <td scope="row">{{$comercio->viabilidade_vre}}   </td>
+                                            <td scope="row">{{$comercio->ciencia}}           </td>
+                                            <td scope="row">{{$comercio->intimacao}}         </td>
+                                            <td scope="row">{{$comercio->plantao_interno}}   </td>
+                                            <td scope="row">{{$comercio->atendimento_guiche}}</td>
+                                        </tr>
+                                    @endforeach
+                                @else
+                                    <th class="semResultado" colspan="8" style="text-align: center">Selecione um Periodo para Visualizar</th>
+                                @endif
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-
-                    <label class="col-sm-2 col-form-label">{{ __('Data Final:') }}</label>
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <input class="form-control" name="data" id="input-data-final" type="date" max="{{ date('Y-m-d') }}" />
-                        </div>
-                    </div>
-
-                    <button type="button" id="gerarRelatorio" class="btn btn-success">Gerar Relatorio</button>
                 </div>
-            </form>
+            </div>
         </div>
     </div>
-          <div class="row">
-              <div class="col-md-12">
-                  <div class="card">
-                      <div class="card-header card-header-primary">
-                          <h4 class="card-title ">Relatorio Semanal</h4>
-                      </div>
-                      <div class="card-body">
-                          <div class="table-responsive">
-                              <table class="table" id="tableRetorno">
-                                  <thead class=" text-primary">
-                                  <th>Vistorias Processos</th>
-                                  <th>Vistoria VRE       </th>
-                                  <th>Viabilidade VRE    </th>
-                                  <th>Ciências           </th>
-                                  <th>Intimações         </th>
-                                  <th>Plantão Interno    </th>
-                                  <th>Atendimento Guichê </th>
-                                  </thead>
-                                  <tbody>
-                                  @if(!empty($comerciosFixos))
-                                      @foreach( $comerciosFixos as $comercio)
-                                          <tr>
-                                              <td scope="row">{{$comercio->vistoria_processos}}</td>
-                                              <td scope="row">{{$comercio->vistoria_vre}}      </td>
-                                              <td scope="row">{{$comercio->viabilidade_vre}}   </td>
-                                              <td scope="row">{{$comercio->ciencia}}           </td>
-                                              <td scope="row">{{$comercio->intimacao}}         </td>
-                                              <td scope="row">{{$comercio->plantao_interno}}   </td>
-                                              <td scope="row">{{$comercio->atendimento_guiche}}</td>
-                                          </tr>
-                                      @endforeach
-                                  @else
-                                      <th class="semResultado" colspan="8" style="text-align: center">Selecione um Periodo para Visualizar</th>
-                                  @endif
-                                  </tbody>
-                              </table>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          
+  </div>
+</div>
+
 <script type="text/javascript">
     $("#gerarRelatorio").click(function() {
         let data_inicial = document.getElementById('input-data-inicial').value;

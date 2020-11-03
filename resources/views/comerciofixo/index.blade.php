@@ -21,27 +21,30 @@
                   <th>Intimações</th>
                   <th>Plantão Interno</th>
                   <th>Atendimento Guichê</th>
-                  <th>Observação</th>
+                  <th>Triagem/ Pesquisas/ Despacho</th>
+                  <th>Procedimento Administrativo</th>
               </thead>
               <tbody>
                 @foreach( $comerciofixo as $comerciof)
                     <tr>
                         <td scope="row">{{date('d/m/Y', strtotime($comerciof->data))}}</td>
-                        <td scope="row">{{$comerciof->vistoria_processos}}</td>
-                        <td scope="row">{{$comerciof->vistoria_vre}}</td>
-                        <td scope="row">{{$comerciof->viabilidade_vre}}</td>
-                        <td scope="row">{{$comerciof->ciencia}}</td>
-                        <td scope="row">{{$comerciof->intimacao}}</td>
-                        <td scope="row">{{$comerciof->plantao_interno}}</td>
-                        <td scope="row">{{$comerciof->atendimento_guiche}}</td>
-
+                        <td scope="row">{{$comerciof->valor_cf_01}}</td>
+                        <td scope="row">{{$comerciof->valor_cf_02}}</td>
+                        <td scope="row">{{$comerciof->valor_cf_03}}</td>
+                        <td scope="row">{{$comerciof->valor_cf_04}}</td>
+                        <td scope="row">{{$comerciof->valor_cf_05}}</td>
+                        <td scope="row">{{$comerciof->valor_cf_06}}</td>
+                        <td scope="row">{{$comerciof->valor_cf_07}}</td>
+                        <td scope="row">{{$comerciof->Desc08($comerciof->desc_08)}}{{$comerciof->valor_cf_08}}</td>
+                        <td scope="row">{{$comerciof->Desc09($comerciof->desc_09)}}{{$comerciof->valor_cf_09}}</td>
+                         <!--
                         <td scope="row">
                              <div class="card-footer ml-auto mr-auto">
                                 <button type="button" data-toggle="modal" data-target="#modal{{$comerciof->id}}" class="btn btn-primary">{{ __('Observação') }}</button>
                              </div>
                         </td>
 
-                        <!-- Componentes Modal Adicionar Problema -->
+                         Componentes Modal Adicionar Problema
                         <div class="modal fade" id="modal{{$comerciof->id}}" tabindex="-1" role="dialog" aria-labelledby="adicionarObservacaoLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -63,13 +66,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Fim Componente Modal -->
+                         Fim Componente Modal -->
                     </tr>
                 @endforeach
               </tbody>
             </table>
         </div>
-            {{ $comerciofixo->links() }}
       </div>
     </div>
   <div class="row">
@@ -100,24 +102,28 @@
             <thead class=" text-primary">
                 <th>Data</th>
                 <th>Vistorias Processos</th>
-                <th>Vistoria VRE       </th>
-                <th>Viabilidade VRE    </th>
-                <th>Ciências           </th>
-                <th>Intimações         </th>
-                <th>Plantão Interno    </th>
-                <th>Atendimento Guichê </th>
+                <th>Vistoria VRE</th>
+                <th>Viabilidade VRE</th>
+                <th>Ciências</th>
+                <th>Intimações</th>
+                <th>Plantão Interno</th>
+                <th>Atendimento Guichê</th>
+                <th>Triagem/ Pesquisas/ Despacho</th>
+                <th>Procedimento Administrativo</th>
             </thead>
             <tbody>
-                @foreach($comerciosTotal as $comercio)
+                @foreach($comercio_FixoTotal as $comercio)
                   <tr>
                       <td scope="row">{{$comercio->data}}</td>
-                      <td scope="row">{{$comercio->vistoria_processos}}</td>
-                      <td scope="row">{{$comercio->vistoria_vre}}      </td>
-                      <td scope="row">{{$comercio->viabilidade_vre}}   </td>
-                      <td scope="row">{{$comercio->ciencia}}           </td>
-                      <td scope="row">{{$comercio->intimacao}}         </td>
-                      <td scope="row">{{$comercio->plantao_interno}}   </td>
-                      <td scope="row">{{$comercio->atendimento_guiche}}</td>
+                      <td scope="row">{{$comercio->valor_cf_01}}</td>
+                      <td scope="row">{{$comercio->valor_cf_02}}</td>
+                      <td scope="row">{{$comercio->valor_cf_03}}</td>
+                      <td scope="row">{{$comercio->valor_cf_04}}</td>
+                      <td scope="row">{{$comercio->valor_cf_05}}</td>
+                      <td scope="row">{{$comercio->valor_cf_06}}</td>
+                      <td scope="row">{{$comercio->valor_cf_07}}</td>
+                      <td scope="row">Triagem - {{$comercio->valor_cf_08_1}}<br>Pesquisas - {{$comercio->valor_cf_08_2}}<br>Despacho - {{$comercio->valor_cf_08_3}}</td>
+                      <td scope="row">Ex_Oficio - {{$comercio->valor_cf_09_1}}</td>
                   </tr>
                 @endforeach
             </tbody>

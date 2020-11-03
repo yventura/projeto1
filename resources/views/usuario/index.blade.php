@@ -17,22 +17,22 @@
             <div class="card-body table-responsive">
               <table class="table table-hover">
               <thead class="text-warning">
-                <th>Nome</th>
-                <th>E-mail</th>
-                <th>Prontuario</th>
-                <th>Nivel</th>
-                <th>Status</th>
-                <th class="text-center">Editar</th>
+                <th>Nome<th>
+                <th>E-mail<th>
+                <th>Prontuario<th>
+                <th>Nivel<th>
+                <th>Status<th>
+                <th class="text-center">Editar<th>
               </thead>
             <tbody>
               @foreach($users as $usuarios)
 
               <tr>
-                  <td scope="row">{{$usuarios->name}}</td>
-                  <td scope="row">{{$usuarios->email}}</td>
-                  <td scope="row">{{$usuarios->prontuario}}</td>
-                  <td scope="row">{{$usuarios->nomeNivel($usuarios->nivel) }}</td>
-                  <td scope="row">{{$usuarios->nomeStatus($usuarios->status) }}</td>
+                  <td scope="row">{{$usuarios->name}}<td>
+                  <td scope="row">{{$usuarios->email}}<td>
+                  <td scope="row">{{$usuarios->prontuario}}<td>
+                  <td scope="row">{{$usuarios->nomeNivel($usuarios->nivel) }}<td>
+                  <td scope="row">{{$usuarios->nomeStatus($usuarios->status) }}<td>
                 </td>
                 <td class="td-actions text-center">
                 <a href="{{url("usuario/$usuarios->id/edit")}}">
@@ -41,8 +41,6 @@
                 </td>
               </tr>
               @endforeach
-
-
             </tbody>
               </table>
             </div>

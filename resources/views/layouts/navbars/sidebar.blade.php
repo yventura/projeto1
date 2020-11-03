@@ -52,17 +52,17 @@
               <li class="nav-item{{ $activePage == 'comercio_ambulante_Add' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('comercio_ambulante.create') }}">
                   <i class="material-icons">add</i>
-                  <span class="sidebar-normal">{{ __('Praia') }} </span>
+                  <span class="sidebar-normal">{{ __('Comercio Ambulante') }} </span>
                 </a>
               </li>
               <li class="nav-item{{ $activePage == 'noturnoAdd' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('noturno.create') }}">
                   <i class="material-icons">add</i>
-                  <span class="sidebar-normal">{{ __('Fisc Noturna') }} </span>
+                  <span class="sidebar-normal">{{ __('Fiscalização Noturna') }} </span>
                 </a>
               </li>
               <li class="nav-item{{ $activePage == 'livreAdd' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('livre.create') }}">
+                <a class="nav-link" href="{{ route('feira_livre.create') }}">
                   <i class="material-icons">add</i>
                   <span class="sidebar-normal">{{ __('Feira Livre') }} </span>
                 </a>
@@ -107,7 +107,7 @@
               <li class="nav-item{{ $activePage == 'comercio_ambulante_Index' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('comercio_ambulante.index') }}">
                   <i class="material-icons">list</i>
-                  <span class="sidebar-normal"> {{ __('Relatorio - Praia') }} </span>
+                  <span class="sidebar-normal"> {{ __('Relatorio - Comercio Ambulante') }} </span>
                 </a>
               </li>
             </ul>
@@ -125,7 +125,7 @@
               <li class="nav-item{{ $activePage == 'noturnoIndex' ? ' active' : '' }}">
                 <a class="nav-link" href="{{ route('noturno.index') }}">
                   <i class="material-icons">list</i>
-                  <span class="sidebar-normal"> {{ __('Relatorio - F_Noturna') }} </span>
+                  <span class="sidebar-normal"> {{ __('Relatorio - Fiscalização Noturna') }} </span>
                 </a>
               </li>
             </ul>
@@ -134,16 +134,16 @@
         <!-- Fim da View do Fisc. Noturna-->
         <!-- Começo da View do Feira. Livre-->
         <li class="nav-item {{ ($activePage == 'livreIndex' ) ? ' active' : '' }}">
-          <a class="nav-link" data-toggle="collapse" href="#livre" aria-expanded="true">
+          <a class="nav-link" data-toggle="collapse" href="#feira_livre" aria-expanded="true">
             <p>{{ __('Feira Livre') }}</p>
           </a>
 
-          <div class="collapse {{ ($activePage == 'livreIndex') ? 'show' : '' }}" id="livre">
+          <div class="collapse {{ ($activePage == 'livreIndex') ? 'show' : '' }}" id="feira_livre">
             <ul class="nav">
               <li class="nav-item{{ $activePage == 'livreIndex' ? ' active' : '' }}">
-                <a class="nav-link" href="{{ route('livre.index') }}">
+                <a class="nav-link" href="{{ route('feira_livre.index') }}">
                   <i class="material-icons">list</i>
-                  <span class="sidebar-normal"> {{ __('Relatorio - F_Livre') }} </span>
+                  <span class="sidebar-normal"> {{ __('Relatorio - Feira Livre') }} </span>
                 </a>
               </li>
             </ul>

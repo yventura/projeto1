@@ -35,16 +35,7 @@ class UserController extends Controller
         $user = new User($request -> all());
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Laudo  $laudo
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Laudo $laudo)
-    {
-        //
-    }
+
     /**
      * Show the form for editing the profile.
      *
@@ -65,6 +56,6 @@ class UserController extends Controller
     {
        //
     }
-  
-    
+
+
 }

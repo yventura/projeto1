@@ -13,49 +13,70 @@ class ComercioAmbulante extends Model
     ];
 
     public function Desc03($desc_03){
-            if ($desc_03 == 0 or $desc_03 == null) {
-                return " ";
-            } else if ($desc_03 == 1) {
-                return "Tendas -";
-            } else if ($desc_03 == 2) {
-                return "Camping -";
-            } else {
-                return "Churrasco -";
-            }
 
+        switch ($desc_03)
+        {
+            case 1:
+                echo "Tendas -";
+                break;
+
+            case 2:
+                echo "Camping -";
+                break;
+
+            case 3:
+                echo "Churrasco -";
+                break;
+        }
     }
 
     public function Desc06($desc_06){
-        if($desc_06 == 0 or $desc_06 == null){
-            return " ";
-        } else if($desc_06 == 1){
-            return "Praias -";
-        } else if($desc_06 == 2){
-            return "VC -";
+
+        switch ($desc_06)
+        {
+            case 1:
+                echo "Praias -";
+                break;
+
+            case 2:
+                echo "VC -";
+                break;
         }
     }
 
     public function Desc07($desc_07){
-        if($desc_07 == 0 or $desc_07 == null){
-            return " ";
-        } else if($desc_07 == 1){
-            return "Vistorias -";
-        } else if($desc_07 == 2){
-            return "Ciências -";
-        } else {
-            return "Apreensão -";
+
+        switch ($desc_07)
+        {
+            case 1:
+                echo "Vistorias -";
+                break;
+
+            case 2:
+                echo "Ciências -";
+                break;
+
+            case 3:
+                echo "Apreensão -";
+                break;
         }
     }
 
     public function Desc08($desc_08){
-            if ($desc_08 == 0 or $desc_08 == null) {
-                return " ";
-            } else if ($desc_08 == 1) {
-                return "Vistorias -";
-            } else if ($desc_08 == 2) {
-                return "Ciências -";
-            } else {
-                return "Apreensão -";
-            }
+
+        switch ($desc_08)
+        {
+            case 1:
+                echo "Vistorias -";
+                break;
+
+            case 2:
+                echo "Ciências -";
+                break;
+
+            case 3:
+                echo "Apreensão -";
+                break;
         }
+    }
 }
