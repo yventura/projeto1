@@ -16,14 +16,8 @@ class CreateFeiraLivreTable extends Migration
         Schema::create('feira_livre', function (Blueprint $table) {
             $table->id();
             $table->timestamp('data');
-            $table->integer('desc_01');
-            $table->integer('valor_fl_02');
-            $table->integer('valor_fl_03');
-            $table->integer('valor_fl_04');
-            $table->integer('valor_fl_05');
-            $table->integer('valor_fl_06');
-            $table->integer('desc_06');
-            $table->integer('valor_fl_07');
+            $table->integer('valor_fl_01');
+            $table->string('valor_fl_02');
             $table->timestamps();
         });
     }

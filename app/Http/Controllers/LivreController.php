@@ -21,11 +21,19 @@ class LivreController extends Controller
         $this->objFeira = new Livre();
     }
 
+// EXIBE O VALOR DO DIA ( SEG, TEC, ETC )
+//            if(date('w') == 0){
+//
+//            } elseif (date('w') == 1){
+//            echo "Segunda";
+//            }elseif (date('w') == 2){
+//            echo "Terça";
+//            }
+
     public function index()
     {
         $feira_livre = $this->objFeira->all();
         $datas_unicas = array();
-        $localidade_unicas = array();
         $soma_diaria = array();
         $erro = 0;
 
@@ -36,87 +44,40 @@ class LivreController extends Controller
             if(!in_array($somente_data, $datas_unicas)){
                 $datas_unicas[] = $somente_data;
             }
+
+
         }
 
         //Faz a somatoria com base na data
         foreach ($datas_unicas as $data) {
-            $desc_01 = 0;
-            $valor_fl_a2 = 0;
-            $valor_fl_02 = 0;
-            $valor_fl_03 = 0;
-            $valor_fl_04 = 0;
-            $valor_fl_05 = 0;
-            $valor_fl_06 = 0;
-            $valor_fl_06_1 = 0;
-            $valor_fl_06_2 = 0;
-            $valor_fl_06_3 = 0;
-            $valor_fl_07 = 0;
+            $valor_fl_01 = 0;
+            $valor_fl_02 = "";
 
            foreach ($feira_livre as $feira) {
                $somente_data = date('d/m/Y', strtotime($feira->data));
-               $somente_01 = $feira->desc_01;
-               $somente_02 = $feira->desc_06;
 
+               if ($somente_data == $data){
 
-               if ($somente_data == $data and $somente_01 == $feira->desc_01) {
-
-
-                   $valor_fl_02 += $feira->valor_fl_02;
-                   $valor_fl_03 += $feira->valor_fl_03;
-                   $valor_fl_04 += $feira->valor_fl_04;
-                   $valor_fl_05 += $feira->valor_fl_05;
-                   $valor_fl_07 += $feira->valor_fl_07;
-
-                   if ($somente_02 == '1' and $somente_02 != '0') {
-                       $valor_fl_06_1 += $feira->valor_fl_06;
-
-                   } else if ($somente_02 == '2' and $somente_02 != '0') {
-                       $valor_fl_06_2 += $feira->valor_fl_06;
-
-                   } else if ($somente_02 == '3' and $somente_02 != '0') {
-                       $valor_fl_06_3 += $feira->valor_fl_06;
-
-                   }
-
-//                   foreach ()
-//                   switch ($somente_01){
-//                       case 2:
-//                       case 1:
-//                           $desc_01 = $somente_01;
-//                           break;
-//
-//                   }
+                   $valor_fl_01 = $feira->valor_fl_01;
+                   $valor_fl_02 = $feira->valor_fl_02;
 
                    $soma_diaria[$somente_data] = array(
                        'data' => $data,
-                       'somente_01' => $desc_01,
-                       'valor_fl_02' => $valor_fl_02,
-                       'valor_fl_03' => $valor_fl_03,
-                       'valor_fl_04' => $valor_fl_04,
-                       'valor_fl_05' => $valor_fl_05,
-                       'valor_fl_06_1' => $valor_fl_06,
-                       'valor_fl_06_2' => $valor_fl_06,
-                       'valor_fl_06_3' => $valor_fl_06,
-                       'valor_fl_07' => $valor_fl_07
+                       'valor_fl_01' => $valor_fl_01,
+                       'valor_fl_02' => $valor_fl_02
                    );
                }
            }
         }
+
 
         //Faz a leitura dos dados diarios e adiciona a variavel final em forma de objeto
         foreach ($soma_diaria as $data => $dados) {
             //Cria um array de objetos
             $feira_livreTotal[] = (object)[
                 'data' => $data,
-                'somente_01' => $dados['somente_01'],
-                'valor_fl_02' => $dados['valor_fl_02'],
-                'valor_fl_03' => $dados['valor_fl_03'],
-                'valor_fl_04' => $dados['valor_fl_04'],
-                'valor_fl_05' => $dados['valor_fl_05'],
-                'valor_fl_06_1' => $dados['valor_fl_06_1'],
-                'valor_fl_06_2' => $dados['valor_fl_06_2'],
-                'valor_fl_06_3' => $dados['valor_fl_06_3'],
-                'valor_fl_07' => $dados['valor_fl_07'],
+                'valor_fl_01' => $dados['valor_fl_01'],
+                'valor_fl_02' => $dados['valor_fl_02']
 
             ];
         }
@@ -144,14 +105,8 @@ class LivreController extends Controller
     {
         $cad=$this->objFeira->create([
             'data'=>$request->data,
-            'desc_01'=>$request->desc_01,
-            'valor_fl_02'=>$request->valor_fl_02,
-            'valor_fl_03'=>$request->valor_fl_03,
-            'valor_fl_04'=>$request->valor_fl_04,
-            'valor_fl_05'=>$request->valor_fl_05,
-            'valor_fl_06'=>$request->valor_fl_06,
-            'desc_06'=>$request->desc_06,
-            'valor_fl_07'=>$request->valor_fl_07
+            'valor_fl_01'=>$request->valor_fl_01,
+            'valor_fl_02'=>$request->valor_fl_02
         ]);
         if($cad){return redirect('feira_livre');}
     }

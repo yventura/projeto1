@@ -23,30 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e04b48d-9af4-4c1d-b2b1-fbcce681f0f7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ComercioAmbulante.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ComercioAmbulante.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/ComercioFixo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ComercioFixo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ComercioAmbulanteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ComercioAmbulanteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ComercioFixoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ComercioFixoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LivreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LivreController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NoturnoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NoturnoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Livre.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livre.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_13_000000_create_comercio_fixo_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_13_000000_create_comercio_fixo_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_16_180545_create_feira_livre_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_16_180545_create_feira_livre_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/comercio_ambulante/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comercio_ambulante/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/comercio_ambulante/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comercio_ambulante/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/comerciofixo/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comerciofixo/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/comerciofixo/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comerciofixo/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/comerciofixo/semanal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comerciofixo/semanal.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livre/add.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/livre/index.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/noturno/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/noturno/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/usuario/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/usuario/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/feira_livre/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feira_livre/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/feira_livre/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feira_livre/index.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +175,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Hackaton - Fcamara" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -246,7 +228,8 @@
       <workItem from="1602005989663" duration="889000" />
       <workItem from="1602159963586" duration="68311000" />
       <workItem from="1603197261737" duration="59786000" />
-      <workItem from="1604407460078" duration="382000" />
+      <workItem from="1604407460078" duration="9525000" />
+      <workItem from="1604496656337" duration="5639000" />
     </task>
     <servers />
   </component>
@@ -280,9 +263,10 @@
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1600349181770" />
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599244922490" />
-    <state x="881" y="127" key="FileChooserDialogImpl" timestamp="1600784955693">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1039" y="127" key="FileChooserDialogImpl" timestamp="1604427853885">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
+    <state x="-1039" y="127" key="FileChooserDialogImpl/0.0.1366.728/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1604427853885" />
     <state x="881" y="127" key="FileChooserDialogImpl/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1600784955693" />
     <state x="794" y="443" key="NewPhpFileDialog" timestamp="1600349176262">
       <screen x="0" y="0" width="1920" height="1040" />

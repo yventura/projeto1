@@ -9,12 +9,12 @@ class Livre extends Model
 {
     protected $table = 'feira_livre';
     protected $fillable = [
-        'data', 'desc_01', 'valor_fl_02', 'valor_fl_03', 'valor_fl_04', 'valor_fl_05', 'valor_fl_06', 'desc_06', 'valor_fl_07'
+        'data', 'valor_fl_01', 'valor_fl_02'
     ];
 
-    public function Desc01($desc_01)
+    public function Desc01($valor_fl_01)
     {
-        switch ($desc_01) {
+        switch ($valor_fl_01) {
             case 1:
                 echo "R. dos Bandeirantes - Vila Rã";
                 break;
@@ -81,23 +81,6 @@ class Livre extends Model
 
             case 17:
                 echo "Av. Santos Dumont - Monteiro da Cruz";
-                break;
-        }
-    }
-
-    public function Desc06($desc_06)
-    {
-        switch ($desc_06) {
-            case 1:
-                echo "Vistorias -";
-                break;
-
-            case 2:
-                echo "Ciências -";
-                break;
-
-            case 3:
-                echo "Plantão -";
                 break;
         }
     }

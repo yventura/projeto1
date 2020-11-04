@@ -17,30 +17,18 @@
                 <div class="card-body table-responsive">
                     <table class="table table-hover">
                         <thead class="text">
-                        <tr>
-                            <th>Data</th>
-                            <th>Localidade</th>
-                            <th>Orientação Covid</th>
-                            <th>Orientação Ambulantes Irregulares</th>
-                            <th>Orientação Veículos (consumidor)</th>
-                            <th>Ret. de Veículos em Local Irregular (feirante)</th>
-                            <th>Processos</th>
-                            <th>Vistorias, Ciências, Plantão</th>
-                            <th>Apoio Ditran</th>
-                        </tr>
+                            <tr>
+                                <th>Data</th>
+                                <th>Localidade</th>
+                                <th>Informação</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach($feira_livre as $feira)
                                 <tr>
                                     <td>{{date('d/m/Y', strtotime($feira->data))}}</td>
-                                    <td>{{$feira->Desc01($feira->desc_01)}}</td>
+                                    <td>{{$feira->Desc01($feira->valor_fl_01)}}</td>
                                     <td>{{$feira->valor_fl_02}}</td>
-                                    <td>{{$feira->valor_fl_03}}</td>
-                                    <td>{{$feira->valor_fl_04}}</td>
-                                    <td>{{$feira->valor_fl_05}}</td>
-                                    <td>{{$feira->valor_fl_06}}</td>
-                                    <td>{{$feira->Desc06($feira->desc_06)}}{{$feira->desc_06}}</td>
-                                    <td>{{$feira->valor_fl_07}}</td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -50,26 +38,22 @@
                 <div class="card-body table-responsive">
                     <table class="table table-hover">
                         <thead class="text">
-                        <tr>
-                            <th>Data</th>
-                            <th>Localidade</th>
-                            <th>Orientação Covid</th>
-                            <th>Orientação Ambulantes Irregulares</th>
-                            <th>Orientação Veículos (consumidor)</th>
-                            <th>Ret. de Veículos em Local Irregular (feirante)</th>
-                            <th>Processos</th>
-                            <th>Vistorias, Ciências, Plantão</th>
-                            <th>Apoio Ditran</th>
-                        </tr>
+                            <tr>
+                                <th>Data</th>
+                                <th>Localidade</th>
+                                <th>Informação</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        @foreach($feira_livreTotal as $feira)
-                            <tr>
-                                <td>{{$feira->data}}</td>
-                                <td>{{$feira->valor_fl_01}}</td>
-                                <td>{{$feira->valor_fl_02}}</td>
-                            </tr>
-                        @endforeach
+                            @foreach($feira_livreTotal as $feira)
+                                <tr>
+                                    <td>{{$feira->data}}</td>
+                                    @foreach($feira_livre as $feira)
+                                        <td>{{$feira->valor_fl_01}}</td>
+                                        <td>{{$feira->valor_fl_02}}</td>
+                                    @endforeach
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
