@@ -28,7 +28,7 @@
       &copy;
       <script>
         document.write(new Date().getFullYear())
-      </script> - Feito para Gerenciamento de Ocorrencias dos Fiscais, criado por Yuri Ventura
+      </script> - Feito para Gerenciamento de Ocorrencias dos Fiscais
     </div>
   </div>
 </footer>

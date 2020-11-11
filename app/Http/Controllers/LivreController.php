@@ -30,20 +30,28 @@ class LivreController extends Controller
 //            echo "Terça";
 //            }
 
+
     public function index()
     {
         $feira_livre = $this->objFeira->all();
         $datas_unicas = array();
+        $localidade_unicas = array();
         $soma_diaria = array();
+        $exibe = array();
         $erro = 0;
 
         //Salva as datas de forma unica
-        foreach ($feira_livre as $feira){
+        foreach ($feira_livre as $feira) {
             $somente_data = date('d/m/Y', strtotime($feira->data));
 
-            if(!in_array($somente_data, $datas_unicas)){
+            if (!in_array($somente_data, $datas_unicas)) {
                 $datas_unicas[] = $somente_data;
             }
+        }
+
+        foreach($datas_unicas as $data){
+
+
 
 
         }
@@ -53,25 +61,26 @@ class LivreController extends Controller
             $valor_fl_01 = 0;
             $valor_fl_02 = "";
 
-           foreach ($feira_livre as $feira) {
-               $somente_data = date('d/m/Y', strtotime($feira->data));
+            foreach ($feira_livre as $feira) {
+                $somente_data = date('d/m/Y', strtotime($feira->data));
 
-               if ($somente_data == $data){
+                if ($somente_data == $data) {
 
-                   $valor_fl_01 = $feira->valor_fl_01;
-                   $valor_fl_02 = $feira->valor_fl_02;
+                    $valor_fl_01 = $feira->valor_fl_01;
+                    $valor_fl_02 = $feira->valor_fl_02;
 
-                   $soma_diaria[$somente_data] = array(
-                       'data' => $data,
-                       'valor_fl_01' => $valor_fl_01,
-                       'valor_fl_02' => $valor_fl_02
-                   );
-               }
-           }
+                    $soma_diaria[$somente_data] = array(
+                        'data' => $data,
+                        'valor_fl_01' => $valor_fl_01,
+                        'valor_fl_02' => $feira->valor_fl_02
+                    );
+                }
+            }
         }
 
 
         //Faz a leitura dos dados diarios e adiciona a variavel final em forma de objeto
+
         foreach ($soma_diaria as $data => $dados) {
             //Cria um array de objetos
             $feira_livreTotal[] = (object)[

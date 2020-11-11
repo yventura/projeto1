@@ -1,8 +1,8 @@
 @extends('layouts.app', ['activePage' => 'comercio_ambulante_Index', 'titlePage' => __(' ')])
 
 @section('content')
-    <br>
-    <br>
+<br>
+<br>
 <div>
     <div class ="text-center mt-3 mb-4">
         <a href="{{url('comercio_ambulante/create')}}">

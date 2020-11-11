@@ -146,7 +146,7 @@ class ComercioFixoController extends Controller
      */
     public function store(Request $request)
     {
-        $cad=$this->objFixo->create([
+        $cad=$this->objComercio_Fixo->create([
             'date'=>$request->date,
             'valor_cf_01'=>$request->valor_cf_01,
             'valor_cf_02'=>$request->valor_cf_02,
@@ -208,5 +208,58 @@ class ComercioFixoController extends Controller
         //
     }
 
+    public function semanal() {
 
+        $comerciofixo = null;
+        if (!empty($Request)) {
+            $comerciofixo = $this->objComercio_Fixo->Model::query()->paginate(5);
+            //dd($request);
+            die();
+        }
+        return view("comerciofixo.index", compact('comerciofixo'));
+    }
+
+    public function Sem() {
+        $comerciofixo  = $this->objComercio_Fixo->Model::query()->paginate(5);
+
+        return view("comerciofixo", compact('comerciofixo'));
+    }
+
+    protected function semanalApi(Request $request){
+        $inicio = $request->inicio;
+        $fim = $request->fim."23:59:00";
+
+        $retorno = array();
+
+        $comerciofixo = $this->objComercio_Fixo->Model::query()->whereBetween('data', [$inicio, $fim])->get();
+
+        $valor_cf_01 = 0;
+        $valor_cf_02 = 0;
+        $valor_cf_03 = 0;
+        $valor_cf_04 = 0;
+        $valor_cf_05 = 0;
+        $valor_cf_06 = 0;
+        $valor_cf_07 = 0;
+
+        foreach($comerciofixo as $fixo){
+            $valor_cf_01 += $fixo->valor_cf_01;
+            $valor_cf_02 += $fixo->valor_cf_02;
+            $valor_cf_03 += $fixo->valor_cf_03;
+            $valor_cf_04 += $fixo->valor_cf_04;
+            $valor_cf_05 += $fixo->valor_cf_05;
+            $valor_cf_06 += $fixo->valor_cf_06;
+            $valor_cf_07 += $fixo->valor_cf_07;
+        }
+
+        $retorno[] = (object)[
+            'valor_cf_01' => $valor_cf_01,
+            'valor_cf_02' => $valor_cf_02,
+            'valor_cf_03' => $valor_cf_03,
+            'valor_cf_04' => $valor_cf_04,
+            'valor_cf_05' => $valor_cf_05,
+            'valor_cf_06' => $valor_cf_06,
+            'valor_cf_07' => $valor_cf_07
+        ];
+        return json_encode($retorno);
+    }
 }

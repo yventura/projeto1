@@ -24,11 +24,18 @@
   <component name="ChangeListManager">
     <list default="true" id="3e04b48d-9af4-4c1d-b2b1-fbcce681f0f7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ComercioFixoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ComercioFixoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LivreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LivreController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Livre.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Livre.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_16_180545_create_feira_livre_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_16_180545_create_feira_livre_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/feira_livre/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feira_livre/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/comercio_ambulante/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comercio_ambulante/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/comerciofixo/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comerciofixo/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/comerciofixo/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comerciofixo/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/comerciofixo/semanal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comerciofixo/semanal.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/feira_livre/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feira_livre/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/footers/auth.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/footers/auth.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/footers/guest.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/footers/guest.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,7 +236,11 @@
       <workItem from="1602159963586" duration="68311000" />
       <workItem from="1603197261737" duration="59786000" />
       <workItem from="1604407460078" duration="9525000" />
-      <workItem from="1604496656337" duration="5639000" />
+      <workItem from="1604496656337" duration="9089000" />
+      <workItem from="1604580679928" duration="581000" />
+      <workItem from="1604682649043" duration="11725000" />
+      <workItem from="1605013091401" duration="2053000" />
+      <workItem from="1605100178846" duration="8192000" />
     </task>
     <servers />
   </component>
@@ -283,10 +294,10 @@
     <state x="-1304" y="242" key="run.anything.popup/0.0.1366.728/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1603896457665" />
     <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1599766634247" />
     <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599245764932" />
-    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1603719935205">
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1604685630383">
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1603719935205" />
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1604685630383" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1601042574335" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599245877712" />
   </component>

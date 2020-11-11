@@ -48,10 +48,8 @@
                             @foreach($feira_livreTotal as $feira)
                                 <tr>
                                     <td>{{$feira->data}}</td>
-                                    @foreach($feira_livre as $feira)
-                                        <td>{{$feira->valor_fl_01}}</td>
-                                        <td>{{$feira->valor_fl_02}}</td>
-                                    @endforeach
+                                    <td>{{$feira->valor_fl_01}}</td>
+                                    <td>{{$feira->valor_fl_02}}</td>
                                 </tr>
                             @endforeach
                         </tbody>
