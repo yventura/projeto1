@@ -8,10 +8,12 @@
       <a href="#" class="simple-text logo-normal">
         {{ __('SOF') }}
       </a>
+        <?php $permissoes = json_decode(Auth::user()->permissoes);?>
 
     </div>
   <div class="sidebar-wrapper">
     <ul class="nav">
+        @if ($permissoes[0]->criar_usuario)
       <div>
         <li class="nav-item {{ ($activePage == 'user_management') ? ' active' : '' }}">
           <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
@@ -32,7 +34,8 @@
             </div>
         </li>
       </div>
-
+        @endif
+        @if ($permissoes[0]->gerar_relatorio)
       <div>
         <li class="nav-item {{ ($activePage == 'comercio_ambulante_Add' || $activePage == 'comerciofixoAdd' || $activePage == 'noturnoAdd' || $activePage == 'livreAdd') ? ' active' : '' }}">
           <a class="nav-link" data-toggle="collapse" href="#ocorrencia" aria-expanded="true">
@@ -71,7 +74,9 @@
           </div>
         </li>
       </div>
+        @endif
 
+        @if ($permissoes[0]->visualizar_relatorio)
       <div>
         <!-- Começo da View do Comercio Fixo-->
         <li class="nav-item {{ ($activePage == 'comerciofixoIndex' || $activePage == 'comerciofixoSemanal') ? ' active' : '' }}">
@@ -151,6 +156,7 @@
         </li>
           <!-- Fim da View do Feira Livre-->
       </div>
+        @endif
     </ul>
   </div>
 </div>

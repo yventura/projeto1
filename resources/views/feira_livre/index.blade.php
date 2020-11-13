@@ -46,11 +46,13 @@
                         </thead>
                         <tbody>
                             @foreach($feira_livreTotal as $feira)
-                                <tr>
-                                    <td>{{$feira->data}}</td>
-                                    <td>{{$feira->valor_fl_01}}</td>
-                                    <td>{{$feira->valor_fl_02}}</td>
-                                </tr>
+                                @foreach($feira->informacoes as $local => $informacoes)
+                                    <tr>
+                                        <td>{{$feira->data}}</td>
+                                        <td>{{App\Livre::Desc01($local)}}</td>
+                                        <td>{{ implode('', $informacoes) }}</td>
+                                    </tr>
+                                @endforeach
                             @endforeach
                         </tbody>
                     </table>

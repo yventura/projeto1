@@ -12,7 +12,7 @@ class Livre extends Model
         'data', 'valor_fl_01', 'valor_fl_02'
     ];
 
-    public function Desc01($valor_fl_01)
+    public static function Desc01($valor_fl_01)
     {
         switch ($valor_fl_01) {
             case 1:

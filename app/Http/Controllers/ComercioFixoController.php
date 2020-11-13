@@ -227,11 +227,17 @@ class ComercioFixoController extends Controller
 
     protected function semanalApi(Request $request){
         $inicio = $request->inicio;
-        $fim = $request->fim."23:59:00";
+        //$inicio = '2020-11-01 00:01:00';
+        //$fim = '2020-11-20 23:59:00';
+        $fim = $request->fim." 23:59:00";
 
         $retorno = array();
 
-        $comerciofixo = $this->objComercio_Fixo->Model::query()->whereBetween('data', [$inicio, $fim])->get();
+        $comerciofixo = $this->objComercio_Fixo
+            ->select('*')
+            ->whereBetween('data', [$inicio, $fim])
+            ->orderBy('data', 'asc')
+            ->get();
 
         $valor_cf_01 = 0;
         $valor_cf_02 = 0;
@@ -242,6 +248,17 @@ class ComercioFixoController extends Controller
         $valor_cf_07 = 0;
 
         foreach($comerciofixo as $fixo){
+            $retorno[] = (object)[
+                'data' => date('d/m/Y', strtotime($fixo->data)),
+                'valor_cf_01' => $fixo->valor_cf_01,
+                'valor_cf_02' => $fixo->valor_cf_02,
+                'valor_cf_03' => $fixo->valor_cf_03,
+                'valor_cf_04' => $fixo->valor_cf_04,
+                'valor_cf_05' => $fixo->valor_cf_05,
+                'valor_cf_06' => $fixo->valor_cf_06,
+                'valor_cf_07' => $fixo->valor_cf_07
+            ];
+
             $valor_cf_01 += $fixo->valor_cf_01;
             $valor_cf_02 += $fixo->valor_cf_02;
             $valor_cf_03 += $fixo->valor_cf_03;
@@ -252,6 +269,7 @@ class ComercioFixoController extends Controller
         }
 
         $retorno[] = (object)[
+            'data' => 'Total',
             'valor_cf_01' => $valor_cf_01,
             'valor_cf_02' => $valor_cf_02,
             'valor_cf_03' => $valor_cf_03,

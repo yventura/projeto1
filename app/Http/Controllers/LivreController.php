@@ -35,9 +35,9 @@ class LivreController extends Controller
     {
         $feira_livre = $this->objFeira->all();
         $datas_unicas = array();
-        $localidade_unicas = array();
         $soma_diaria = array();
-        $exibe = array();
+        $feira_livreTotal = array();
+        //$exibe = array();
         $erro = 0;
 
         //Salva as datas de forma unica
@@ -47,13 +47,6 @@ class LivreController extends Controller
             if (!in_array($somente_data, $datas_unicas)) {
                 $datas_unicas[] = $somente_data;
             }
-        }
-
-        foreach($datas_unicas as $data){
-
-
-
-
         }
 
         //Faz a somatoria com base na data
@@ -69,7 +62,7 @@ class LivreController extends Controller
                     $valor_fl_01 = $feira->valor_fl_01;
                     $valor_fl_02 = $feira->valor_fl_02;
 
-                    $soma_diaria[$somente_data] = array(
+                    $soma_diaria[$somente_data][] = array(
                         'data' => $data,
                         'valor_fl_01' => $valor_fl_01,
                         'valor_fl_02' => $feira->valor_fl_02
@@ -78,20 +71,23 @@ class LivreController extends Controller
             }
         }
 
-
         //Faz a leitura dos dados diarios e adiciona a variavel final em forma de objeto
-
         foreach ($soma_diaria as $data => $dados) {
+            $informacoes = array();
+            $feira_antiga = $dados[0]['valor_fl_01'];
+            $i = 0;
+            foreach ($dados as $dadoinf) {
+                $informacoes[$dadoinf['valor_fl_01']][] = $dadoinf['valor_fl_02'] . '; ';
+            }
+
             //Cria um array de objetos
             $feira_livreTotal[] = (object)[
                 'data' => $data,
-                'valor_fl_01' => $dados['valor_fl_01'],
-                'valor_fl_02' => $dados['valor_fl_02']
-
+                'informacoes' => $informacoes
             ];
         }
 
-        return view('feira_livre.index', compact('feira_livre'))->with('feira_livreTotal', $feira_livreTotal);
+        return view('feira_livre.index', compact('feira_livre', 'feira_livreTotal'))->withModel('Livre');
     }
 
     /**

@@ -48,7 +48,7 @@
     <div class="col-md-12">
       <div class="card">
       <div class="card-header card-header-primary">
-        <h4 class="card-title ">Relatorio Semanal</h4>
+        <h4 class="card-title ">Relatorio Dinâmico</h4>
       </div>
       <div class="card-body">
           <div class="row">
@@ -81,21 +81,8 @@
                 <th>Triagem/ Pesquisas/ Despacho</th>
                 <th>Procedimento Administrativo</th>
             </thead>
-            <tbody>
-                @foreach($comercio_FixoTotal as $comercio)
-                  <tr>
-                      <td scope="row">{{$comercio->data}}</td>
-                      <td scope="row">{{$comercio->valor_cf_01}}</td>
-                      <td scope="row">{{$comercio->valor_cf_02}}</td>
-                      <td scope="row">{{$comercio->valor_cf_03}}</td>
-                      <td scope="row">{{$comercio->valor_cf_04}}</td>
-                      <td scope="row">{{$comercio->valor_cf_05}}</td>
-                      <td scope="row">{{$comercio->valor_cf_06}}</td>
-                      <td scope="row">{{$comercio->valor_cf_07}}</td>
-                      <td scope="row">Triagem - {{$comercio->valor_cf_08_1}}<br>Pesquisas - {{$comercio->valor_cf_08_2}}<br>Despacho - {{$comercio->valor_cf_08_3}}</td>
-                      <td scope="row">Ex_Oficio - {{$comercio->valor_cf_09_1}}</td>
-                  </tr>
-                @endforeach
+            <tbody id="tableRetorno">
+
             </tbody>
           </table>
         </div>
@@ -125,7 +112,7 @@
                   header: {
                       'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
                   },
-                  url:"{{ route('api.semanal') }}",
+                  url:"{{ route('api.fixo') }}",
                   dataType: 'JSON',
                   data: {
                       _token: "{{ csrf_token() }}",
@@ -138,30 +125,35 @@
                           adicionaRow(data);
                       }
                   },
-                  error: function(){
-                      alert("Erro");
+                  error: function(data) {
+                      console.log(data);
+                      //alert("Erro");
                   }
               })
           }
       });
 
       function adicionaRow(data) {
-          var newRow = $('<tr class="resultado">');
-          var cols = '';
-
-          cols += '<td>' + data[0].valor_cf_01 + '</td>';
-          cols += '<td>' + data[0].valor_cf_02 + '</td>';
-          cols += '<td>' + data[0].valor_cf_03 + '</td>';
-          cols += '<td>' + data[0].valor_cf_04 + '</td>';
-          cols += '<td>' + data[0].valor_cf_05 + '</td>';
-          cols += '<td>' + data[0].valor_cf_06 + '</td>';
-          cols += '<td>' + data[0].valor_cf_07 + '</td>';
-
-
-          newRow.append(cols);
           $(".semResultado").remove();
           $(".resultado").remove();
-          $("#tableRetorno").append(newRow);
+
+          for (let k in data) {
+              var newRow = $('<tr class="resultado">');
+              var cols = '';
+
+              cols += '<td>' + data[k].data + '</td>';
+              cols += '<td>' + data[k].valor_cf_01 + '</td>';
+              cols += '<td>' + data[k].valor_cf_02 + '</td>';
+              cols += '<td>' + data[k].valor_cf_03 + '</td>';
+              cols += '<td>' + data[k].valor_cf_04 + '</td>';
+              cols += '<td>' + data[k].valor_cf_05 + '</td>';
+              cols += '<td>' + data[k].valor_cf_06 + '</td>';
+              cols += '<td>' + data[k].valor_cf_07 + '</td>';
+
+
+              newRow.append(cols);
+              $("#tableRetorno").append(newRow);
+          }
       }
   </script>
 @endsection
