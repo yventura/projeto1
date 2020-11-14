@@ -246,6 +246,9 @@ class ComercioFixoController extends Controller
         $valor_cf_05 = 0;
         $valor_cf_06 = 0;
         $valor_cf_07 = 0;
+        $valor_cf_08 = 0;
+        $valor_cf_09 = 0;
+
 
         foreach($comerciofixo as $fixo){
             $retorno[] = (object)[
@@ -256,7 +259,9 @@ class ComercioFixoController extends Controller
                 'valor_cf_04' => $fixo->valor_cf_04,
                 'valor_cf_05' => $fixo->valor_cf_05,
                 'valor_cf_06' => $fixo->valor_cf_06,
-                'valor_cf_07' => $fixo->valor_cf_07
+                'valor_cf_07' => $fixo->valor_cf_07,
+                'valor_cf_08' => $fixo->valor_cf_08,
+                'valor_cf_09' => $fixo->valor_cf_09
             ];
 
             $valor_cf_01 += $fixo->valor_cf_01;
@@ -266,6 +271,8 @@ class ComercioFixoController extends Controller
             $valor_cf_05 += $fixo->valor_cf_05;
             $valor_cf_06 += $fixo->valor_cf_06;
             $valor_cf_07 += $fixo->valor_cf_07;
+            $valor_cf_08 += $fixo->valor_cf_08;
+            $valor_cf_09 += $fixo->valor_cf_09;
         }
 
         $retorno[] = (object)[
@@ -276,7 +283,9 @@ class ComercioFixoController extends Controller
             'valor_cf_04' => $valor_cf_04,
             'valor_cf_05' => $valor_cf_05,
             'valor_cf_06' => $valor_cf_06,
-            'valor_cf_07' => $valor_cf_07
+            'valor_cf_07' => $valor_cf_07,
+            'valor_cf_08' => $valor_cf_08,
+            'valor_cf_09' => $valor_cf_09
         ];
         return json_encode($retorno);
     }

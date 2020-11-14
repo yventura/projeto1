@@ -15,22 +15,28 @@
     <ul class="nav">
         @if ($permissoes[0]->criar_usuario)
       <div>
-        <li class="nav-item {{ ($activePage == 'user_management') ? ' active' : '' }}">
-          <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
-            <p>{{ __('Controle de Usuários') }}
-              <b class="caret"></b>
-            </p>
-          </a>
+        <li class="nav-item {{ ($activePage == 'user_management' || $activePage == 'usuarioNivel') ? ' active' : '' }}">
+            <a class="nav-link" data-toggle="collapse" href="#laravelExample" aria-expanded="true">
+                <p>{{ __('Controle de Usuários') }}
+                    <b class="caret"></b>
+                </p>
+            </a>
 
-            <div class="collapse {{ ($activePage == 'user_management') ? 'show' : '' }}" id="laravelExample">
-              <ul class="nav">
-                <li class="nav-item{{ $activePage == 'user_management' ? ' active' : '' }}">
-                  <a class="nav-link" href="{{ route('usuario.index') }}">
-                    <i class="material-icons">persons</i>
-                    <span class="sidebar-normal"> {{ __('Usuarios Cadastrados') }} </span>
-                  </a>
-                </li>
-              </ul>
+            <div class="collapse {{ ($activePage == 'user_management' || $activePage == 'usuarioNivel') ? 'show' : '' }}" id="laravelExample">
+                <ul class="nav">
+                    <li class="nav-item{{ $activePage == 'user_management' ? ' active' : '' }}">
+                        <a class="nav-link" href="{{ route('usuario.index') }}">
+                            <i class="material-icons">persons</i>
+                            <span class="sidebar-normal"> {{ __('Usuarios Cadastrados') }} </span>
+                        </a>
+                    </li>
+                    <li class="nav-item{{ $activePage == 'usuarioNivel' ? ' active' : '' }}">
+                        <a class="nav-link" href="{{ route('nivel.index') }}">
+                            <i class="material-icons">persons</i>
+                            <span class="sidebar-normal"> {{ __('Niveis') }} </span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </li>
       </div>

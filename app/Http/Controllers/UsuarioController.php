@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 use Illuminate\Http\Request;
 
-class TesteController extends Controller
+class UsuarioController extends Controller
 {
     private $objUser;
 

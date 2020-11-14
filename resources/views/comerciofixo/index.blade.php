@@ -1,95 +1,100 @@
 @extends('layouts.app', ['activePage' => 'comerciofixoIndex', 'titlePage' => __(' ')])
 
 @section('content')
-<div class="content">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header card-header-primary">
-            <h4 class="card-title">Comercio Fixo</h4>
-          </div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table">
-              <thead class="text-primary">
-                  <th>Data</th>
-                  <th>Vistorias Processos</th>
-                  <th>Vistoria VRE</th>
-                  <th>Viabilidade VRE</th>
-                  <th>Ciências</th>
-                  <th>Intimações</th>
-                  <th>Plantão Interno</th>
-                  <th>Atendimento Guichê</th>
-                  <th>Triagem/ Pesquisas/ Despacho</th>
-                  <th>Procedimento Administrativo</th>
-              </thead>
-              <tbody>
-                @foreach( $comerciofixo as $comerciof)
-                    <tr>
-                        <td scope="row">{{date('d/m/Y', strtotime($comerciof->data))}}</td>
-                        <td scope="row">{{$comerciof->valor_cf_01}}</td>
-                        <td scope="row">{{$comerciof->valor_cf_02}}</td>
-                        <td scope="row">{{$comerciof->valor_cf_03}}</td>
-                        <td scope="row">{{$comerciof->valor_cf_04}}</td>
-                        <td scope="row">{{$comerciof->valor_cf_05}}</td>
-                        <td scope="row">{{$comerciof->valor_cf_06}}</td>
-                        <td scope="row">{{$comerciof->valor_cf_07}}</td>
-                        <td scope="row">{{$comerciof->Desc08($comerciof->desc_08)}}{{$comerciof->valor_cf_08}}</td>
-                        <td scope="row">{{$comerciof->Desc09($comerciof->desc_09)}}{{$comerciof->valor_cf_09}}</td>
-                    </tr>
-                @endforeach
-              </tbody>
-            </table>
-        </div>
-      </div>
-    </div>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="card">
-      <div class="card-header card-header-primary">
-        <h4 class="card-title ">Relatorio Dinâmico</h4>
-      </div>
-      <div class="card-body">
-          <div class="row">
-              <label class="col-sm-2 col-form-label">{{ __('Data Inicial:') }}</label>
-              <div class="col-sm-3">
-                  <div class="form-group">
-                      <input class="form-control" name="data" id="input-data-inicial" type="date" max="{{ date('Y-m-d') }}" />
-                  </div>
-              </div>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Comercio Fixo</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class="text-primary">
+                                        <th>Data</th>
+                                        <th>Vistorias Processos</th>
+                                        <th>Vistoria VRE</th>
+                                        <th>Viabilidade VRE</th>
+                                        <th>Ciências</th>
+                                        <th>Intimações</th>
+                                        <th>Plantão Interno</th>
+                                        <th>Atendimento Guichê</th>
+                                        <th>Triagem/ Pesquisas/ Despacho</th>
+                                        <th>Procedimento Administrativo</th>
+                                    </thead>
+                                    <tbody>
+                                        @foreach( $comerciofixo as $comerciof)
+                                            <tr>
+                                                <td scope="row">{{date('d/m/Y', strtotime($comerciof->data))}}</td>
+                                                <td scope="row">{{$comerciof->valor_cf_01}}</td>
+                                                <td scope="row">{{$comerciof->valor_cf_02}}</td>
+                                                <td scope="row">{{$comerciof->valor_cf_03}}</td>
+                                                <td scope="row">{{$comerciof->valor_cf_04}}</td>
+                                                <td scope="row">{{$comerciof->valor_cf_05}}</td>
+                                                <td scope="row">{{$comerciof->valor_cf_06}}</td>
+                                                <td scope="row">{{$comerciof->valor_cf_07}}</td>
+                                                <td scope="row">{{$comerciof->Desc08($comerciof->desc_08)}}{{$comerciof->valor_cf_08}}</td>
+                                                <td scope="row">{{$comerciof->Desc09($comerciof->desc_09)}}{{$comerciof->valor_cf_09}}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title ">Relatorio Dinâmico</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <label class="col-sm-2 col-form-label">{{ __('Data Inicial:') }}</label>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <input class="form-control" name="data" id="input-data-inicial" type="date" max="{{ date('Y-m-d') }}" />
+                                    </div>
+                                </div>
 
-              <label class="col-sm-2 col-form-label">{{ __('Data Final:') }}</label>
-              <div class="col-sm-3">
-                  <div class="form-group">
-                      <input class="form-control" name="data" id="input-data-final" type="date" max="{{ date('Y-m-d') }}" />
-                  </div>
-              </div>
-              <button type="button" id="gerarRelatorio" class="btn btn-success">Filtrar</button>
-          </div>
-        <div class="table-responsive">
-          <table class="table">
-            <thead class=" text-primary">
-                <th>Data</th>
-                <th>Vistorias Processos</th>
-                <th>Vistoria VRE</th>
-                <th>Viabilidade VRE</th>
-                <th>Ciências</th>
-                <th>Intimações</th>
-                <th>Plantão Interno</th>
-                <th>Atendimento Guichê</th>
-                <th>Triagem/ Pesquisas/ Despacho</th>
-                <th>Procedimento Administrativo</th>
-            </thead>
-            <tbody id="tableRetorno">
+                                <label class="col-sm-2 col-form-label">{{ __('Data Final:') }}</label>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <input class="form-control" name="data" id="input-data-final" type="date" max="{{ date('Y-m-d') }}" />
+                                    </div>
+                                </div>
+                                    <button type="button" id="gerarRelatorio" class="btn btn-success">Filtrar</button>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-primary">
+                                        <th>Data</th>
+                                        <th>Vistorias Processos</th>
+                                        <th>Vistoria VRE</th>
+                                        <th>Viabilidade VRE</th>
+                                        <th>Ciências</th>
+                                        <th>Intimações</th>
+                                        <th>Plantão Interno</th>
+                                        <th>Atendimento Guichê</th>
+                                        <th>Triagem/ Pesquisas/ Despacho</th>
+                                        <th>Procedimento Administrativo</th>
+                                    </thead>
+                                    <tbody id="tableRetorno">
 
-            </tbody>
-          </table>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>
+
   <script type="text/javascript">
       $("#gerarRelatorio").click(function() {
           let data_inicial = document.getElementById('input-data-inicial').value;
@@ -149,6 +154,8 @@
               cols += '<td>' + data[k].valor_cf_05 + '</td>';
               cols += '<td>' + data[k].valor_cf_06 + '</td>';
               cols += '<td>' + data[k].valor_cf_07 + '</td>';
+              cols += '<td>' + data[k].valor_cf_08 + '</td>';
+              cols += '<td>' + data[k].valor_cf_09 + '</td>';
 
 
               newRow.append(cols);

@@ -159,55 +159,6 @@ class ComercioAmbulanteController extends Controller
         }
 
 
-        /*
-        $comercio_ambulante = $this->objComercioAmbulante->paginate(5);
-        $comercio_ambulanteDiaria = $this->objComercioAmbulante->all();
-        $comercio_ambulanteTotal = null;
-        $datas_unicas = array();
-        $soma_diaria = array();
-        $error = 0;
-
-        // Inicio Somatoria Datas
-        foreach ($datas_unicas as $data){
-        // Seta as variaveis de soma em 0
-                $paralisacao_evento = 0;
-                $atendimento_denuncia = 0;
-                $comercio_ambulante = 0;
-                $atendimento_processos = 0;
-
-                foreach ($noturno as $noturna){
-                    $somente_data = date('d/m/Y', strtotime($noturna->data));
-
-                    if($somente_data == $data){
-                    $paralisacao_evento += $noturna->paralisacao_evento;
-                    $atendimento_denuncia += $noturna->atendimento_denuncia;
-                    $comercio_ambulante += $noturna->comercio_ambulante;
-                    $atendimento_processos += $noturna->atendimento_processos;
-
-                    $soma_diaria[$somente_data] = array(
-                        'paralisacao_evento' => $paralisacao_evento,
-                        'atendimento_denuncia' => $atendimento_denuncia,
-                        'comercio_ambulante' => $comercio_ambulante,
-                        'atendimento_processos' => $atendimento_processos
-                    );
-                }
-            }
-        }
-        // Fim Somatoria Datas
-        //Faz a leitura dos dados diarios e adiciona a variavel final em forma de objeto
-        foreach ($soma_diaria as $data => $dados){
-            //Cria um array de objetos
-                $noturnoTotal[] = (object)[
-                    'data' => $data,
-                    'paralisacao_evento' => $dados['paralisacao_evento'],
-                    'atendimento_denuncia' => $dados['atendimento_denuncia'],
-                    'comercio_ambulante' => $dados['comercio_ambulante'],
-                    'atendimento_processos' => $dados['atendimento_processos']
-            ];
-            return view(('noturno.index'), compact('noturno'))->with('noturnoTotal', $noturnoTotal);
-         }
-        }
-        */
         return view('comercio_ambulante.index', compact('comercio_ambulante'))->with('comercio_ambulanteTotal', $comercio_ambulanteTotal);
     }
 
@@ -294,5 +245,85 @@ class ComercioAmbulanteController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function semanal() {
+
+        $comercio_ambulante = null;
+        if (!empty($Request)) {
+            $comercio_ambulante = $this->objComercioAmbulante->Model::query()->paginate(5);
+            die();
+        }
+        return view("comercio_ambulante.index", compact('comercio_ambulante'));
+    }
+
+    public function Sem() {
+        $comercio_ambulante  = $this->objComercioAmbulante->Model::query()->paginate(5);
+
+        return view("comercio_ambulante", compact('comercio_ambulante'));
+    }
+
+    protected function semanalApi(Request $request){
+        $inicio = $request->inicio;
+        $fim = $request->fim." 23:59:00";
+
+        $retorno = array();
+
+        $comercio_ambulante = $this->objComercioAmbulante
+            ->select('*')
+            ->whereBetween('data', [$inicio, $fim])
+            ->orderBy('data', 'asc')
+            ->get();
+
+
+        $valor_ca_01 = 0;
+        $valor_ca_02 = 0;
+        $valor_ca_03 = 0;
+        $valor_ca_04 = 0;
+        $valor_ca_05 = 0;
+        $valor_ca_06 = 0;
+        $valor_ca_07 = 0;
+        $valor_ca_08 = 0;
+        $valor_ca_09 = 0;
+
+        foreach($comercio_ambulante as $ambulante){
+            $retorno[] = (object)[
+                'data' => date('d/m/Y', strtotime($ambulante->data)),
+                'valor_ca_01' => $ambulante->valor_ca_01,
+                'valor_ca_02' => $ambulante->valor_ca_02,
+                'valor_ca_03' => $ambulante->valor_ca_03,
+                'valor_ca_04' => $ambulante->valor_ca_04,
+                'valor_ca_05' => $ambulante->valor_ca_05,
+                'valor_ca_06' => $ambulante->valor_ca_06,
+                'valor_ca_07' => $ambulante->valor_ca_07,
+                'valor_ca_08' => $ambulante->valor_ca_08,
+                'valor_ca_09' => $ambulante->valor_ca_09
+            ];
+
+            $valor_ca_01 += $ambulante->valor_ca_01;
+            $valor_ca_02 += $ambulante->valor_ca_02;
+            $valor_ca_03 += $ambulante->valor_ca_03;
+            $valor_ca_04 += $ambulante->valor_ca_04;
+            $valor_ca_05 += $ambulante->valor_ca_05;
+            $valor_ca_06 += $ambulante->valor_ca_06;
+            $valor_ca_07 += $ambulante->valor_ca_07;
+            $valor_ca_08 += $ambulante->valor_ca_08;
+            $valor_ca_09 += $ambulante->valor_ca_09;
+        }
+
+        $retorno[] = (object)[
+            'data' => 'Total',
+            'valor_ca_01' => $valor_ca_01,
+            'valor_ca_02' => $valor_ca_02,
+            'valor_ca_03' => $valor_ca_03,
+            'valor_ca_04' => $valor_ca_04,
+            'valor_ca_05' => $valor_ca_05,
+            'valor_ca_06' => $valor_ca_06,
+            'valor_ca_07' => $valor_ca_07,
+            'valor_ca_08' => $valor_ca_08,
+            'valor_ca_09' => $valor_ca_09
+        ];
+
+        return json_encode($retorno);
     }
 }

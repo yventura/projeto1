@@ -26,8 +26,8 @@ class NoturnoController extends Controller
         $error = 0;
 
         // Começo do Salvamento das datas de forma Unica
-        foreach ($noturno as $noturna){
-            $somente_data = date('d/m/Y', strtotime($noturna->data));
+        foreach ($noturno as $note){
+            $somente_data = date('d/m/Y', strtotime($note->data));
 
             if(!in_array($somente_data, $datas_unicas)){
                 $datas_unicas[] = $somente_data;
@@ -42,14 +42,14 @@ class NoturnoController extends Controller
                 $comercio_ambulante = 0;
                 $atendimento_processos = 0;
 
-                foreach ($noturno as $noturna){
-                    $somente_data = date('d/m/Y', strtotime($noturna->data));
+                foreach ($noturno as $note){
+                    $somente_data = date('d/m/Y', strtotime($note->data));
 
                     if($somente_data == $data){
-                    $paralisacao_evento += $noturna->paralisacao_evento;
-                    $atendimento_denuncia += $noturna->atendimento_denuncia;
-                    $comercio_ambulante += $noturna->comercio_ambulante;
-                    $atendimento_processos += $noturna->atendimento_processos;
+                    $paralisacao_evento += $note->paralisacao_evento;
+                    $atendimento_denuncia += $note->atendimento_denuncia;
+                    $comercio_ambulante += $note->comercio_ambulante;
+                    $atendimento_processos += $note->atendimento_processos;
 
                     $soma_diaria[$somente_data] = array(
                         'paralisacao_evento' => $paralisacao_evento,
@@ -117,28 +117,34 @@ class NoturnoController extends Controller
 
     public function semanal() {
 
-        $noturnos = null;
+        $noturno = null;
         if (!empty($Request)) {
-            $noturnos = $this->objNoturno->Model::query()->paginate(5);
+            $noturno = $this->objNoturno->Model::query()->paginate(5);
             //dd($request);
             die();
         }
-        return view("noturno.index", compact($noturnos));
+        return view("noturno.index", compact('noturno'));
     }
 
     public function Sem() {
         $noturno  = $this->objNoturno->Model::query()->paginate(5);
 
-        return view("noturno", compact($noturno));
+        return view("noturno", compact('noturno'));
     }
 
     protected function semanalApi(Request $request){
         $inicio = $request->inicio;
+        //$inicio = '2020-11-01 00:01:00';
+        //$fim = '2020-11-20 23:59:00';
         $fim = $request->fim." 23:59:00";
 
         $retorno = array();
 
-        $noturnos = $this->objNoturno->Model::query()->whereBetween('data', [$inicio, $fim])->get();
+        $noturno = $this->objNoturno
+            ->select('*')
+            ->whereBetween('data', [$inicio, $fim])
+            ->orderBy('data', 'asc')
+            ->get();
 
 
         $paralisacao_evento = 0;
@@ -146,7 +152,15 @@ class NoturnoController extends Controller
         $atendimento_processos = 0;
         $atendimento_denuncia = 0;
 
-        foreach($noturnos as $note){
+        foreach($noturno as $note){
+            $retorno[] = (object)[
+                'data' => date('d/m/Y', strtotime($note->data)),
+                'paralisacao_evento' => $note->paralisacao_evento,
+                'comercio_ambulante' => $note->comercio_ambulante,
+                'atendimento_processos' => $note->atendimento_processos,
+                'atendimento_denuncia' => $note->atendimento_denuncia
+            ];
+
             $paralisacao_evento += $note->paralisacao_evento;
             $comercio_ambulante += $note->comercio_ambulante;
             $atendimento_processos += $note->atendimento_processos;
@@ -154,11 +168,14 @@ class NoturnoController extends Controller
         }
 
         $retorno[] = (object)[
+            'data' => 'Total',
             'paralisacao_evento' => $paralisacao_evento,
             'comercio_ambulante' => $comercio_ambulante,
             'atendimento_processos' => $atendimento_processos,
             'atendimento_denuncia' => $atendimento_denuncia
         ];
+
         return json_encode($retorno);
+        dd($retorno);
     }
 }
