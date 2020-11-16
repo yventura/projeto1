@@ -49,7 +49,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('comerciofixo/semanal', ['as' => 'comerciofixo.semanal', 'uses' => 'ComercioFixoController@semanal']);
     Route::resource('comerciofixo','ComercioFixoController');
     Route::resource('noturno', 'NoturnoController');
-    //Route::get('noturno', ['as' => 'noturno.index', 'uses' => 'NoturnoController@semanal']);
     Route::resource('feira_livre','LivreController');
     Route::resource('comercio_ambulante', 'ComercioAmbulanteController');
     Route::resource('nivel','NivelController');
