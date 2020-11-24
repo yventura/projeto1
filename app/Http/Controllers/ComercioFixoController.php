@@ -227,8 +227,6 @@ class ComercioFixoController extends Controller
 
     protected function semanalApi(Request $request){
         $inicio = $request->inicio;
-        //$inicio = '2020-11-01 00:01:00';
-        //$fim = '2020-11-20 23:59:00';
         $fim = $request->fim." 23:59:00";
 
         $retorno = array();

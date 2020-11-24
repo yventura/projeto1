@@ -21,23 +21,12 @@ class LivreController extends Controller
         $this->objFeira = new Livre();
     }
 
-// EXIBE O VALOR DO DIA ( SEG, TEC, ETC )
-//            if(date('w') == 0){
-//
-//            } elseif (date('w') == 1){
-//            echo "Segunda";
-//            }elseif (date('w') == 2){
-//            echo "Terça";
-//            }
-
-
     public function index()
     {
         $feira_livre = $this->objFeira->all();
         $datas_unicas = array();
         $soma_diaria = array();
         $feira_livreTotal = array();
-        //$exibe = array();
         $erro = 0;
 
         //Salva as datas de forma unica

@@ -27,7 +27,7 @@
                 <tbody>
                     @foreach($users as $usuarios)
                         <tr>
-                            <d scope="row">{{$usuarios->name}}<td>
+                            <td scope="row">{{$usuarios->name}}<td>
                             <td scope="row">{{$usuarios->email}}<td>
                             <td scope="row">{{$usuarios->prontuario}}<td>
                             <td scope="row">{{$usuarios->nomeNivel($usuarios->nivel) }}<td>

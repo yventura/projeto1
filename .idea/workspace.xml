@@ -23,7 +23,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e04b48d-9af4-4c1d-b2b1-fbcce681f0f7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/resources/views/noturno/relatorio.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ComercioFixoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ComercioFixoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LivreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LivreController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NivelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NivelController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NoturnoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NoturnoController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Nivel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Nivel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/NivelServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/NivelServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/footers/auth.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/footers/auth.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/footers/guest.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/footers/guest.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/navs/auth.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/navs/auth.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/navs/guest.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/navs/guest.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/nivel/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/nivel/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/noturno/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/noturno/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/pages/relatorios.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/profile/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/profile/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/usuario/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/usuario/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/usuario/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/usuario/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/usuario/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/usuario/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -56,6 +83,9 @@
     <setting file="file://$PROJECT_DIR$/resources/views/comerciofixo/index.blade.php" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/resources/views/comerciofixo/add.blade.php" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/resources/views/comerciofixo/semanal.blade.php" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -239,6 +269,9 @@
       <workItem from="1605449897767" duration="3254000" />
       <workItem from="1605481819873" duration="364000" />
       <workItem from="1605490875535" duration="3122000" />
+      <workItem from="1605726666389" duration="1247000" />
+      <workItem from="1605789243382" duration="9701000" />
+      <workItem from="1606135225924" duration="12258000" />
     </task>
     <servers />
   </component>
@@ -267,9 +300,10 @@
       <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
     <state x="-1368" y="178" width="816" height="729" key="#Intentions/0.0.1366.728/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1603910168727" />
-    <state x="590" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605277486355">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-942" y="305" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605792579415">
+      <screen x="-1360" y="305" width="1360" height="728" />
     </state>
+    <state x="-942" y="305" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/-1360.305.1360.728@-1360.305.1360.728" timestamp="1605792579415" />
     <state x="590" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1605277486355" />
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600349181770">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -282,9 +316,14 @@
     <state x="-1039" y="127" key="FileChooserDialogImpl/0.0.1366.728/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1604427853885" />
     <state x="-739" y="394" key="FileChooserDialogImpl/0.0.1920.1040/-1366.305.1366.728@-1366.305.1366.728" timestamp="1605463802270" />
     <state x="881" y="127" key="FileChooserDialogImpl/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1600784955693" />
-    <state x="794" y="443" key="NewPhpFileDialog" timestamp="1605277547490">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-904" y="392" key="NewPhpClassDialog" timestamp="1605789705085">
+      <screen x="-1360" y="305" width="1360" height="728" />
     </state>
+    <state x="-904" y="392" key="NewPhpClassDialog/0.0.1920.1040/-1360.305.1360.728@-1360.305.1360.728" timestamp="1605789705085" />
+    <state x="-801" y="615" key="NewPhpFileDialog" timestamp="1606140134244">
+      <screen x="-1366" y="305" width="1366" height="728" />
+    </state>
+    <state x="-801" y="615" key="NewPhpFileDialog/0.0.1920.1040/-1366.305.1366.728@-1366.305.1366.728" timestamp="1606140134244" />
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1605277547490" />
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1600349176262" />
     <state x="794" y="443" key="NewPhpFileDialog/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599244498977" />
@@ -296,16 +335,19 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="667" y="119" width="585" height="801" key="find.popup/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1605221364565" />
-    <state x="-1304" y="242" key="run.anything.popup" timestamp="1603896457665">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state x="-928" y="474" key="run.anything.popup" timestamp="1606138480500">
+      <screen x="-1366" y="305" width="1366" height="728" />
     </state>
     <state x="-1304" y="242" key="run.anything.popup/0.0.1366.728/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1603896457665" />
+    <state x="-928" y="474" key="run.anything.popup/0.0.1920.1040/-1366.305.1366.728@-1366.305.1366.728" timestamp="1606138480500" />
     <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1599766634247" />
     <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599245764932" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605228041859">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-923" y="463" width="675" height="475" key="search.everywhere.popup" timestamp="1606140346253">
+      <screen x="-1366" y="305" width="1366" height="728" />
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1604685630383" />
+    <state x="-919" y="463" width="672" height="475" key="search.everywhere.popup/0.0.1920.1040/-1360.305.1360.728@-1360.305.1360.728" timestamp="1605795522562" />
+    <state x="-923" y="463" width="675" height="475" key="search.everywhere.popup/0.0.1920.1040/-1366.305.1366.728@-1366.305.1366.728" timestamp="1606140346253" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1605228041859" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1601042574335" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599245877712" />

@@ -7,12 +7,14 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title">Comercio Fixo</h4>
+                            <h4 class="card-title">Fiscalização Noturna</h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class="text-primary">
+
+                                    <a href="relatorio.php" target="_blank">Gerar</a>
                                         <th>Data</th>
                                         <th>Paralisação de eventos esportivos</th>
                                         <th>Denuncias recebidas no COPOM</th>

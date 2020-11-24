@@ -18,7 +18,7 @@ class NoturnoController extends Controller
     public function index()
     {
 
-        //$noturnoDiarios = $this->objNoturno->all();
+
         $noturno = $this->objNoturno->all();
         $datas_unicas = array();
         $soma_diaria = array();
