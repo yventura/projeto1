@@ -20,10 +20,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('prontuario');
-            $table->integer('nivel');
+            $table->integer('nivel')->unsigned();;
             $table->integer('status');
-            $table->integer('nivel_acesso')->unsigned();
-            $table->foreign('nivel_acesso')->references('id')->on('users_niveis');
 
             $table->rememberToken();
             $table->timestamps();

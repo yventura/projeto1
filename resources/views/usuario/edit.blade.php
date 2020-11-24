@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <form name="formEdit" id="formEdit" method="post" action="{{ url("usuario/$usuario->id") }}">
+                <form name="formEdit" id="formEdit" method="post" action='{{ url("usuario/".$usuario->id) }}'>
                 @method('PUT')
                 @csrf
                 <div class="card ">
@@ -66,37 +66,21 @@
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <select class="form-control" name="nivel" id="input-nivel" required >
-                                            <option value="{{"$usuario->nivel" }} "> {{$usuario->nomeNivel($usuario->nivel) }} </option>
-                                            @if( $usuario->nivel == 0 )
-                                                <option value="1">Supervisor</option>
-                                                <option value="2">Padrao</option>
-                                            @endif
-                                            @if($usuario->nivel == 1)
-                                                <option value="0">Administrdor</option>
-                                                <option value="2">Padrao</option>
-                                            @endif
-                                            @if($usuario->nivel == 2)
-                                                <option value="0">Administrdor</option>
-                                                <option value="1">Supervisor</option>
-                                            @endif
+                                            @foreach ($niveis_acessos as $nivel)
+                                                <option value="{{ $nivel->id }}" {{ $usuario->nivel == $nivel->id ? 'selected' : '' }}>{{ $nivel->nome }}</option>
+                                            @endforeach;
                                         </select>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row">
-
                                 <label class="col-sm-2 col-form-label">{{ __('Status') }}</label>
                                 <div class="col-sm-4">
                                     <div class="form-group">
                                         <select class="form-control" name="status" id="input-status" required>
-                                            <option value="{{"$usuario->status" }} "> {{$usuario->nomeStatus($usuario->status) }}</option>
-                                            @if($usuario->status == 0)
-                                                <option value="1">Desabilitado</option>
-                                            @endif
-                                            @if($usuario->status == 1)
-                                                <option value="0">Habilitado</option>
-                                            @endif
+                                            <option value="0" {{ $usuario->status == 0 ? 'selected' : '' }}>Desabilitado</option>
+                                            <option value="1" {{ $usuario->status == 1 ? 'selected' : '' }}>Habilitado</option>
                                         </select>
                                     </div>
                                 </div>

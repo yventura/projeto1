@@ -28,10 +28,8 @@ class NivelController extends Controller
 
     public function index()
     {
-
-        $nivel = $this->objNivel->all();
-
-        return view('nivel.index', compact('nivel'));
+        $niveisAcesso = $this->objNivel->all();
+        return view('nivel.index', compact('niveisAcesso'));
     }
 
      /**
@@ -54,12 +52,25 @@ class NivelController extends Controller
 
     public function store(Request $request)
     {
-        $cad=$this->objNivel->create([
-            'nome'=>$request->nome,
-            'permissoes'=>$request->permissoes
+        //dd($request->criar_usuario);
+        $permissoes_array[] = [
+            'criar_usuario' => ($request->criar_usuario == 'on')? true : false,
+            'editar_usuario' => ($request->editar_usuario == 'on')? true : false,
+            'gerenciar_niveis' => ($request->gerenciar_niveis == 'on')? true : false,
+            'gerar_relatorio' => ($request->gerar_relatorio == 'on')? true : false,
+            'visualizar_relatorio' => ($request->visualizar_relatorio == 'on')? true : false,
+            'imprimir_relatorio' => ($request->imprimir_relatorio == 'on')? true : false,
+        ];
+
+        $cad = $this->objNivel->create([
+            'nome' => $request->nome,
+            'permissoes'=> json_encode($permissoes_array)
 
         ]);
-        if($cad){return redirect('nivel');}
+
+        if($cad){
+            return redirect('nivel');
+        }
     }
 
     /**
@@ -81,7 +92,11 @@ class NivelController extends Controller
      */
     public function edit(int $id)
     {
-        //
+        $nivel = $this->objNivel->find($id);
+        $permissoes_temp = json_decode($nivel->permissoes);
+        $nivel->permissoes = $permissoes_temp[0];
+
+        return view('nivel.edit', compact('nivel'));
     }
 
     /**
@@ -93,7 +108,21 @@ class NivelController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        //
+        //dd($request->criar_usuario);
+        $permissoes_array[] = [
+            'criar_usuario' => ($request->criar_usuario == 'on')? true : false,
+            'editar_usuario' => ($request->editar_usuario == 'on')? true : false,
+            'gerenciar_niveis' => ($request->gerenciar_niveis == 'on')? true : false,
+            'gerar_relatorio' => ($request->gerar_relatorio == 'on')? true : false,
+            'visualizar_relatorio' => ($request->visualizar_relatorio == 'on')? true : false,
+            'imprimir_relatorio' => ($request->imprimir_relatorio == 'on')? true : false,
+        ];
+
+        $this->objNivel->where(['id'=>$id])->update([
+            'nome' => $request->nome,
+            'permissoes' => json_encode($permissoes_array)
+        ]);
+        return redirect('nivel');
     }
 
     /**
