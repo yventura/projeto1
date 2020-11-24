@@ -18,8 +18,8 @@ class UsersTableSeeder extends Seeder
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
             'prontuario' => '154399',
-            'nivel'      => '0',
-            'status'     => '0',
+            'nivel'      => '1',
+            'status'     => '1',
             'nivel_acesso' => '1',
             'created_at' => now(),
             'updated_at' => now()

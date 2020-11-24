@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use DB;
 
 class User extends Authenticatable
 {
@@ -37,32 +38,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function nomeNivel($nivel){
+    public function nomeNivel($id) {
+        $niveis_acesso = DB::table('users_niveis')->get();
 
-        switch ($nivel)
-        {
-            case 0:
-                echo "Administrador";
-                break;
-
-            case 1:
-                echo "Supervisor";
-                break;
-
-            case 2:
-                echo "Padrão";
-                break;
+        foreach ($niveis_acesso as $nivel) {
+            if ($nivel->id == $id) {
+                echo $nivel->nome;
+            }
         }
     }
     public function nomeStatus($status){
 
         switch ($status)
         {
-            case 0:
+            case 1:
                 echo "Habilitado";
                 break;
 
-            case 1:
+            case 0:
                 echo "Desabilitado";
                 break;
         }

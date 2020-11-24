@@ -9,10 +9,9 @@ use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-
-
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use DB;
 
 class UsersController extends Controller
 {
@@ -72,15 +71,12 @@ class UsersController extends Controller
     public function store(Request $request)
     {
         $cad=$this->objUser->create([
-
             'name'=>$request->name,
             'email'=>$request->email,
             'password' => Hash::make($request['password']),
             'prontuario'=>$request->prontuario,
             'nivel'=>$request->nivel,
             'status'=>$request->status
-
-
         ]);
         if($cad){return redirect('usuario');}
     }
@@ -105,7 +101,8 @@ class UsersController extends Controller
     public function edit(int $id)
     {
         $usuario=$this->objUser->find($id);
-        return view('usuario.edit', compact('usuario'));
+        $niveis_acessos = DB::table('users_niveis')->get();
+        return view('usuario.edit', compact('usuario','niveis_acessos'));
     }
 
     /**
