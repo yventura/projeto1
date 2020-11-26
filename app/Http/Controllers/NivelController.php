@@ -88,7 +88,7 @@ class NivelController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param int $id
-     * @return void
+     * @return Application|Factory|View|void
      */
     public function edit(int $id)
     {
@@ -104,7 +104,7 @@ class NivelController extends Controller
      *
      * @param Request $request
      * @param int $id
-     * @return void
+     * @return Application|RedirectResponse|Redirector|void
      */
     public function update(Request $request, int $id)
     {

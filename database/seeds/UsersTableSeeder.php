@@ -20,7 +20,6 @@ class UsersTableSeeder extends Seeder
             'prontuario' => '154399',
             'nivel'      => '1',
             'status'     => '1',
-            'nivel_acesso' => '1',
             'created_at' => now(),
             'updated_at' => now()
         ]);

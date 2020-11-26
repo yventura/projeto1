@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use App\Noturno;
+
 
 class NoturnoController extends Controller
 {
@@ -176,6 +179,19 @@ class NoturnoController extends Controller
         ];
 
         return json_encode($retorno);
-        dd($retorno);
+        //dd($retorno);
+    }
+
+    public function createPDF() {
+
+        $noturno = Noturno::all();
+        $inicio = $request->inicio;
+        $fim = $request->fim." 23:59:00";
+
+        //view()->share('noturno', $noturno);
+
+        $pdf = PDF::loadView('pdf_noturno', compact('noturno'));
+
+        return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Fisc_Noturna.pdf');
     }
 }

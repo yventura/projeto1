@@ -14,7 +14,6 @@
                                 <table class="table">
                                     <thead class="text-primary">
 
-                                    <a href="relatorio.php" target="_blank">Gerar</a>
                                         <th>Data</th>
                                         <th>Paralisação de eventos esportivos</th>
                                         <th>Denuncias recebidas no COPOM</th>
@@ -72,6 +71,9 @@
 
                                             </tbody>
                                         </table>
+                                        <a href="{{url('pdf_noturno')}}">
+                                            <button type="button" id="gerarRelatorio" class="btn btn-success">Gerar PDF</button>
+                                        </a>
                                     </div>
                                 </div>
                             </div>

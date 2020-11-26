@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
@@ -148,5 +149,16 @@ class LivreController extends Controller
     public function destroy(int $id)
     {
         //
+    }
+
+    public function createPDF() {
+
+        $feira_livre = Livre::all();
+        //$feira_livreTotal[] = $this->objFeira->all();
+        //dd($feira_livreTotal);
+
+        $pdf = PDF::loadView('pdf_feiralivre', compact('feira_livre')); //with('feira_livreTotal', $feira_livreTotal);
+
+        return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Feira_Livre.pdf');
     }
 }

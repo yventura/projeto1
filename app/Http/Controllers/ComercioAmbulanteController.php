@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use App\ComercioAmbulante;
 
@@ -325,5 +326,15 @@ class ComercioAmbulanteController extends Controller
         ];
 
         return json_encode($retorno);
+    }
+
+    public function createPDF() {
+
+        $ambulante = ComercioAmbulante::all();
+
+
+        $pdf = PDF::loadView('pdf_ambulante', compact('ambulante'));
+
+        return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Comercio_Ambulante.pdf');
     }
 }
