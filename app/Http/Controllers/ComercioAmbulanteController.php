@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use App\ComercioAmbulante;
+use Illuminate\Support\Facades\Redirect;
 
 class ComercioAmbulanteController extends Controller
 {
@@ -24,8 +25,8 @@ class ComercioAmbulanteController extends Controller
     public function index()
     {
 
-        $comercio_ambulante = $this->objComercioAmbulante->all();
-        $datas_unicas = array();
+        $comercio_ambulante = $this->objComercioAmbulante->paginate(5);
+        /* $datas_unicas = array();
         $soma_diaria = array();
         $erro = 0;
 
@@ -158,9 +159,9 @@ class ComercioAmbulanteController extends Controller
               'valor_ca_09' => $dados['valor_ca_09']
             ];
         }
-
-
-        return view('comercio_ambulante.index', compact('comercio_ambulante'))->with('comercio_ambulanteTotal', $comercio_ambulanteTotal);
+        */
+        //retirado ->with('comercio_ambulanteTotal', $comercio_ambulanteTotal)
+        return view('comercio_ambulante.index', compact('comercio_ambulante'));
     }
 
      /**
@@ -276,7 +277,6 @@ class ComercioAmbulanteController extends Controller
             ->orderBy('data', 'asc')
             ->get();
 
-
         $valor_ca_01 = 0;
         $valor_ca_02 = 0;
         $valor_ca_03 = 0;
@@ -328,13 +328,72 @@ class ComercioAmbulanteController extends Controller
         return json_encode($retorno);
     }
 
-    public function createPDF() {
+    public function createPDF(Request $request) {
+        $inicio = $request->data1;
+        $fim = $request->data2." 23:59:00";
 
-        $ambulante = ComercioAmbulante::all();
+        $retorno = array();
 
+        $comercio_ambulante = $this->objComercioAmbulante
+            ->select('*')
+            ->whereBetween('data', [$inicio, $fim])
+            ->orderBy('data', 'asc')
+            ->get();
 
-        $pdf = PDF::loadView('pdf_ambulante', compact('ambulante'));
+        if (count($comercio_ambulante) > 0) {
+            $valor_ca_01 = 0;
+            $valor_ca_02 = 0;
+            $valor_ca_03 = 0;
+            $valor_ca_04 = 0;
+            $valor_ca_05 = 0;
+            $valor_ca_06 = 0;
+            $valor_ca_07 = 0;
+            $valor_ca_08 = 0;
+            $valor_ca_09 = 0;
 
-        return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Comercio_Ambulante.pdf');
+            foreach($comercio_ambulante as $ambulante){
+                $retorno[] = (object)[
+                    'data' => date('d/m/Y', strtotime($ambulante->data)),
+                    'valor_ca_01' => $ambulante->valor_ca_01,
+                    'valor_ca_02' => $ambulante->valor_ca_02,
+                    'valor_ca_03' => $ambulante->valor_ca_03,
+                    'valor_ca_04' => $ambulante->valor_ca_04,
+                    'valor_ca_05' => $ambulante->valor_ca_05,
+                    'valor_ca_06' => $ambulante->valor_ca_06,
+                    'valor_ca_07' => $ambulante->valor_ca_07,
+                    'valor_ca_08' => $ambulante->valor_ca_08,
+                    'valor_ca_09' => $ambulante->valor_ca_09
+                ];
+
+                $valor_ca_01 += $ambulante->valor_ca_01;
+                $valor_ca_02 += $ambulante->valor_ca_02;
+                $valor_ca_03 += $ambulante->valor_ca_03;
+                $valor_ca_04 += $ambulante->valor_ca_04;
+                $valor_ca_05 += $ambulante->valor_ca_05;
+                $valor_ca_06 += $ambulante->valor_ca_06;
+                $valor_ca_07 += $ambulante->valor_ca_07;
+                $valor_ca_08 += $ambulante->valor_ca_08;
+                $valor_ca_09 += $ambulante->valor_ca_09;
+            }
+
+            $retorno[] = (object)[
+                'data' => 'Total',
+                'valor_ca_01' => $valor_ca_01,
+                'valor_ca_02' => $valor_ca_02,
+                'valor_ca_03' => $valor_ca_03,
+                'valor_ca_04' => $valor_ca_04,
+                'valor_ca_05' => $valor_ca_05,
+                'valor_ca_06' => $valor_ca_06,
+                'valor_ca_07' => $valor_ca_07,
+                'valor_ca_08' => $valor_ca_08,
+                'valor_ca_09' => $valor_ca_09
+            ];
+
+            $pdf = PDF::loadView('comercio_ambulante.pdf_ambulante', compact('retorno'));
+
+            return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Comercio_Ambulante.pdf');
+        } else {
+            return Redirect::Back()->withErrors(['Nenhum registro para a(s) data(s) selecionada(s)']);
+        }
     }
 }

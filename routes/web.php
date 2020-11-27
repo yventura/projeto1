@@ -52,26 +52,30 @@ Route::group(['middleware' => 'auth'], function () {
 
         // Rota Comercio Fixo
     Route::resource('comerciofixo','ComercioFixoController');
-    Route::get('pdf_comerciofixo', ['as' => 'comerciofixo.createPDF', 'uses' => 'ComercioFixoController@createPDF']);
+    Route::get('relatorio/comercio_fixo', ['as' => 'comerciofixo.createPDF', 'uses' => 'ComercioFixoController@createPDF']);
+    Route::post('relatorio/comercio_fixo', ['as' => 'comerciofixo.createPDF', 'uses' => 'ComercioFixoController@createPDF']);
     Route::post('api/comerciofixo', ['as' => 'api.fixo', 'uses' => 'ComercioFixoController@semanalApi']);
 
 //  ---------------------------------------------------
 
         //  Rota Noturno
     Route::resource('noturno', 'NoturnoController');
-    Route::get('pdf_noturno', ['as' => 'noturno.createPDF', 'uses' => 'NoturnoController@createPDF']);
+    Route::get('relatorio/noturno', ['as' => 'noturno.createPDF', 'uses' => 'NoturnoController@createPDF']);
+    Route::post('relatorio/noturno', ['as' => 'noturno.createPDF', 'uses' => 'NoturnoController@createPDF']);
     Route::post('api/noturno', ['as' => 'api.note', 'uses' => 'NoturnoController@semanalApi']);
 
 //  ---------------------------------------------------
 
         //  Rota Feira livre
     Route::resource('feira_livre','LivreController');
-    Route::get('pdf_feiralivre', ['as' => 'livre.createPDF', 'uses' => 'LivreController@createPDF']);
+    Route::get('relatorio/feira_livre', ['as' => 'livre.createPDF', 'uses' => 'LivreController@createPDF']);
+    Route::post('relatorio/feira_livre', ['as' => 'livre.createPDF', 'uses' => 'LivreController@createPDF']);
 //  ---------------------------------------------------
 
         //  Rota Comercio Ambulante
     Route::resource('comercio_ambulante', 'ComercioAmbulanteController');
-    Route::get('pdf_ambulante', ['as' => 'comercio_ambulante.createPDF', 'uses' => 'ComercioAmbulanteController@createPDF']);
+    Route::get('relatorio/comercio_ambulante', ['as' => 'comercio_ambulante.createPDF', 'uses' => 'ComercioAmbulanteController@createPDF']);
+    Route::post('relatorio/comercio_ambulante', ['as' => 'comercio_ambulante.createPDF', 'uses' => 'ComercioAmbulanteController@createPDF']);
     Route::post('api/comercio_ambulante', ['as' => 'api.ambulante', 'uses' => 'ComercioAmbulanteController@semanalApi']);
 
 //  ---------------------------------------------------

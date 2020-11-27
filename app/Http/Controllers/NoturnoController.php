@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use App\Noturno;
-
+use Illuminate\Support\Facades\Redirect;
 
 class NoturnoController extends Controller
 {
@@ -137,8 +136,6 @@ class NoturnoController extends Controller
 
     protected function semanalApi(Request $request){
         $inicio = $request->inicio;
-        //$inicio = '2020-11-01 00:01:00';
-        //$fim = '2020-11-20 23:59:00';
         $fim = $request->fim." 23:59:00";
 
         $retorno = array();
@@ -179,19 +176,54 @@ class NoturnoController extends Controller
         ];
 
         return json_encode($retorno);
-        //dd($retorno);
     }
 
-    public function createPDF() {
+    public function createPDF(Request $request) {
+        $inicio = $request->data1;
+        $fim = $request->data2." 23:59:00";
 
-        $noturno = Noturno::all();
-        $inicio = $request->inicio;
-        $fim = $request->fim." 23:59:00";
+        $retorno = array();
 
-        //view()->share('noturno', $noturno);
+        $noturno = $this->objNoturno
+            ->select('*')
+            ->whereBetween('data', [$inicio, $fim])
+            ->orderBy('data', 'asc')
+            ->get();
 
-        $pdf = PDF::loadView('pdf_noturno', compact('noturno'));
+        if (count($noturno) > 0) {
+            $paralisacao_evento = 0;
+            $comercio_ambulante = 0;
+            $atendimento_processos = 0;
+            $atendimento_denuncia = 0;
 
-        return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Fisc_Noturna.pdf');
+            foreach($noturno as $note){
+                $retorno[] = (object)[
+                    'data' => date('d/m/Y', strtotime($note->data)),
+                    'paralisacao_evento' => $note->paralisacao_evento,
+                    'comercio_ambulante' => $note->comercio_ambulante,
+                    'atendimento_processos' => $note->atendimento_processos,
+                    'atendimento_denuncia' => $note->atendimento_denuncia
+                ];
+
+                $paralisacao_evento += $note->paralisacao_evento;
+                $comercio_ambulante += $note->comercio_ambulante;
+                $atendimento_processos += $note->atendimento_processos;
+                $atendimento_denuncia += $note->atendimento_denuncia;
+            }
+
+            $retorno[] = (object)[
+                'data' => 'Total',
+                'paralisacao_evento' => $paralisacao_evento,
+                'comercio_ambulante' => $comercio_ambulante,
+                'atendimento_processos' => $atendimento_processos,
+                'atendimento_denuncia' => $atendimento_denuncia
+            ];
+
+            $pdf = PDF::loadView('noturno.pdf_noturno', compact('retorno'));
+
+            return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Fisc_Noturna.pdf');
+        } else {
+            return Redirect::Back()->withErrors(['Nenhum registro para a(s) data(s) selecionada(s)']);
+        }
     }
 }

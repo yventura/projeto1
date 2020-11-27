@@ -26,20 +26,22 @@
                                         <th>Denuncias</th>
                                     </thead>
                                     <tbody>
-                                        @foreach($comercio_ambulante as $comercio)
-                                            <tr>
-                                                <td scope="row">{{date('d/m/Y', strtotime($comercio->data))}}</td>
-                                                <td scope="row">{{$comercio->valor_ca_01}}</td>
-                                                <td scope="row">{{$comercio->valor_ca_02}}</td>
-                                                <td scope="row">{{$comercio->Desc03($comercio->desc_03)}}  {{$comercio->valor_ca_03}} </td>
-                                                <td scope="row">{{$comercio->valor_ca_04}}</td>
-                                                <td scope="row">{{$comercio->valor_ca_05}}</td>
-                                                <td scope="row">{{$comercio->Desc06($comercio->desc_06)}}  {{$comercio->valor_ca_06}}</td>
-                                                <td scope="row">{{$comercio->Desc07($comercio->desc_07)}}  {{$comercio->valor_ca_07}}</td>
-                                                <td scope="row">{{$comercio->Desc08($comercio->desc_08)}}  {{$comercio->valor_ca_08}}</td>
-                                                <td scope="row">{{$comercio->valor_ca_09}}</td>
-                                            </tr>
-                                        @endforeach
+                                        @if(!empty($comercio_ambulante))
+                                            @foreach($comercio_ambulante as $comercio)
+                                                <tr>
+                                                    <td scope="row">{{date('d/m/Y', strtotime($comercio->data))}}</td>
+                                                    <td scope="row">{{$comercio->valor_ca_01}}</td>
+                                                    <td scope="row">{{$comercio->valor_ca_02}}</td>
+                                                    <td scope="row">{{$comercio->Desc03($comercio->desc_03)}}  {{$comercio->valor_ca_03}} </td>
+                                                    <td scope="row">{{$comercio->valor_ca_04}}</td>
+                                                    <td scope="row">{{$comercio->valor_ca_05}}</td>
+                                                    <td scope="row">{{$comercio->Desc06($comercio->desc_06)}}  {{$comercio->valor_ca_06}}</td>
+                                                    <td scope="row">{{$comercio->Desc07($comercio->desc_07)}}  {{$comercio->valor_ca_07}}</td>
+                                                    <td scope="row">{{$comercio->Desc08($comercio->desc_08)}}  {{$comercio->valor_ca_08}}</td>
+                                                    <td scope="row">{{$comercio->valor_ca_09}}</td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -54,22 +56,29 @@
                             <h4 class="card-title ">Relatorio Dinâmico</h4>
                         </div>
                         <div class="card-body">
-                            <div class="row">
-                                <label class="col-sm-2 col-form-label">{{ __('Data Inicial:') }}</label>
-                                <div class="col-sm-3">
-                                    <div class="form-group">
-                                        <input class="form-control" name="data" id="input-data-inicial" type="date" max="{{ date('Y-m-d') }}" />
+                            @if($errors->any())
+                                <h4 style="color: red;">Erro: {{$errors->first()}}</h4>
+                            @endif
+                            <form action="{{ route('comercio_ambulante.createPDF') }}" method="POST">
+                            @csrf
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">{{ __('Data Inicial:') }}</label>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <input class="form-control" name="data1" id="input-data-inicial" type="date" max="{{ date('Y-m-d') }}" required />
+                                        </div>
                                     </div>
-                                </div>
 
-                                <label class="col-sm-2 col-form-label">{{ __('Data Final:') }}</label>
-                                <div class="col-sm-3">
-                                    <div class="form-group">
-                                        <input class="form-control" name="data" id="input-data-final" type="date" max="{{ date('Y-m-d') }}" />
+                                    <label class="col-sm-2 col-form-label">{{ __('Data Final:') }}</label>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <input class="form-control" name="data2" id="input-data-final" type="date" max="{{ date('Y-m-d') }}" required />
+                                        </div>
                                     </div>
+                                    <button type="button" id="gerarRelatorio" class="btn btn-success">Filtrar</button>
+                                    <button type="submit" id="imprimirRelatorio" class="btn btn-warning">Imprimir</button>
                                 </div>
-                                <button type="button" id="gerarRelatorio" class="btn btn-success">Filtrar</button>
-                            </div>
+                            </form>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class=" text-primary">
