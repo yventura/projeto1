@@ -23,6 +23,7 @@ class Authenticate implements AuthenticatesRequests
      * @param  \Illuminate\Contracts\Auth\Factory  $auth
      * @return void
      */
+
     public function __construct(Auth $auth)
     {
         $permissoes = DB::table('users_niveis')

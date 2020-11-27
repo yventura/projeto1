@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\RedirectResponse;
@@ -286,5 +287,18 @@ class ComercioFixoController extends Controller
             'valor_cf_09' => $valor_cf_09
         ];
         return json_encode($retorno);
+    }
+
+
+    public function createPDF() {
+
+        $comerciofixo = ComercioFixo::all();
+
+
+        //view()->share('noturno', $noturno);
+
+        $pdf = PDF::loadView('pdf_comerciofixo', compact('comerciofixo'));
+
+        return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Comercio_Fixo.pdf');
     }
 }

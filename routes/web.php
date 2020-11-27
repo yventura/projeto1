@@ -44,16 +44,40 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 	//Para CRUD
+
+        // Rota Usuarios
 	Route::resource('usuario','UsersController');
+
     Route::get('comerciofixo/semanal', ['as' => 'comerciofixo.semanal', 'uses' => 'ComercioFixoController@semanal']);
+
+        // Rota Comercio Fixo
     Route::resource('comerciofixo','ComercioFixoController');
-    Route::resource('noturno', 'NoturnoController');
-    Route::resource('feira_livre','LivreController');
-    Route::resource('comercio_ambulante', 'ComercioAmbulanteController');
-    Route::resource('nivel','NivelController');
-	//Para API
+    Route::get('pdf_comerciofixo', ['as' => 'comerciofixo.createPDF', 'uses' => 'ComercioFixoController@createPDF']);
     Route::post('api/comerciofixo', ['as' => 'api.fixo', 'uses' => 'ComercioFixoController@semanalApi']);
+
+//  ---------------------------------------------------
+
+        //  Rota Noturno
+    Route::resource('noturno', 'NoturnoController');
+    Route::get('pdf_noturno', ['as' => 'noturno.createPDF', 'uses' => 'NoturnoController@createPDF']);
     Route::post('api/noturno', ['as' => 'api.note', 'uses' => 'NoturnoController@semanalApi']);
+
+//  ---------------------------------------------------
+
+        //  Rota Feira livre
+    Route::resource('feira_livre','LivreController');
+    Route::get('pdf_feiralivre', ['as' => 'livre.createPDF', 'uses' => 'LivreController@createPDF']);
+//  ---------------------------------------------------
+
+        //  Rota Comercio Ambulante
+    Route::resource('comercio_ambulante', 'ComercioAmbulanteController');
+    Route::get('pdf_ambulante', ['as' => 'comercio_ambulante.createPDF', 'uses' => 'ComercioAmbulanteController@createPDF']);
     Route::post('api/comercio_ambulante', ['as' => 'api.ambulante', 'uses' => 'ComercioAmbulanteController@semanalApi']);
+
+//  ---------------------------------------------------
+        // Rota Niveis
+
+    Route::resource('nivel','NivelController');
+//  ---------------------------------------------------
 });
 
