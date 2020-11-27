@@ -1,67 +1,60 @@
 
-    <!DOCTYPE html>
-    <html lang="en">
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Novas tags de estrutura em HTML5</title>
+        <style>
+            table {
+                border-collapse: collapse;
+                border: 1px solid black;
+            }
 
-            <html>
-                <head>
-                    <title>Novas tags de estrutura em HTML5</title>
+            th,td {
+                border: 1px solid black;
+            }
+            table {
+                table-layout: auto;
+                width: 100%;
+            }
+        </style>
+    </head>
 
-                    <style>
-                        table {
-                            border-collapse: collapse;
-                            border: 1px solid black;
-                        }
-
-                        th,td {
-                            border: 1px solid black;
-                        }
-                        table {
-                            table-layout: auto;
-                            width: 100%;
-                        }
-                    </style>
-
-                </head>
-
-            <body>
-
-                <header>
-                    <h4 style="text-align: center;">SECRETARIA DE FINANÇAS</h4>
-                    <h4 style="text-align: center;">Diretoria de Operações Especiais e Fiscalização de Taxas</h4>
-                    <h5 style="text-align: center;">FISCALIZAÇÃO NOTURNA</h5>
-                </header>
-
-                <table>
+    <body>
+        <header>
+            <h4 style="text-align: center;">SECRETARIA DE FINANÇAS</h4>
+            <h4 style="text-align: center;">Diretoria de Operações Especiais e Fiscalização de Taxas</h4>
+            <h5 style="text-align: center;">FISCALIZAÇÃO NOTURNA</h5>
+        </header>
+        <table>
+            <tr>
+                <th>Data</th>
+                <th>Paralisação de eventos esportivos</th>
+                <th>Denuncias recebidas no COPOM</th>
+                <th>Despacho de processos</th>
+                <th>Trabalho de coibição, inibição e manutenção de comercio ambulante irregular</th>
+            </tr>
+            <tbody id="tableRetorno">
+                @foreach($retorno as $noturno)
                     <tr>
-                        <th>Data</th>
-                        <th>Vistoria processos</th>
-                        <th>Paralisação esportes</th>
-                        <th>Orientação para ambulantes irregulares</th>
-                        <th>Horário Especial</th>
-                        <th>Denúncias COPOM</th>
+                        <td>{{ $noturno->data }}</td>
+                        <td>{{ $noturno->paralisacao_evento }}</td>
+                        <td>{{ $noturno->comercio_ambulante }}</td>
+                        <td>{{ $noturno->atendimento_processos }}</td>
+                        <td>{{ $noturno->atendimento_denuncia }}</td>
                     </tr>
-
-
-                    <tbody id="tableRetorno">
-
-                    </tbody>
-
-                    @foreach($noturno as $note)
-                        <tr>
-                            <th>{{date('d/m/Y', strtotime($note->data))}}</th>
-                        </tr>
-                    @endforeach
-                </table>
-                <br>
-                <footer>
-                    <p style="text-align: left">Assinatura _________________________</p>
-                    <p style="text-align: left">Data __/__/____</p>
-                </footer>
-            </body>
-    </html>
+                @endforeach
+            </tbody>
+        </table>
+        <br>
+        <footer>
+            <p style="text-align: left">Assinatura _________________________</p>
+            <p style="text-align: left">Data __/__/____</p>
+        </footer>
+    </body>
+</html>
 
 
 

@@ -11,6 +11,7 @@ use App\ComercioFixo;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Redirect;
 
 class ComercioFixoController extends Controller
 {
@@ -30,8 +31,8 @@ class ComercioFixoController extends Controller
 
     public function index()
     {
-        //$comerciofixo = $this->objFixo->paginate(5);
-
+        //$comerciofixo = $this->objComercio_Fixo->paginate(5);
+        $comercio_FixoTotal = null;
         $comerciofixo = $this->objComercio_Fixo->all();
         $datas_unicas = array();
         $soma_diaria = array();
@@ -290,15 +291,75 @@ class ComercioFixoController extends Controller
     }
 
 
-    public function createPDF() {
+    public function createPDF(Request $request) {
+        $inicio = $request->data1;
+        $fim = $request->data2." 23:59:00";
 
-        $comerciofixo = ComercioFixo::all();
+        $retorno = array();
 
+        $comerciofixo = $this->objComercio_Fixo
+            ->select('*')
+            ->whereBetween('data', [$inicio, $fim])
+            ->orderBy('data', 'asc')
+            ->get();
 
-        //view()->share('noturno', $noturno);
+        if (count($comerciofixo) > 0) {
 
-        $pdf = PDF::loadView('pdf_comerciofixo', compact('comerciofixo'));
+            $valor_cf_01 = 0;
+            $valor_cf_02 = 0;
+            $valor_cf_03 = 0;
+            $valor_cf_04 = 0;
+            $valor_cf_05 = 0;
+            $valor_cf_06 = 0;
+            $valor_cf_07 = 0;
+            $valor_cf_08 = 0;
+            $valor_cf_09 = 0;
 
-        return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Comercio_Fixo.pdf');
+            foreach($comerciofixo as $fixo){
+                $retorno[] = (object)[
+                    'data' => date('d/m/Y', strtotime($fixo->data)),
+                    'valor_cf_01' => $fixo->valor_cf_01,
+                    'valor_cf_02' => $fixo->valor_cf_02,
+                    'valor_cf_03' => $fixo->valor_cf_03,
+                    'valor_cf_04' => $fixo->valor_cf_04,
+                    'valor_cf_05' => $fixo->valor_cf_05,
+                    'valor_cf_06' => $fixo->valor_cf_06,
+                    'valor_cf_07' => $fixo->valor_cf_07,
+                    'valor_cf_08' => $fixo->valor_cf_08,
+                    'valor_cf_09' => $fixo->valor_cf_09
+                ];
+
+                $valor_cf_01 += $fixo->valor_cf_01;
+                $valor_cf_02 += $fixo->valor_cf_02;
+                $valor_cf_03 += $fixo->valor_cf_03;
+                $valor_cf_04 += $fixo->valor_cf_04;
+                $valor_cf_05 += $fixo->valor_cf_05;
+                $valor_cf_06 += $fixo->valor_cf_06;
+                $valor_cf_07 += $fixo->valor_cf_07;
+                $valor_cf_08 += $fixo->valor_cf_08;
+                $valor_cf_09 += $fixo->valor_cf_09;
+            }
+
+            $retorno[] = (object)[
+                'data' => 'Total',
+                'valor_cf_01' => $valor_cf_01,
+                'valor_cf_02' => $valor_cf_02,
+                'valor_cf_03' => $valor_cf_03,
+                'valor_cf_04' => $valor_cf_04,
+                'valor_cf_05' => $valor_cf_05,
+                'valor_cf_06' => $valor_cf_06,
+                'valor_cf_07' => $valor_cf_07,
+                'valor_cf_08' => $valor_cf_08,
+                'valor_cf_09' => $valor_cf_09
+            ];
+
+            //dd($retorno);
+
+            $pdf = PDF::loadView('comerciofixo.pdf_comerciofixo', compact('retorno'));
+
+            return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Comercio_Fixo.pdf');
+        } else {
+            return Redirect::Back()->withErrors(['Nenhum registro para a(s) data(s) selecionada(s)']);
+        }
     }
 }

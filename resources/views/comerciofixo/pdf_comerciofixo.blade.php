@@ -33,17 +33,20 @@
         <th>Triagem/Pesquisas/Despacho</th>
         <th>Administrativo</th>
     </tr>
-
-    {{--    @foreach($feira_livreTotal as $feira)--}}
-    {{--        @foreach($feira->informacoes as $local => $informacoes)--}}
-    {{--            <tr>--}}
-    {{--                <td>{{$feira->data}}</td>--}}
-    {{--                <td>{{App\Livre::Desc01($local)}}</td>--}}
-    {{--                <td>{{ implode('', $informacoes) }}</td>--}}
-    {{--            </tr>--}}
-    {{--        @endforeach--}}
-    {{--    @endforeach--}}
-
+    @foreach($retorno as $comercio)
+        <tr>
+            <td>{{ $comercio->data }}</td>
+            <td>{{ $comercio->valor_cf_01 }}</td>
+            <td>{{ $comercio->valor_cf_02 }}</td>
+            <td>{{ $comercio->valor_cf_03 }}</td>
+            <td>{{ $comercio->valor_cf_04 }}</td>
+            <td>{{ $comercio->valor_cf_05 }}</td>
+            <td>{{ $comercio->valor_cf_06 }}</td>
+            <td>{{ $comercio->valor_cf_07 }}</td>
+            <td>{{ $comercio->valor_cf_08 }}</td>
+            <td>{{ $comercio->valor_cf_09 }}</td>
+        </tr>
+    @endforeach
 </table>
 <br>
 <footer>

@@ -25,20 +25,22 @@
                                         <th>Procedimento Administrativo</th>
                                     </thead>
                                     <tbody>
-                                        @foreach( $comerciofixo as $comerciof)
-                                            <tr>
-                                                <td scope="row">{{date('d/m/Y', strtotime($comerciof->data))}}</td>
-                                                <td scope="row">{{$comerciof->valor_cf_01}}</td>
-                                                <td scope="row">{{$comerciof->valor_cf_02}}</td>
-                                                <td scope="row">{{$comerciof->valor_cf_03}}</td>
-                                                <td scope="row">{{$comerciof->valor_cf_04}}</td>
-                                                <td scope="row">{{$comerciof->valor_cf_05}}</td>
-                                                <td scope="row">{{$comerciof->valor_cf_06}}</td>
-                                                <td scope="row">{{$comerciof->valor_cf_07}}</td>
-                                                <td scope="row">{{$comerciof->Desc08($comerciof->desc_08)}}{{$comerciof->valor_cf_08}}</td>
-                                                <td scope="row">{{$comerciof->Desc09($comerciof->desc_09)}}{{$comerciof->valor_cf_09}}</td>
-                                            </tr>
-                                        @endforeach
+                                        @if (!empty($comerciofixo))
+                                            @foreach( $comerciofixo as $comerciof)
+                                                <tr>
+                                                    <td scope="row">{{date('d/m/Y', strtotime($comerciof->data))}}</td>
+                                                    <td scope="row">{{$comerciof->valor_cf_01}}</td>
+                                                    <td scope="row">{{$comerciof->valor_cf_02}}</td>
+                                                    <td scope="row">{{$comerciof->valor_cf_03}}</td>
+                                                    <td scope="row">{{$comerciof->valor_cf_04}}</td>
+                                                    <td scope="row">{{$comerciof->valor_cf_05}}</td>
+                                                    <td scope="row">{{$comerciof->valor_cf_06}}</td>
+                                                    <td scope="row">{{$comerciof->valor_cf_07}}</td>
+                                                    <td scope="row">{{$comerciof->Desc08($comerciof->desc_08)}}{{$comerciof->valor_cf_08}}</td>
+                                                    <td scope="row">{{$comerciof->Desc09($comerciof->desc_09)}}{{$comerciof->valor_cf_09}}</td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -53,22 +55,30 @@
                             <h4 class="card-title ">Relatorio Dinâmico</h4>
                         </div>
                         <div class="card-body">
-                            <div class="row">
-                                <label class="col-sm-2 col-form-label">{{ __('Data Inicial:') }}</label>
-                                <div class="col-sm-3">
-                                    <div class="form-group">
-                                        <input class="form-control" name="data" id="input-data-inicial" type="date" max="{{ date('Y-m-d') }}" />
+                            @if($errors->any())
+                                <h4 style="color: red;">Erro: {{$errors->first()}}</h4>
+                            @endif
+                            <form action="{{ route('livre.createPDF') }}" method="POST">
+                            @csrf
+                                <div class="row">
+                                    <label class="col-sm-2 col-form-label">{{ __('Data Inicial:') }}</label>
+                                    <div class="col-sm-2">
+                                        <div class="form-group">
+                                            <input class="form-control" name="data1" id="input-data-inicial" type="date" max="{{ date('Y-m-d') }}" required />
+                                        </div>
                                     </div>
-                                </div>
 
-                                <label class="col-sm-2 col-form-label">{{ __('Data Final:') }}</label>
-                                <div class="col-sm-3">
-                                    <div class="form-group">
-                                        <input class="form-control" name="data" id="input-data-final" type="date" max="{{ date('Y-m-d') }}" />
+                                    <label class="col-sm-2 col-form-label">{{ __('Data Final:') }}</label>
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <input class="form-control" name="data2" id="input-data-final" type="date" max="{{ date('Y-m-d') }}" required/>
+                                        </div>
                                     </div>
-                                </div>
                                     <button type="button" id="gerarRelatorio" class="btn btn-success">Filtrar</button>
-                            </div>
+
+                                    <button type="submit" id="imprimirRelatorio" class="btn btn-warning">Imprimir</button>
+                                </div>
+                            </form>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class=" text-primary">
