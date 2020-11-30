@@ -19,8 +19,6 @@ class NoturnoController extends Controller
 
     public function index()
     {
-
-
         $noturno = $this->objNoturno->all();
         $datas_unicas = array();
         $soma_diaria = array();
@@ -94,27 +92,6 @@ class NoturnoController extends Controller
           'atendimento_processos'=>$request->atendimento_processos
       ]);
       if($cad){return redirect('noturno');}
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-
-    public function edit($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
     }
 
     public function semanal() {

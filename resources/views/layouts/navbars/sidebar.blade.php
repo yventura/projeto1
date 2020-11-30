@@ -84,20 +84,14 @@
                     <!-- Começo da View do Comercio Fixo-->
                     <li class="nav-item {{ ($activePage == 'comerciofixoIndex' || $activePage == 'comerciofixoSemanal') ? ' active' : '' }}">
                         <a class="nav-link" data-toggle="collapse" href="#comerciofixo" aria-expanded="true">
-                            <p>{{ __('Relatorios Semanais') }}</p>
+                            <p>{{ __('Comercio Fixo') }}</p>
                         </a>
                         <div class="collapse {{ ($activePage == 'comerciofixoIndex') ? 'show' : '' }}" id="comerciofixo">
                             <ul class="nav">
                                 <li class="nav-item{{ $activePage == 'comerciofixoIndex' ? ' active' : '' }}">
                                     <a class="nav-link" href="{{ route('comerciofixo.index') }}">
                                         <i class="material-icons">list</i>
-                                        <span class="sidebar-normal"> {{ __('Relatorio Diario - Comercio Fixo') }} </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item{{ $activePage == 'comerciofixoSemanal' ? ' active' : '' }}">
-                                    <a class="nav-link" href="{{ route('comerciofixo.semanal') }}">
-                                        <i class="material-icons">list</i>
-                                        <span class="sidebar-normal"> {{ __('Relatorio Customizado - Comercio Fixo') }} </span>
+                                        <span class="sidebar-normal"> {{ __('Relatorio - Comercio Fixo') }} </span>
                                     </a>
                                 </li>
                             </ul>

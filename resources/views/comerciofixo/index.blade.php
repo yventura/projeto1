@@ -58,7 +58,7 @@
                             @if($errors->any())
                                 <h4 style="color: red;">Erro: {{$errors->first()}}</h4>
                             @endif
-                            <form action="{{ route('livre.createPDF') }}" method="POST">
+                            <form action="{{ route('comerciofixo.createPDF') }}" method="POST">
                             @csrf
                                 <div class="row">
                                     <label class="col-sm-2 col-form-label">{{ __('Data Inicial:') }}</label>

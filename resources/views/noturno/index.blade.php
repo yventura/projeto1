@@ -87,6 +87,7 @@
             </div>
         </div>
     </div>
+
     <script type="text/javascript">
         $("#gerarRelatorio").click(function() {
             let data_inicial = document.getElementById('input-data-inicial').value;

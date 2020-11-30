@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
         // Rota Usuarios
 	Route::resource('usuario','UsersController');
 
-    Route::get('comerciofixo/semanal', ['as' => 'comerciofixo.semanal', 'uses' => 'ComercioFixoController@semanal']);
+//  ---------------------------------------------------
 
         // Rota Comercio Fixo
     Route::resource('comerciofixo','ComercioFixoController');
@@ -70,6 +70,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('feira_livre','LivreController');
     Route::get('relatorio/feira_livre', ['as' => 'livre.createPDF', 'uses' => 'LivreController@createPDF']);
     Route::post('relatorio/feira_livre', ['as' => 'livre.createPDF', 'uses' => 'LivreController@createPDF']);
+    Route::post('api/feira_livre', ['as' => 'api.livre', 'uses' => 'livreController@semanalApi']);
 //  ---------------------------------------------------
 
         //  Rota Comercio Ambulante

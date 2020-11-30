@@ -66,10 +66,10 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <select class="form-control" name="nivel" id="nivel" required >
-                                                <option value=" ">Selecione:</option>
-                                                <option value="0">Administrador</option>
-                                                <option value="1">Supervisor   </option>
-                                                <option value="2">Padrao       </option>
+                                                <option value=" ">Selecione</option>
+                                                <option value="1">Administrador</option>
+                                                <option value="2">Supervisor</option>
+                                                <option value="3">Fiscal</option>
                                             </select>
                                         </div>
                                     </div>
@@ -80,8 +80,8 @@
                                     <div class="col-sm-4">
                                         <div class="form-group">
                                             <select class="form-control" name="status" id="input-status" required >
-                                                <option value="0">Habilitado      </option>
-                                                <option value="1">Desabilitado    </option>
+                                                <option value="0">Desabilitado    </option>
+                                                <option value="1">Habilitado      </option>
                                             </select>
                                         </div>
                                     </div>

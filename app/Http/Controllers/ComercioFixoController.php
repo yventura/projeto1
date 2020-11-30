@@ -1,28 +1,17 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use Barryvdh\DomPDF\Facade as PDF;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\ComercioFixo;
-use Illuminate\Http\Response;
-use Illuminate\Routing\Redirector;
-use Illuminate\View\View;
 use Illuminate\Support\Facades\Redirect;
 
 class ComercioFixoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
+
     private $objComercio_Fixo;
-
-
 
     public function __construct()
     {
@@ -75,18 +64,18 @@ class ComercioFixoController extends Controller
                     $valor_cf_06 += $comercio->valor_cf_06;
                     $valor_cf_07 += $comercio->valor_cf_07;
 
-                    if($somente_08 == '1' && $somente_08 != '0') {
+                    if ($somente_08 == '1' && $somente_08 != '0') {
                         $valor_cf_08_1 += $comercio->valor_cf_08;
 
-                    } else if($somente_08 == '2' && $somente_08 != '0'){
+                    } else if ($somente_08 == '2' && $somente_08 != '0') {
                         $valor_cf_08_2 += $comercio->valor_cf_08;
 
-                    } else if($somente_08 == '3' && $somente_08 != '0'){
+                    } else if ($somente_08 == '3' && $somente_08 != '0') {
                         $valor_cf_08_3 += $comercio->valor_cf_08;
 
                     }
 
-                    if($somente_09 == '1' && $somente_09 != '0') {
+                    if ($somente_09 == '1' && $somente_09 != '0') {
                         $valor_cf_09_1 += $comercio->valor_cf_09;
                     }
 
@@ -106,7 +95,6 @@ class ComercioFixoController extends Controller
                 }
             }
         }
-
 
 
         //Faz a leitura dos dados diarios e adiciona a variavel final em forma de objeto
@@ -130,87 +118,34 @@ class ComercioFixoController extends Controller
         return view('comerciofixo.index', compact('comerciofixo'))->with('comercio_FixoTotal', $comercio_FixoTotal);
     }
 
-     /**
-     * Show the form for creating a new resource.
-     *
-     * @return Application|Factory|Response|View
-     */
     public function create()
     {
         return view('comerciofixo.add');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-     * @return Application|RedirectResponse|Response|Redirector
-     */
     public function store(Request $request)
     {
-        $cad=$this->objComercio_Fixo->create([
-            'date'=>$request->date,
-            'valor_cf_01'=>$request->valor_cf_01,
-            'valor_cf_02'=>$request->valor_cf_02,
-            'valor_cf_03'=>$request->valor_cf_03,
-            'valor_cf_04'=>$request->valor_cf_04,
-            'valor_cf_05'=>$request->valor_cf_05,
-            'valor_cf_06'=>$request->valor_cf_06,
-            'valor_cf_07'=>$request->valor_cf_07,
-            'valor_cf_08'=>$request->valor_cf_08,
-            'desc_08'=>$request->desc_08,
-            'valor_cf_09'=>$request->valor_cf_09,
-            'desc_09'=>$request->desc_09
+        $cad = $this->objComercio_Fixo->create([
+            'date' => $request->date,
+            'valor_cf_01' => $request->valor_cf_01,
+            'valor_cf_02' => $request->valor_cf_02,
+            'valor_cf_03' => $request->valor_cf_03,
+            'valor_cf_04' => $request->valor_cf_04,
+            'valor_cf_05' => $request->valor_cf_05,
+            'valor_cf_06' => $request->valor_cf_06,
+            'valor_cf_07' => $request->valor_cf_07,
+            'valor_cf_08' => $request->valor_cf_08,
+            'desc_08' => $request->desc_08,
+            'valor_cf_09' => $request->valor_cf_09,
+            'desc_09' => $request->desc_09
         ]);
-        if($cad){return redirect('comerciofixo');}
+        if ($cad) {
+            return redirect('comerciofixo');
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param int $id
-     * @return void
-     */
-    public function show(int $id)
+    public function semanal()
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     * @return void
-     */
-    public function edit(int $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param Request $request
-     * @param int $id
-     * @return void
-     */
-    public function update(Request $request, int $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return void
-     */
-    public function destroy(int $id)
-    {
-        //
-    }
-
-    public function semanal() {
 
         $comerciofixo = null;
         if (!empty($Request)) {
@@ -221,15 +156,17 @@ class ComercioFixoController extends Controller
         return view("comerciofixo.index", compact('comerciofixo'));
     }
 
-    public function Sem() {
-        $comerciofixo  = $this->objComercio_Fixo->Model::query()->paginate(5);
+    public function Sem()
+    {
+        $comerciofixo = $this->objComercio_Fixo->Model::query()->paginate(5);
 
         return view("comerciofixo", compact('comerciofixo'));
     }
 
-    protected function semanalApi(Request $request){
+    protected function semanalApi(Request $request)
+    {
         $inicio = $request->inicio;
-        $fim = $request->fim." 23:59:00";
+        $fim = $request->fim . " 23:59:00";
 
         $retorno = array();
 
@@ -250,7 +187,7 @@ class ComercioFixoController extends Controller
         $valor_cf_09 = 0;
 
 
-        foreach($comerciofixo as $fixo){
+        foreach ($comerciofixo as $fixo) {
             $retorno[] = (object)[
                 'data' => date('d/m/Y', strtotime($fixo->data)),
                 'valor_cf_01' => $fixo->valor_cf_01,
@@ -291,9 +228,10 @@ class ComercioFixoController extends Controller
     }
 
 
-    public function createPDF(Request $request) {
+    public function createPDF(Request $request)
+    {
         $inicio = $request->data1;
-        $fim = $request->data2." 23:59:00";
+        $fim = $request->data2 . " 23:59:00";
 
         $retorno = array();
 
@@ -315,7 +253,7 @@ class ComercioFixoController extends Controller
             $valor_cf_08 = 0;
             $valor_cf_09 = 0;
 
-            foreach($comerciofixo as $fixo){
+            foreach ($comerciofixo as $fixo) {
                 $retorno[] = (object)[
                     'data' => date('d/m/Y', strtotime($fixo->data)),
                     'valor_cf_01' => $fixo->valor_cf_01,
@@ -357,9 +295,11 @@ class ComercioFixoController extends Controller
 
             $pdf = PDF::loadView('comerciofixo.pdf_comerciofixo', compact('retorno'));
 
+
             return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Comercio_Fixo.pdf');
         } else {
             return Redirect::Back()->withErrors(['Nenhum registro para a(s) data(s) selecionada(s)']);
         }
     }
 }
+

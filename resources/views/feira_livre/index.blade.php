@@ -54,6 +54,16 @@
                                     <input class="form-control" name="data1" id="input-data-inicial" type="date" max="{{ date('Y-m-d') }}" required />
                                 </div>
                             </div>
+
+                            <label class="col-sm-2 col-form-label">{{ __('Data De Busca 2:') }}</label>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <input class="form-control" name="data2" id="input-data-final" type="date" max="{{ date('Y-m-d') }}" required />
+                                </div>
+                            </div>
+
+                            <button type="button" id="gerarRelatorio" class="btn btn-success">Filtrar</button>
+
                             <button type="submit" id="imprimirRelatorio" class="btn btn-warning">Imprimir</button>
                         </div>
                     </form>
