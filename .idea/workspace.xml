@@ -23,25 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e04b48d-9af4-4c1d-b2b1-fbcce681f0f7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ComercioAmbulanteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ComercioAmbulanteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ComercioFixoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ComercioFixoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LivreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LivreController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NivelController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NivelController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NoturnoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NoturnoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UsersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/comerciofixo/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comerciofixo/add.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/comerciofixo/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comerciofixo/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/comerciofixo/semanal.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/comercio_ambulante/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comercio_ambulante/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/comercio_ambulante/pdf_ambulante.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comercio_ambulante/pdf_ambulante.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/feira_livre/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feira_livre/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/noturno/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/noturno/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/usuario/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/usuario/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +257,7 @@
       <workItem from="1606219602080" duration="17510000" />
       <workItem from="1606306757431" duration="9986000" />
       <workItem from="1606757253065" duration="1191000" />
-      <workItem from="1606759785522" duration="7209000" />
+      <workItem from="1606759785522" duration="10210000" />
     </task>
     <servers />
   </component>

@@ -89,11 +89,69 @@ class LivreController extends Controller
         if($cad){return redirect('feira_livre');}
     }
 
+    public function semanal() {
+
+        $feira_livre = null;
+        if (!empty($Request)) {
+            $feira_livre = $this->objFeira->Model::query()->paginate(5);
+            //dd($request);
+            die();
+        }
+        return view("feira_livre.index", compact('feira_livre'));
+    }
+
+    public function Sem() {
+        $feira_livre  = $this->objFeira->Model::query()->paginate(5);
+
+        return view("feira_livre", compact('feira_livre'));
+    }
+
+    protected function semanalApi(Request $request){
+        $inicio = $request->inicio;
+        $fim = $request->fim." 23:59:00";
+
+        $retorno = array();
+
+        $feira_livre = $this->objFeira
+            ->select('*')
+            ->whereBetween('data', [$inicio, $fim])
+            ->orderBy('data', 'asc')
+            ->get();
+
+
+        $valor_fl_01 = 0;
+        $valor_fl_02 = "";
+
+        foreach($feira_livre as $livre){
+            $retorno[] = (object)[
+                'data' => date('d/m/Y', strtotime($livre->data)),
+                'valor_fl_01' => $livre->valor_fl_01,
+                'valor_fl_02' => $livre->valor_fl_02
+            ];
+
+            $valor_fl_01 += $livre->valor_fl_01;
+            $valor_fl_02 = $livre->valor_fl_02;
+        }
+
+        $retorno[] = (object)[
+            'data' => 'Total',
+            'valor_fl_01' => $valor_fl_01,
+            'valor_fl_02' => $valor_fl_02,
+        ];
+
+        return json_encode($retorno);
+    }
+
     public function createPDF(Request $request) {
         $data = $request->data1;
-        $data2 = $request->data2;
+        $data2 = $request->data2." 23:59:00";
 
-        $feira_livre = $this->objFeira->where('data', 'data2', 'LIKE', $data.'%', $data2.'%')->get();
+        $feira_livre = $this->objFeira
+            ->select('*')
+            ->whereBetween('data', [$data, $data2])
+            ->orderBy('data', 'asc')
+            ->get();
+
         $datas_unicas = array();
         $soma_diaria = array();
         $feira_livreTotal = array();

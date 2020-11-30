@@ -48,17 +48,17 @@
                     <form action="{{ route('livre.createPDF') }}" method="POST">
                     @csrf
                         <div class="row">
-                            <label class="col-sm-2 col-form-label">{{ __('Data De Busca:') }}</label>
-                            <div class="col-sm-3">
+                            <label class="col-sm-2 col-form-label">{{ __('Data Inicio:') }}</label>
+                            <div class="col-sm-2">
                                 <div class="form-group">
-                                    <input class="form-control" name="data1" id="input-data-inicial" type="date" max="{{ date('Y-m-d') }}" required />
+                                    <input class="form-control" name="data1" id="input-data-inicial" type="date" required />
                                 </div>
                             </div>
 
-                            <label class="col-sm-2 col-form-label">{{ __('Data De Busca 2:') }}</label>
-                            <div class="col-sm-3">
+                            <label class="col-sm-2 col-form-label">{{ __('Data Fim:') }}</label>
+                            <div class="col-sm-2">
                                 <div class="form-group">
-                                    <input class="form-control" name="data2" id="input-data-final" type="date" max="{{ date('Y-m-d') }}" required />
+                                    <input class="form-control" name="data2" id="input-data-final" type="date" required />
                                 </div>
                             </div>
 
@@ -75,22 +75,83 @@
                                 <th>Informação</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @if(!empty($feira_livreTotal))
-                                @foreach($feira_livreTotal as $feira)
-                                    @foreach($feira->informacoes as $local => $informacoes)
-                                        <tr>
-                                            <td>{{$feira->data}}</td>
-                                            <td>{{App\Livre::Desc01($local)}}</td>
-                                            <td>{{ implode('', $informacoes) }}</td>
-                                        </tr>
-                                    @endforeach
-                                @endforeach
-                            @endif
+                        <tbody id="tableRetorno">
+{{--                            @if(!empty($feira_livreTotal))--}}
+{{--                                @foreach($feira_livreTotal as $feira)--}}
+{{--                                    @foreach($feira->informacoes as $local => $informacoes)--}}
+{{--                                        <tr>--}}
+{{--                                            <td>{{$feira->data}}</td>--}}
+{{--                                            <td>{{App\Livre::Desc01($local)}}</td>--}}
+{{--                                            <td>{{ implode('', $informacoes) }}</td>--}}
+{{--                                        </tr>--}}
+{{--                                    @endforeach--}}
+{{--                                @endforeach--}}
+{{--                            @endif--}}
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $("#gerarRelatorio").click(function() {
+            let data_inicial = document.getElementById('input-data-inicial').value;
+            let data_final = document.getElementById('input-data-final').value;
+            let error = 0;
+
+            if (data_inicial == "" || data_final == "") {
+                alert("Data inicial ou final não selecionada!");
+                error++;
+            }
+
+            if (data_final < data_inicial) {
+                alert("Data Final deve ser maior que a data inicial");
+                error++;
+            }
+
+            if (!error) {
+                $.ajax({
+                    type:'POST',
+                    header: {
+                        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+                    },
+                    url:"{{ route('api.livre') }}",
+                    dataType: 'JSON',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        inicio: data_inicial,
+                        fim: data_final
+                    },
+                    success: function(data) {
+                        if (data.length > 0) {
+                            console.log(data);
+                            adicionaRow(data);
+                        }
+                    },
+                    error: function(data) {
+                        console.log(data);
+                        //alert("Erro");
+                    }
+                })
+            }
+        });
+
+        function adicionaRow(data) {
+            $(".semResultado").remove();
+            $(".resultado").remove();
+
+            for (let k in data) {
+                var newRow = $('<tr class="resultado">');
+                var cols = '';
+
+                cols += '<td>' + data[k].data + '</td>';
+                cols += '<td>' + data[k].valor_fl_01 + '</td>';
+                cols += '<td>' + data[k].valor_fl_02 + '</td>';
+
+                newRow.append(cols);
+                $("#tableRetorno").append(newRow);
+            }
+        }
+    </script>
 @endsection

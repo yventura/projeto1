@@ -81,10 +81,12 @@ class ComercioAmbulanteController extends Controller
             ->orderBy('data', 'asc')
             ->get();
 
+
+
         $valor_ca_01 = 0;
         $valor_ca_02 = 0;
         $valor_ca_03 = 0;
-        $desc_03 = 0;
+        $desc_06 = 0;
         $valor_ca_04 = 0;
         $valor_ca_05 = 0;
         $valor_ca_06 = 0;
@@ -92,13 +94,15 @@ class ComercioAmbulanteController extends Controller
         $valor_ca_08 = 0;
         $valor_ca_09 = 0;
 
+
+
         foreach($comercio_ambulante as $ambulante){
             $retorno[] = (object)[
                 'data' => date('d/m/Y', strtotime($ambulante->data)),
                 'valor_ca_01' => $ambulante->valor_ca_01,
                 'valor_ca_02' => $ambulante->valor_ca_02,
                 'valor_ca_03' => $ambulante->valor_ca_03,
-                'desc_03'   =>  $ambulante->desc_03,
+                'desc_06'   =>  $ambulante->desc_06,
                 'valor_ca_04' => $ambulante->valor_ca_04,
                 'valor_ca_05' => $ambulante->valor_ca_05,
                 'valor_ca_06' => $ambulante->valor_ca_06,
@@ -107,10 +111,12 @@ class ComercioAmbulanteController extends Controller
                 'valor_ca_09' => $ambulante->valor_ca_09
             ];
 
+
+
             $valor_ca_01 += $ambulante->valor_ca_01;
             $valor_ca_02 += $ambulante->valor_ca_02;
             $valor_ca_03 += $ambulante->valor_ca_03;
-            $desc_03   +=  $ambulante->desc_03;
+            $desc_06   +=  $ambulante->desc_06;
             $valor_ca_04 += $ambulante->valor_ca_04;
             $valor_ca_05 += $ambulante->valor_ca_05;
             $valor_ca_06 += $ambulante->valor_ca_06;
@@ -119,12 +125,17 @@ class ComercioAmbulanteController extends Controller
             $valor_ca_09 += $ambulante->valor_ca_09;
         }
 
+        if($desc_06 == 2)
+        {
+            $desc_06 = "abc";
+        }
+
         $retorno[] = (object)[
             'data' => 'Total',
             'valor_ca_01' => $valor_ca_01,
             'valor_ca_02' => $valor_ca_02,
             'valor_ca_03' => $valor_ca_03,
-            'desc_03' => $desc_03,
+            'desc_06' => $desc_06,
             'valor_ca_04' => $valor_ca_04,
             'valor_ca_05' => $valor_ca_05,
             'valor_ca_06' => $valor_ca_06,
