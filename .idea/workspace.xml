@@ -25,10 +25,15 @@
     <list default="true" id="3e04b48d-9af4-4c1d-b2b1-fbcce681f0f7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ComercioAmbulanteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ComercioAmbulanteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ComercioFixoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ComercioFixoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LivreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LivreController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/comercio_ambulante/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comercio_ambulante/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NoturnoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NoturnoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/comercio_ambulante/pdf_ambulante.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comercio_ambulante/pdf_ambulante.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/comerciofixo/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comerciofixo/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/comerciofixo/pdf_comerciofixo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comerciofixo/pdf_comerciofixo.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/feira_livre/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feira_livre/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/feira_livre/pdf_feiralivre.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feira_livre/pdf_feiralivre.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/noturno/pdf_noturno.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/noturno/pdf_noturno.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -257,7 +262,10 @@
       <workItem from="1606219602080" duration="17510000" />
       <workItem from="1606306757431" duration="9986000" />
       <workItem from="1606757253065" duration="1191000" />
-      <workItem from="1606759785522" duration="10210000" />
+      <workItem from="1606759785522" duration="13586000" />
+      <workItem from="1606828803918" duration="6585000" />
+      <workItem from="1606912716249" duration="2784000" />
+      <workItem from="1607344538077" duration="7091000" />
     </task>
     <servers />
   </component>
@@ -335,10 +343,10 @@
     <state x="-928" y="474" key="run.anything.popup/0.0.1920.1040/-1366.305.1366.728@-1366.305.1366.728" timestamp="1606138480500" />
     <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.207.1366.728@0.0.1920.1040" timestamp="1599766634247" />
     <state x="616" y="242" key="run.anything.popup/0.0.1920.1040/1920.207.1366.768@0.0.1920.1040" timestamp="1599245764932" />
-    <state x="-923" y="463" width="675" height="475" key="search.everywhere.popup" timestamp="1606239773991">
-      <screen x="-1366" y="305" width="1366" height="728" />
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1606831715211">
+      <screen x="-1920" y="0" width="1920" height="1040" />
     </state>
-    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1604685630383" />
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1366.728/-1920.0.1920.1040@-1920.0.1920.1040" timestamp="1606831715211" />
     <state x="-919" y="463" width="672" height="475" key="search.everywhere.popup/0.0.1920.1040/-1360.305.1360.728@-1360.305.1360.728" timestamp="1605795522562" />
     <state x="-923" y="463" width="675" height="475" key="search.everywhere.popup/0.0.1920.1040/-1366.305.1366.728@-1366.305.1366.728" timestamp="1606239773991" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/-1366.305.1366.728@0.0.1920.1040" timestamp="1605228041859" />

@@ -104,7 +104,9 @@
                                 </div>
                             </div>
                         </div>
-
+                        <div class="text-center mt-3 mb-4">
+                            <button type="submit" class="btn btn-success ">{{ __('Gerar Ocorrencia') }}</button>
+                        </div>
                     </div>
                 </div>
             </div>

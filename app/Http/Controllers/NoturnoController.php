@@ -19,6 +19,8 @@ class NoturnoController extends Controller
 
     public function index()
     {
+
+
         $noturno = $this->objNoturno->all();
         $datas_unicas = array();
         $soma_diaria = array();
@@ -124,35 +126,62 @@ class NoturnoController extends Controller
             ->get();
 
 
-        $paralisacao_evento = 0;
-        $comercio_ambulante = 0;
-        $atendimento_processos = 0;
-        $atendimento_denuncia = 0;
+        $datas_unicas = array();
+        $soma_diaria = array();
+        $noturnoTotal = null;
+        $error = 0;
 
-        foreach($noturno as $note){
-            $retorno[] = (object)[
-                'data' => date('d/m/Y', strtotime($note->data)),
-                'paralisacao_evento' => $note->paralisacao_evento,
-                'comercio_ambulante' => $note->comercio_ambulante,
-                'atendimento_processos' => $note->atendimento_processos,
-                'atendimento_denuncia' => $note->atendimento_denuncia
-            ];
+        // Começo do Salvamento das datas de forma Unica
+        foreach ($noturno as $note){
+            $somente_data = date('d/m/Y', strtotime($note->data));
 
-            $paralisacao_evento += $note->paralisacao_evento;
-            $comercio_ambulante += $note->comercio_ambulante;
-            $atendimento_processos += $note->atendimento_processos;
-            $atendimento_denuncia += $note->atendimento_denuncia;
+            if(!in_array($somente_data, $datas_unicas)){
+                $datas_unicas[] = $somente_data;
+            }
         }
 
-        $retorno[] = (object)[
-            'data' => 'Total',
-            'paralisacao_evento' => $paralisacao_evento,
-            'comercio_ambulante' => $comercio_ambulante,
-            'atendimento_processos' => $atendimento_processos,
-            'atendimento_denuncia' => $atendimento_denuncia
-        ];
+        // Inicio Somatoria Datas
+        foreach ($datas_unicas as $data){
+            // Seta as variaveis de soma em 0
+            $paralisacao_evento = 0;
+            $atendimento_denuncia = 0;
+            $comercio_ambulante = 0;
+            $atendimento_processos = 0;
 
-        return json_encode($retorno);
+            foreach ($noturno as $note){
+                $somente_data = date('d/m/Y', strtotime($note->data));
+
+                if($somente_data == $data){
+                    $paralisacao_evento += $note->paralisacao_evento;
+                    $atendimento_denuncia += $note->atendimento_denuncia;
+                    $comercio_ambulante += $note->comercio_ambulante;
+                    $atendimento_processos += $note->atendimento_processos;
+
+                    $soma_diaria[$somente_data] = array(
+                        'paralisacao_evento' => $paralisacao_evento,
+                        'atendimento_denuncia' => $atendimento_denuncia,
+                        'comercio_ambulante' => $comercio_ambulante,
+                        'atendimento_processos' => $atendimento_processos
+                    );
+                }
+            }
+        }
+
+
+        //Faz a leitura dos dados diarios e adiciona a variavel final em forma de objeto
+        foreach ($soma_diaria as $data => $dados){
+
+            //Cria um array de objetos
+            $noturnoTotal[] = (object)[
+                'data' => $data,
+                'paralisacao_evento' => $dados['paralisacao_evento'],
+                'atendimento_denuncia' => $dados['atendimento_denuncia'],
+                'comercio_ambulante' => $dados['comercio_ambulante'],
+                'atendimento_processos' => $dados['atendimento_processos']
+            ];
+        }
+
+        return json_encode($noturnoTotal);
     }
 
     public function createPDF(Request $request) {
@@ -167,36 +196,64 @@ class NoturnoController extends Controller
             ->orderBy('data', 'asc')
             ->get();
 
+        $datas_unicas = array();
+        $soma_diaria = array();
+        $noturnoTotal = null;
+        $erro = 0;
+
         if (count($noturno) > 0) {
-            $paralisacao_evento = 0;
-            $comercio_ambulante = 0;
-            $atendimento_processos = 0;
-            $atendimento_denuncia = 0;
 
-            foreach($noturno as $note){
-                $retorno[] = (object)[
-                    'data' => date('d/m/Y', strtotime($note->data)),
-                    'paralisacao_evento' => $note->paralisacao_evento,
-                    'comercio_ambulante' => $note->comercio_ambulante,
-                    'atendimento_processos' => $note->atendimento_processos,
-                    'atendimento_denuncia' => $note->atendimento_denuncia
-                ];
+            //Salva as datas de forma unica
+            foreach ($noturno as $note) {
+                $somente_data = date('d/m/Y', strtotime($note->data));
 
-                $paralisacao_evento += $note->paralisacao_evento;
-                $comercio_ambulante += $note->comercio_ambulante;
-                $atendimento_processos += $note->atendimento_processos;
-                $atendimento_denuncia += $note->atendimento_denuncia;
+                if (!in_array($somente_data, $datas_unicas)) {
+                    $datas_unicas[] = $somente_data;
+                }
             }
 
-            $retorno[] = (object)[
-                'data' => 'Total',
-                'paralisacao_evento' => $paralisacao_evento,
-                'comercio_ambulante' => $comercio_ambulante,
-                'atendimento_processos' => $atendimento_processos,
-                'atendimento_denuncia' => $atendimento_denuncia
-            ];
+            //Faz a somatoria com base na data
+            foreach ($datas_unicas as $data) {
+                $paralisacao_evento = 0;
+                $comercio_ambulante = 0;
+                $atendimento_processos = 0;
+                $atendimento_denuncia = 0;
 
-            $pdf = PDF::loadView('noturno.pdf_noturno', compact('retorno'));
+                foreach ($noturno as $note) {
+                    $somente_data = date('d/m/Y', strtotime($note->data));
+
+                    if ($somente_data == $data) {
+
+                        $paralisacao_evento += $note->paralisacao_evento;
+                        $comercio_ambulante += $note->comercio_ambulante;
+                        $atendimento_processos += $note->atendimento_processos;
+                        $atendimento_denuncia += $note->atendimento_denuncia;
+
+                        $soma_diaria[$somente_data][] = array(
+                            'data' => $data,
+                            'paralisacao_evento' => $note->paralisacao_evento,
+                            'comercio_ambulante' => $note->comercio_ambulante,
+                            'atendimento_processos' => $note->atendimento_processos,
+                            'atendimento_denuncia' => $note->atendimento_denuncia
+                        );
+                    }
+                }
+            }
+
+            //Faz a leitura dos dados diarios e adiciona a variavel final em forma de objeto
+            foreach ($soma_diaria as $data => $dados) {
+
+                //Cria um array de objetos
+                $noturnoTotal[] = (object)[
+                    'data' => $data,
+                    'paralisacao_evento' => $paralisacao_evento,
+                    'comercio_ambulante' => $comercio_ambulante,
+                    'atendimento_processos' => $atendimento_processos,
+                    'atendimento_denuncia' => $atendimento_denuncia
+                ];
+            }
+
+            $pdf = PDF::loadView('noturno.pdf_noturno', compact('noturnoTotal', 'retorno'));
 
             return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Fisc_Noturna.pdf');
         } else {

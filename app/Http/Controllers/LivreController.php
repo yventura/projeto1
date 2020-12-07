@@ -107,14 +107,14 @@ class LivreController extends Controller
     }
 
     protected function semanalApi(Request $request){
-        $inicio = $request->inicio;
-        $fim = $request->fim." 23:59:00";
+        $data = $request->inicio;
+        $data2 = $request->fim." 23:59:00";
 
         $retorno = array();
 
         $feira_livre = $this->objFeira
             ->select('*')
-            ->whereBetween('data', [$inicio, $fim])
+            ->whereBetween('data', [$data, $data2])
             ->orderBy('data', 'asc')
             ->get();
 
@@ -129,14 +129,14 @@ class LivreController extends Controller
                 'valor_fl_02' => $livre->valor_fl_02
             ];
 
-            $valor_fl_01 += $livre->valor_fl_01;
+            $valor_fl_01 = $livre->valor_fl_01;
             $valor_fl_02 = $livre->valor_fl_02;
         }
 
         $retorno[] = (object)[
             'data' => 'Total',
-            'valor_fl_01' => $valor_fl_01,
-            'valor_fl_02' => $valor_fl_02,
+            'valor_ca_01' => $valor_ca_01,
+            'valor_ca_02' => $valor_ca_02
         ];
 
         return json_encode($retorno);

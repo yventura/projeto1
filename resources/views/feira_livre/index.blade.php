@@ -4,11 +4,6 @@
     <br>
     <br>
     <div>
-        <div class ="text-center mt-3 mb-4">
-            <a href="{{url('feira_livre/create')}}">
-                <button class="btn btn-success">Novo Relatorio</button>
-            </a>
-        </div>
         <div class="col-lg-12 col-md-20">
             <div class="card">
                 <div class="card-header card-header-primary">
@@ -39,7 +34,7 @@
             </div>
             <div class="card">
                 <div class="card-header card-header-primary">
-                    <h4 class="card-title">Feira Livre - Soma Diária</h4>
+                    <h4 class="card-title">Gera Relatorio</h4>
                 </div>
                 <div class="card-body table-responsive">
                     @if($errors->any())
@@ -62,20 +57,20 @@
                                 </div>
                             </div>
 
-                            <button type="button" id="gerarRelatorio" class="btn btn-success">Filtrar</button>
+{{--                            <button type="button" id="gerarRelatorio" class="btn btn-success">Filtrar</button>--}}
 
                             <button type="submit" id="imprimirRelatorio" class="btn btn-warning">Imprimir</button>
                         </div>
                     </form>
-                    <table class="table table-hover">
-                        <thead class="text">
-                            <tr>
-                                <th>Data</th>
-                                <th>Localidade</th>
-                                <th>Informação</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableRetorno">
+{{--                    <table class="table table-hover">--}}
+{{--                        <thead class="text">--}}
+{{--                            <tr>--}}
+{{--                                <th>Data</th>--}}
+{{--                                <th>Localidade</th>--}}
+{{--                                <th>Informação</th>--}}
+{{--                            </tr>--}}
+{{--                        </thead>--}}
+{{--                        <tbody id="tableRetorno">--}}
 {{--                            @if(!empty($feira_livreTotal))--}}
 {{--                                @foreach($feira_livreTotal as $feira)--}}
 {{--                                    @foreach($feira->informacoes as $local => $informacoes)--}}
@@ -87,8 +82,8 @@
 {{--                                    @endforeach--}}
 {{--                                @endforeach--}}
 {{--                            @endif--}}
-                        </tbody>
-                    </table>
+{{--                        </tbody>--}}
+{{--                    </table>--}}
                 </div>
             </div>
         </div>

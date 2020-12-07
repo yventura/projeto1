@@ -241,19 +241,82 @@ class ComercioFixoController extends Controller
             ->orderBy('data', 'asc')
             ->get();
 
+        $datas_unicas = array();
+        $soma_diaria = array();
+        $comercio_FixoTotal = array();
+        $erro = 0;
+
         if (count($comerciofixo) > 0) {
 
-            $valor_cf_01 = 0;
-            $valor_cf_02 = 0;
-            $valor_cf_03 = 0;
-            $valor_cf_04 = 0;
-            $valor_cf_05 = 0;
-            $valor_cf_06 = 0;
-            $valor_cf_07 = 0;
-            $valor_cf_08 = 0;
-            $valor_cf_09 = 0;
-
+            //Salva as datas de forma unica
             foreach ($comerciofixo as $fixo) {
+                $somente_data = date('d/m/Y', strtotime($fixo->data));
+
+                if (!in_array($somente_data, $datas_unicas)) {
+                    $datas_unicas[] = $somente_data;
+                }
+            }
+
+            //Faz a somatoria com base na data
+            foreach ($datas_unicas as $data) {
+                $valor_cf_01 = 0;
+                $valor_cf_02 = 0;
+                $valor_cf_03 = 0;
+                $valor_cf_04 = 0;
+                $valor_cf_05 = 0;
+                $valor_cf_06 = 0;
+                $valor_cf_07 = 0;
+                $valor_cf_08 = 0;
+                $valor_cf_09 = 0;
+
+                foreach ($comerciofixo as $fixo) {
+                    $somente_data = date('d/m/Y', strtotime($fixo->data));
+
+                    if ($somente_data == $data) {
+
+                        $valor_cf_01 += $fixo->valor_cf_01;
+                        $valor_cf_02 += $fixo->valor_cf_02;
+                        $valor_cf_03 += $fixo->valor_cf_03;
+                        $valor_cf_04 += $fixo->valor_cf_04;
+                        $valor_cf_05 += $fixo->valor_cf_05;
+                        $valor_cf_06 += $fixo->valor_cf_06;
+                        $valor_cf_07 += $fixo->valor_cf_07;
+                        $valor_cf_08 += $fixo->valor_cf_08;
+                        $valor_cf_09 += $fixo->valor_cf_09;
+
+                        $soma_diaria[$somente_data][] = array(
+                            'data' => $data,
+                            'valor_cf_01' => $fixo->valor_cf_01,
+                            'valor_cf_02' => $fixo->valor_cf_02,
+                            'valor_cf_03' => $fixo->valor_cf_03,
+                            'valor_cf_04' => $fixo->valor_cf_04,
+                            'valor_cf_05' => $fixo->valor_cf_05,
+                            'valor_cf_06' => $fixo->valor_cf_06,
+                            'valor_cf_07' => $fixo->valor_cf_07,
+                            'valor_cf_08' => $fixo->valor_cf_08,
+                            'valor_cf_09' => $fixo->valor_cf_09
+                        );
+                    }
+                }
+            }
+
+            //Faz a leitura dos dados diarios e adiciona a variavel final em forma de objeto
+            foreach ($soma_diaria as $data => $dados) {
+
+                //Cria um array de objetos
+                $feira_livreTotal[] = (object)[
+                    'data' => $data,
+                    'valor_cf_01' => $valor_cf_01,
+                    'valor_cf_02' => $valor_cf_02,
+                    'valor_cf_03' => $valor_cf_03,
+                    'valor_cf_04' => $valor_cf_04,
+                    'valor_cf_05' => $valor_cf_05,
+                    'valor_cf_06' => $valor_cf_06,
+                    'valor_cf_07' => $valor_cf_07,
+                    'valor_cf_08' => $valor_cf_08,
+                    'valor_cf_09' => $valor_cf_09
+                ];
+
                 $retorno[] = (object)[
                     'data' => date('d/m/Y', strtotime($fixo->data)),
                     'valor_cf_01' => $fixo->valor_cf_01,
@@ -291,9 +354,11 @@ class ComercioFixoController extends Controller
                 'valor_cf_09' => $valor_cf_09
             ];
 
+
+
             //dd($retorno);
 
-            $pdf = PDF::loadView('comerciofixo.pdf_comerciofixo', compact('retorno'));
+            $pdf = PDF::loadView('comerciofixo.pdf_comerciofixo', compact('feira_livreTotal', 'retorno'));
 
 
             return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Comercio_Fixo.pdf');

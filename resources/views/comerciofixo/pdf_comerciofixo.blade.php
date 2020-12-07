@@ -1,73 +1,75 @@
 
 <!DOCTYPE html>
-<html lang="en">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 <html>
-<head>
-    <title>Comercio Fixo</title>
 
+    <head>
+        <title>Comercio Fixo</title>
+    </head>
 
-</head>
+    <body>
 
-<body>
+        <header>
+            <h4 style="text-align: center;">SECRETARIA DE FINANÇAS</h4>
+            <h4 style="text-align: center;">Diretoria de Operações Especiais e Fiscalização de Taxas</h4>
+            <h5 style="text-align: center;">COMERCIO FIXO</h5>
+        </header>
 
-<header>
-    <h4 style="text-align: center;">SECRETARIA DE FINANÇAS</h4>
-    <h4 style="text-align: center;">Diretoria de Operações Especiais e Fiscalização de Taxas</h4>
-    <h5 style="text-align: center;">COMERCIO FIXO</h5>
-</header>
+        <table>
+            <tr>
+                <th>Data</th>
+                <th>Vistorias Processos</th>
+                <th>Vistorias VRE</th>
+                <th>Viabilidade VRE</th>
+                <th>Ciências</th>
+                <th>Informação</th>
+                <th>Plantão Interno</th>
+                <th>Atendimento Guiche</th>
+                <th>Triagem/Pesquisas/Despacho</th>
+                <th>Administrativo</th>
+            </tr>
 
-<table>
-    <tr>
-        <th>Data</th>
-        <th>Vistorias Processos</th>
-        <th>Vistorias VRE</th>
-        <th>Viabilidade VRE</th>
-        <th>Ciências</th>
-        <th>Informação</th>
-        <th>Plantão Interno</th>
-        <th>Atendimento Guiche</th>
-        <th>Triagem/Pesquisas/Despacho</th>
-        <th>Administrativo</th>
-    </tr>
-    @foreach($retorno as $comercio)
-        <tr>
-            <td>{{ $comercio->data }}</td>
-            <td>{{ $comercio->valor_cf_01 }}</td>
-            <td>{{ $comercio->valor_cf_02 }}</td>
-            <td>{{ $comercio->valor_cf_03 }}</td>
-            <td>{{ $comercio->valor_cf_04 }}</td>
-            <td>{{ $comercio->valor_cf_05 }}</td>
-            <td>{{ $comercio->valor_cf_06 }}</td>
-            <td>{{ $comercio->valor_cf_07 }}</td>
-            <td>{{ $comercio->valor_cf_08 }}</td>
-            <td>{{ $comercio->valor_cf_09 }}</td>
-        </tr>
-    @endforeach
-</table>
-<br>
-<footer>
-    <p style="text-align: left">Assinatura _________________________</p>
-    <p style="text-align: left">Data __/__/____</p>
-</footer>
-</body>
+                @foreach($feira_livreTotal as $comercio)
+        {{--        @foreach($retorno as $comercio)--}}
+                    <tr>
+                        <td>{{ $comercio->data }}</td>
+                        <td>{{ $comercio->valor_cf_01 }}</td>
+                        <td>{{ $comercio->valor_cf_02 }}</td>
+                        <td>{{ $comercio->valor_cf_03 }}</td>
+                        <td>{{ $comercio->valor_cf_04 }}</td>
+                        <td>{{ $comercio->valor_cf_05 }}</td>
+                        <td>{{ $comercio->valor_cf_06 }}</td>
+                        <td>{{ $comercio->valor_cf_07 }}</td>
+                        <td>{{ $comercio->valor_cf_08 }}</td>
+                        <td>{{ $comercio->valor_cf_09 }}</td>
+                    </tr>
+                @endforeach
+        {{--    @endforeach--}}
+        </table>
+    <br>
+        <footer>
+            <p style="text-align: left">Assinatura _________________________</p>
+            <p style="text-align: left">Data __/__/____</p>
+        </footer>
+    </body>
 </html>
 
-<style>
-    table {
-        border-collapse: collapse;
-        border: 1px solid black;
-    }
+    <style>
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
 
-    th,td {
-        border: 1px solid black;
-    }
-    table {
-        table-layout: auto;
-        width: 100%;
-    }
-</style>
+        th,td {
+            border: 1px solid black;
+        }
+        table {
+            table-layout: auto;
+            width: 100%;
+        }
+    </style>
 
