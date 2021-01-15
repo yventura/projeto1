@@ -32,18 +32,19 @@
                                                     <td scope="row">{{date('d/m/Y', strtotime($comercio->data))}}</td>
                                                     <td scope="row">{{$comercio->valor_ca_01}}</td>
                                                     <td scope="row">{{$comercio->valor_ca_02}}</td>
-                                                    <td scope="row">{{$comercio->Desc03($comercio->desc_03)}}  {{$comercio->valor_ca_03}} </td>
+                                                    <td scope="row">{{$comercio->valor_ca_03}} </td>
                                                     <td scope="row">{{$comercio->valor_ca_04}}</td>
                                                     <td scope="row">{{$comercio->valor_ca_05}}</td>
-                                                    <td scope="row">{{$comercio->Desc06($comercio->desc_06)}}  {{$comercio->valor_ca_06}}</td>
-                                                    <td scope="row">{{$comercio->Desc07($comercio->desc_07)}}  {{$comercio->valor_ca_07}}</td>
-                                                    <td scope="row">{{$comercio->Desc08($comercio->desc_08)}}  {{$comercio->valor_ca_08}}</td>
+                                                    <td scope="row">{{$comercio->valor_ca_06}}</td>
+                                                    <td scope="row">{{$comercio->valor_ca_07}}</td>
+                                                    <td scope="row">{{$comercio->valor_ca_08}}</td>
                                                     <td scope="row">{{$comercio->valor_ca_09}}</td>
                                                 </tr>
                                             @endforeach
                                         @endif
                                     </tbody>
                                 </table>
+                                {{ $comercio_ambulante->links() }}
                             </div>
                         </div>
                     </div>
@@ -155,11 +156,19 @@
             for (let k in data) {
                 var newRow = $('<tr class="resultado">');
                 var cols = '';
+                var desc_03 = data[k].desc_03;
+                var str_desc_03 = "";
+
+                for (var m in desc_03) {
+                    str_desc_03 += '</br>' + m + ': ' + desc_03[m] + '</br>';
+
+                    console.log(str_desc_03);
+                }
 
                 cols += '<td>' + data[k].data + '</td>';
                 cols += '<td>' + data[k].valor_ca_01 + '</td>';
                 cols += '<td>' + data[k].valor_ca_02 + '</td>';
-                cols += '<td>' + data[k].valor_ca_03 + '</td>';
+                cols += '<td>' + data[k].valor_ca_03 + str_desc_03 + '</td>';
                 cols += '<td>' + data[k].valor_ca_04 + '</td>';
                 cols += '<td>' + data[k].valor_ca_05 + '</td>';
                 cols += '<td>' + data[k].valor_ca_06 + '</td>';

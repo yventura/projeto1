@@ -18,7 +18,7 @@ class LivreController extends Controller
 
     public function index()
     {
-        $feira_livre = $this->objFeira->all();
+        $feira_livre = $this->objFeira->paginate(5);
         $datas_unicas = array();
         $soma_diaria = array();
         $feira_livreTotal = array();

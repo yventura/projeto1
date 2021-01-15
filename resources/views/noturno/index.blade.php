@@ -31,6 +31,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                {{ $noturno->links() }}
                             </div>
                         </div>
                     </div>

@@ -20,9 +20,9 @@ class ComercioFixoController extends Controller
 
     public function index()
     {
-        //$comerciofixo = $this->objComercio_Fixo->paginate(5);
+        $comerciofixo = $this->objComercio_Fixo->paginate(5);
         $comercio_FixoTotal = null;
-        $comerciofixo = $this->objComercio_Fixo->all();
+        //$comerciofixo = $this->objComercio_Fixo->all();
         $datas_unicas = array();
         $soma_diaria = array();
 
@@ -185,22 +185,9 @@ class ComercioFixoController extends Controller
         $valor_cf_07 = 0;
         $valor_cf_08 = 0;
         $valor_cf_09 = 0;
-
+        $data_fixo = null;
 
         foreach ($comerciofixo as $fixo) {
-            $retorno[] = (object)[
-                'data' => date('d/m/Y', strtotime($fixo->data)),
-                'valor_cf_01' => $fixo->valor_cf_01,
-                'valor_cf_02' => $fixo->valor_cf_02,
-                'valor_cf_03' => $fixo->valor_cf_03,
-                'valor_cf_04' => $fixo->valor_cf_04,
-                'valor_cf_05' => $fixo->valor_cf_05,
-                'valor_cf_06' => $fixo->valor_cf_06,
-                'valor_cf_07' => $fixo->valor_cf_07,
-                'valor_cf_08' => $fixo->valor_cf_08,
-                'valor_cf_09' => $fixo->valor_cf_09
-            ];
-
             $valor_cf_01 += $fixo->valor_cf_01;
             $valor_cf_02 += $fixo->valor_cf_02;
             $valor_cf_03 += $fixo->valor_cf_03;
@@ -210,6 +197,43 @@ class ComercioFixoController extends Controller
             $valor_cf_07 += $fixo->valor_cf_07;
             $valor_cf_08 += $fixo->valor_cf_08;
             $valor_cf_09 += $fixo->valor_cf_09;
+
+
+            if (date('d/m/Y', strtotime($fixo->data)) == $data_fixo) {
+                foreach ($retorno as $key => $ret) {
+                    if (date('d/m/Y', strtotime($fixo->data)) == $ret->data) {
+
+
+                        $retorno[$key] = (object)[
+                            'data' => date('d/m/Y', strtotime($fixo->data)),
+                            'valor_cf_01' => $fixo->valor_cf_01 + $ret->valor_cf_01,
+                            'valor_cf_02' => $fixo->valor_cf_02 + $ret->valor_cf_02,
+                            'valor_cf_03' => $fixo->valor_cf_03 + $ret->valor_cf_03,
+                            'valor_cf_04' => $fixo->valor_cf_04 + $ret->valor_cf_04,
+                            'valor_cf_05' => $fixo->valor_cf_05 + $ret->valor_cf_05,
+                            'valor_cf_06' => $fixo->valor_cf_06 + $ret->valor_cf_06,
+                            'valor_cf_07' => $fixo->valor_cf_07 + $ret->valor_cf_07,
+                            'valor_cf_08' => $fixo->valor_cf_08 + $ret->valor_cf_08,
+                            'valor_cf_09' => $fixo->valor_cf_09 + $ret->valor_cf_09
+                        ];
+                    }
+                }
+            } else {
+                $data_fixo = date('d/m/Y', strtotime($fixo->data));
+
+                $retorno[] = (object)[
+                    'data' => $data_fixo,
+                    'valor_cf_01' => $fixo->valor_cf_01,
+                    'valor_cf_02' => $fixo->valor_cf_02,
+                    'valor_cf_03' => $fixo->valor_cf_03,
+                    'valor_cf_04' => $fixo->valor_cf_04,
+                    'valor_cf_05' => $fixo->valor_cf_05,
+                    'valor_cf_06' => $fixo->valor_cf_06,
+                    'valor_cf_07' => $fixo->valor_cf_07,
+                    'valor_cf_08' => $fixo->valor_cf_08,
+                    'valor_cf_09' => $fixo->valor_cf_09
+                ];
+            }
         }
 
         $retorno[] = (object)[
@@ -224,6 +248,7 @@ class ComercioFixoController extends Controller
             'valor_cf_08' => $valor_cf_08,
             'valor_cf_09' => $valor_cf_09
         ];
+
         return json_encode($retorno);
     }
 
@@ -234,6 +259,8 @@ class ComercioFixoController extends Controller
         $fim = $request->data2 . " 23:59:00";
 
         $retorno = array();
+        $datas_unicas = array();
+        $soma_diaria = array();
 
         $comerciofixo = $this->objComercio_Fixo
             ->select('*')
@@ -241,24 +268,16 @@ class ComercioFixoController extends Controller
             ->orderBy('data', 'asc')
             ->get();
 
-        $datas_unicas = array();
-        $soma_diaria = array();
-        $comercio_FixoTotal = array();
-        $erro = 0;
+        foreach ($comerciofixo as $fixo) {
+            $somente_data = date('d/m/Y', strtotime($fixo->data));
 
-        if (count($comerciofixo) > 0) {
-
-            //Salva as datas de forma unica
-            foreach ($comerciofixo as $fixo) {
-                $somente_data = date('d/m/Y', strtotime($fixo->data));
-
-                if (!in_array($somente_data, $datas_unicas)) {
-                    $datas_unicas[] = $somente_data;
-                }
+            if (!in_array($somente_data, $datas_unicas)) {
+                $datas_unicas[] = $somente_data;
             }
+        }
 
-            //Faz a somatoria com base na data
-            foreach ($datas_unicas as $data) {
+        foreach ($datas_unicas as $data) {
+            if (count($comerciofixo) > 0) {
                 $valor_cf_01 = 0;
                 $valor_cf_02 = 0;
                 $valor_cf_03 = 0;
@@ -268,24 +287,32 @@ class ComercioFixoController extends Controller
                 $valor_cf_07 = 0;
                 $valor_cf_08 = 0;
                 $valor_cf_09 = 0;
+                $data_fixo = null;
+
 
                 foreach ($comerciofixo as $fixo) {
-                    $somente_data = date('d/m/Y', strtotime($fixo->data));
+                    if (date('d/m/Y', strtotime($fixo->data)) == $data_fixo) {
+                        foreach ($retorno as $key => $ret) {
+                            if (date('d/m/Y', strtotime($fixo->data)) == $ret->data) {
+                                $retorno[$key] = (object)[
+                                    'data' => date('d/m/Y', strtotime($fixo->data)),
+                                    'valor_cf_01' => $fixo->valor_cf_01 + $ret->valor_cf_01,
+                                    'valor_cf_02' => $fixo->valor_cf_02 + $ret->valor_cf_02,
+                                    'valor_cf_03' => $fixo->valor_cf_03 + $ret->valor_cf_03,
+                                    'valor_cf_04' => $fixo->valor_cf_04 + $ret->valor_cf_04,
+                                    'valor_cf_05' => $fixo->valor_cf_05 + $ret->valor_cf_05,
+                                    'valor_cf_06' => $fixo->valor_cf_06 + $ret->valor_cf_06,
+                                    'valor_cf_07' => $fixo->valor_cf_07 + $ret->valor_cf_07,
+                                    'valor_cf_08' => $fixo->valor_cf_08 + $ret->valor_cf_08,
+                                    'valor_cf_09' => $fixo->valor_cf_09 + $ret->valor_cf_09
+                                ];
+                            }
+                        }
+                    } else {
+                        $data_fixo = date('d/m/Y', strtotime($fixo->data));
+                        $retorno[] = (object)[
 
-                    if ($somente_data == $data) {
-
-                        $valor_cf_01 += $fixo->valor_cf_01;
-                        $valor_cf_02 += $fixo->valor_cf_02;
-                        $valor_cf_03 += $fixo->valor_cf_03;
-                        $valor_cf_04 += $fixo->valor_cf_04;
-                        $valor_cf_05 += $fixo->valor_cf_05;
-                        $valor_cf_06 += $fixo->valor_cf_06;
-                        $valor_cf_07 += $fixo->valor_cf_07;
-                        $valor_cf_08 += $fixo->valor_cf_08;
-                        $valor_cf_09 += $fixo->valor_cf_09;
-
-                        $soma_diaria[$somente_data][] = array(
-                            'data' => $data,
+                            'data' => $data_fixo,
                             'valor_cf_01' => $fixo->valor_cf_01,
                             'valor_cf_02' => $fixo->valor_cf_02,
                             'valor_cf_03' => $fixo->valor_cf_03,
@@ -295,17 +322,22 @@ class ComercioFixoController extends Controller
                             'valor_cf_07' => $fixo->valor_cf_07,
                             'valor_cf_08' => $fixo->valor_cf_08,
                             'valor_cf_09' => $fixo->valor_cf_09
-                        );
+                        ];
                     }
+
+                    $valor_cf_01 += $fixo->valor_cf_01;
+                    $valor_cf_02 += $fixo->valor_cf_02;
+                    $valor_cf_03 += $fixo->valor_cf_03;
+                    $valor_cf_04 += $fixo->valor_cf_04;
+                    $valor_cf_05 += $fixo->valor_cf_05;
+                    $valor_cf_06 += $fixo->valor_cf_06;
+                    $valor_cf_07 += $fixo->valor_cf_07;
+                    $valor_cf_08 += $fixo->valor_cf_08;
+                    $valor_cf_09 += $fixo->valor_cf_09;
                 }
-            }
 
-            //Faz a leitura dos dados diarios e adiciona a variavel final em forma de objeto
-            foreach ($soma_diaria as $data => $dados) {
-
-                //Cria um array de objetos
-                $feira_livreTotal[] = (object)[
-                    'data' => $data,
+                $retorno[] = (object)[
+                    'data' => 'Total',
                     'valor_cf_01' => $valor_cf_01,
                     'valor_cf_02' => $valor_cf_02,
                     'valor_cf_03' => $valor_cf_03,
@@ -317,54 +349,14 @@ class ComercioFixoController extends Controller
                     'valor_cf_09' => $valor_cf_09
                 ];
 
-                $retorno[] = (object)[
-                    'data' => date('d/m/Y', strtotime($fixo->data)),
-                    'valor_cf_01' => $fixo->valor_cf_01,
-                    'valor_cf_02' => $fixo->valor_cf_02,
-                    'valor_cf_03' => $fixo->valor_cf_03,
-                    'valor_cf_04' => $fixo->valor_cf_04,
-                    'valor_cf_05' => $fixo->valor_cf_05,
-                    'valor_cf_06' => $fixo->valor_cf_06,
-                    'valor_cf_07' => $fixo->valor_cf_07,
-                    'valor_cf_08' => $fixo->valor_cf_08,
-                    'valor_cf_09' => $fixo->valor_cf_09
-                ];
+                $pdf = PDF::loadView('comerciofixo.pdf_comerciofixo', compact('feira_livreTotal', 'retorno'));
 
-                $valor_cf_01 += $fixo->valor_cf_01;
-                $valor_cf_02 += $fixo->valor_cf_02;
-                $valor_cf_03 += $fixo->valor_cf_03;
-                $valor_cf_04 += $fixo->valor_cf_04;
-                $valor_cf_05 += $fixo->valor_cf_05;
-                $valor_cf_06 += $fixo->valor_cf_06;
-                $valor_cf_07 += $fixo->valor_cf_07;
-                $valor_cf_08 += $fixo->valor_cf_08;
-                $valor_cf_09 += $fixo->valor_cf_09;
+                return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Comercio_Fixo.pdf');
+            } else {
+                return Redirect::Back()->withErrors(['Nenhum registro para a(s) data(s) selecionada(s)']);
             }
-
-            $retorno[] = (object)[
-                'data' => 'Total',
-                'valor_cf_01' => $valor_cf_01,
-                'valor_cf_02' => $valor_cf_02,
-                'valor_cf_03' => $valor_cf_03,
-                'valor_cf_04' => $valor_cf_04,
-                'valor_cf_05' => $valor_cf_05,
-                'valor_cf_06' => $valor_cf_06,
-                'valor_cf_07' => $valor_cf_07,
-                'valor_cf_08' => $valor_cf_08,
-                'valor_cf_09' => $valor_cf_09
-            ];
-
-
-
-            //dd($retorno);
-
-            $pdf = PDF::loadView('comerciofixo.pdf_comerciofixo', compact('feira_livreTotal', 'retorno'));
-
-
-            return $pdf->setPaper('A4', 'landscape')->stream('Relatorio_Comercio_Fixo.pdf');
-        } else {
-            return Redirect::Back()->withErrors(['Nenhum registro para a(s) data(s) selecionada(s)']);
         }
     }
 }
+
 

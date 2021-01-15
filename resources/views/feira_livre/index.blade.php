@@ -30,6 +30,7 @@
                             @endif
                         </tbody>
                     </table>
+                    {{ $feira_livre->links() }}
                 </div>
             </div>
             <div class="card">

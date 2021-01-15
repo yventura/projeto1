@@ -36,13 +36,14 @@
                                                     <td scope="row">{{$comerciof->valor_cf_05}}</td>
                                                     <td scope="row">{{$comerciof->valor_cf_06}}</td>
                                                     <td scope="row">{{$comerciof->valor_cf_07}}</td>
-                                                    <td scope="row">{{$comerciof->Desc08($comerciof->desc_08)}}{{$comerciof->valor_cf_08}}</td>
-                                                    <td scope="row">{{$comerciof->Desc09($comerciof->desc_09)}}{{$comerciof->valor_cf_09}}</td>
+                                                    <td scope="row">{{$comerciof->valor_cf_08}}</td>
+                                                    <td scope="row">{{$comerciof->valor_cf_09}}</td>
                                                 </tr>
                                             @endforeach
                                         @endif
                                     </tbody>
                                 </table>
+                                {{ $comerciofixo->links() }}
                             </div>
                         </div>
                     </div>

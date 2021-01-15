@@ -33,22 +33,23 @@
                 <th>Administrativo</th>
             </tr>
 
-                @foreach($feira_livreTotal as $comercio)
-        {{--        @foreach($retorno as $comercio)--}}
-                    <tr>
-                        <td>{{ $comercio->data }}</td>
-                        <td>{{ $comercio->valor_cf_01 }}</td>
-                        <td>{{ $comercio->valor_cf_02 }}</td>
-                        <td>{{ $comercio->valor_cf_03 }}</td>
-                        <td>{{ $comercio->valor_cf_04 }}</td>
-                        <td>{{ $comercio->valor_cf_05 }}</td>
-                        <td>{{ $comercio->valor_cf_06 }}</td>
-                        <td>{{ $comercio->valor_cf_07 }}</td>
-                        <td>{{ $comercio->valor_cf_08 }}</td>
-                        <td>{{ $comercio->valor_cf_09 }}</td>
-                    </tr>
-                @endforeach
-        {{--    @endforeach--}}
+            <tbody>
+            @foreach($retorno as $fixo)
+                <tr>
+                    <td>{{ $fixo->data }}</td>
+                    <td>{{ $fixo->valor_cf_01 }}</td>
+                    <td>{{ $fixo->valor_cf_02 }}</td>
+                    <td>{{ $fixo->valor_cf_03 }}</td>
+                    <td>{{ $fixo->valor_cf_04 }}</td>
+                    <td>{{ $fixo->valor_cf_05 }}</td>
+                    <td>{{ $fixo->valor_cf_06 }}</td>
+                    <td>{{ $fixo->valor_cf_07 }}</td>
+                    <td>{{ $fixo->valor_cf_08 }}</td>
+                    <td>{{ $fixo->valor_cf_09 }}</td>
+                </tr>
+            @endforeach
+            </tbody>
+
         </table>
     <br>
         <footer>
