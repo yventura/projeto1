@@ -24,9 +24,7 @@ class CreateComercioFixoTable extends Migration
             $table->integer('valor_cf_06');
             $table->integer('valor_cf_07');
             $table->integer('valor_cf_08');
-            $table->integer('desc_08');
             $table->integer('valor_cf_09');
-            $table->integer('desc_09');
             $table->timestamps();
         });
     }

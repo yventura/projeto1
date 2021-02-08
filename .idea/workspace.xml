@@ -24,15 +24,15 @@
   <component name="ChangeListManager">
     <list default="true" id="3e04b48d-9af4-4c1d-b2b1-fbcce681f0f7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ComercioAmbulante.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ComercioAmbulante.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ComercioFixo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/ComercioFixo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ComercioAmbulanteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ComercioAmbulanteController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ComercioFixoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ComercioFixoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/LivreController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/LivreController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/NoturnoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/NoturnoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/comercio_ambulante/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comercio_ambulante/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/comerciofixo/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comerciofixo/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/comerciofixo/pdf_comerciofixo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comerciofixo/pdf_comerciofixo.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/feira_livre/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/feira_livre/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/noturno/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/noturno/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_08_13_000000_create_comercio_fixo_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_08_13_000000_create_comercio_fixo_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_09_08_144751_create_comercio_ambulante_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_09_08_144751_create_comercio_ambulante_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/ComercioFixoTableSeeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/comercio_ambulante/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comercio_ambulante/add.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/comerciofixo/add.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/comerciofixo/add.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,6 +267,7 @@
       <workItem from="1607344538077" duration="9399000" />
       <workItem from="1607697007443" duration="667000" />
       <workItem from="1610670525548" duration="7531000" />
+      <workItem from="1612827344940" duration="811000" />
     </task>
     <servers />
   </component>

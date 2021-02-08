@@ -45,14 +45,6 @@
                                     <div class="col-sm-1">
                                             <input class="form-control  text-center" name="valor_ca_03" id="input-valor_ca_03" placeholder="Qtd"/>
                                     </div>
-                                    <div class="col-sm-2">
-                                        <select class="form-control" name="desc_03" id="input-desc_03" required>
-                                            <option value="">Selecione</option>
-                                            <option value="1">Tendas</option>
-                                            <option value="2">Camping</option>
-                                            <option value="3">Churrasco</option>
-                                        </select>
-                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -74,13 +66,6 @@
                                     <div class="col-sm-1">
                                         <input class="form-control  text-center" name="valor_ca_06" id="input-valor_ca_06" placeholder="Qtd" required/>
                                     </div>
-                                    <div class="col-sm-2">
-                                        <select class="form-control" name="desc_06" id="input-desc_06" required>
-                                            <option value="">Selecione</option>
-                                            <option value="1">Praias</option>
-                                            <option value="2">VC</option>
-                                        </select>
-                                    </div>
                                 </div>
 
                                 <div class="row">
@@ -88,28 +73,12 @@
                                     <div class="col-sm-1">
                                         <input class="form-control  text-center" name="valor_ca_07" id="input-valor_ca_07" placeholder="Qtd" required/>
                                     </div>
-                                    <div class="col-sm-2">
-                                        <select class="form-control" name="desc_07" id="input-desc_07" required>
-                                            <option value="">Selecione</option>
-                                            <option value="1">Vistorias</option>
-                                            <option value="2">Ciências</option>
-                                            <option value="3">Apreensão</option>
-                                        </select>
-                                    </div>
                                 </div>
 
                                 <div class="row">
                                     <label style="color: black" class="col-sm-4 col-form-label m-3">{{ __('Vistorias/Cientificações/Apreensão - VC') }}</label>
                                     <div class="col-sm-1">
                                         <input class="form-control  text-center" name="valor_ca_08" id="input-valor_ca_08" placeholder="Qtd" required/>
-                                    </div>
-                                    <div class="col-sm-2">
-                                        <select class="form-control" name="desc_08" id="input-desc_08" required>
-                                            <option value="">Selecione</option>
-                                            <option value="1">Vistorias</option>
-                                            <option value="2">Ciências</option>
-                                            <option value="3">Apreensão</option>
-                                        </select>
                                     </div>
                                 </div>
 

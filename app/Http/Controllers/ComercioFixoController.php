@@ -45,15 +45,11 @@ class ComercioFixoController extends Controller
             $valor_cf_05 = 0;
             $valor_cf_06 = 0;
             $valor_cf_07 = 0;
-            $valor_cf_08_1 = 0;
-            $valor_cf_08_2 = 0;
-            $valor_cf_08_3 = 0;
-            $valor_cf_09_1 = 0;
+            $valor_cf_08 = 0;
+            $valor_cf_09 = 0;
 
             foreach ($comerciofixo as $comercio) {
                 $somente = date('d/m/Y', strtotime($comercio->data));
-                $somente_08 = $comercio->desc_08;
-                $somente_09 = $comercio->desc_09;
 
                 if ($somente == $data) {
                     $valor_cf_01 += $comercio->valor_cf_01;
@@ -63,21 +59,8 @@ class ComercioFixoController extends Controller
                     $valor_cf_05 += $comercio->valor_cf_05;
                     $valor_cf_06 += $comercio->valor_cf_06;
                     $valor_cf_07 += $comercio->valor_cf_07;
-
-                    if ($somente_08 == '1' && $somente_08 != '0') {
-                        $valor_cf_08_1 += $comercio->valor_cf_08;
-
-                    } else if ($somente_08 == '2' && $somente_08 != '0') {
-                        $valor_cf_08_2 += $comercio->valor_cf_08;
-
-                    } else if ($somente_08 == '3' && $somente_08 != '0') {
-                        $valor_cf_08_3 += $comercio->valor_cf_08;
-
-                    }
-
-                    if ($somente_09 == '1' && $somente_09 != '0') {
-                        $valor_cf_09_1 += $comercio->valor_cf_09;
-                    }
+                    $valor_cf_08 += $comercio->valor_cf_08;
+                    $valor_cf_09 += $comercio->valor_cf_09;
 
                     $soma_diaria[$somente] = array(
                         'valor_cf_01' => $valor_cf_01,
@@ -87,10 +70,8 @@ class ComercioFixoController extends Controller
                         'valor_cf_05' => $valor_cf_05,
                         'valor_cf_06' => $valor_cf_06,
                         'valor_cf_07' => $valor_cf_07,
-                        'valor_cf_08_1' => $valor_cf_08_1,
-                        'valor_cf_08_2' => $valor_cf_08_2,
-                        'valor_cf_08_3' => $valor_cf_08_3,
-                        'valor_cf_09_1' => $valor_cf_09_1
+                        'valor_cf_08' => $valor_cf_08,
+                        'valor_cf_09' => $valor_cf_09
                     );
                 }
             }
@@ -109,10 +90,8 @@ class ComercioFixoController extends Controller
                 'valor_cf_05' => $dados['valor_cf_05'],
                 'valor_cf_06' => $dados['valor_cf_06'],
                 'valor_cf_07' => $dados['valor_cf_07'],
-                'valor_cf_08_1' => $dados['valor_cf_08_1'],
-                'valor_cf_08_2' => $dados['valor_cf_08_2'],
-                'valor_cf_08_3' => $dados['valor_cf_08_3'],
-                'valor_cf_09_1' => $dados['valor_cf_09_1']
+                'valor_cf_08' => $dados['valor_cf_08'],
+                'valor_cf_09' => $dados['valor_cf_09']
             ];
         }
         return view('comerciofixo.index', compact('comerciofixo'))->with('comercio_FixoTotal', $comercio_FixoTotal);
@@ -135,9 +114,7 @@ class ComercioFixoController extends Controller
             'valor_cf_06' => $request->valor_cf_06,
             'valor_cf_07' => $request->valor_cf_07,
             'valor_cf_08' => $request->valor_cf_08,
-            'desc_08' => $request->desc_08,
             'valor_cf_09' => $request->valor_cf_09,
-            'desc_09' => $request->desc_09
         ]);
         if ($cad) {
             return redirect('comerciofixo');

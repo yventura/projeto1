@@ -20,15 +20,11 @@ class CreateComercioAmbulanteTable extends Migration
             $table->integer('valor_ca_01');
             $table->integer('valor_ca_02');
             $table->integer('valor_ca_03');
-            $table->integer('desc_03');
             $table->integer('valor_ca_04');
             $table->integer('valor_ca_05');
             $table->integer('valor_ca_06');
-            $table->integer('desc_06');
             $table->integer('valor_ca_07');
-            $table->integer('desc_07');
             $table->integer('valor_ca_08');
-            $table->integer('desc_08');
             $table->integer('valor_ca_09');
             $table->timestamps();
         });

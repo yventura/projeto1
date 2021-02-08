@@ -80,14 +80,14 @@
                             <div class="col-sm-1">
                                 <input class="form-control  text-center" name="valor_cf_08" id="input-valor_cf_08" placeholder="Qtd" required/>
                             </div>
-                            <div class="col-sm-2">
-                                <select class="form-control" name="desc_08" id="input-desc_08" required>
-                                    <option value="">Selecione</option>
-                                    <option value="1">Despachos</option>
-                                    <option value="2">Pesquisa</option>
-                                    <option value="3">Infração</option>
-                                </select>
-                            </div>
+{{--                            <div class="col-sm-2">--}}
+{{--                                <select class="form-control" name="desc_08" id="input-desc_08" required>--}}
+{{--                                    <option value="">Selecione</option>--}}
+{{--                                    <option value="1">Despachos</option>--}}
+{{--                                    <option value="2">Pesquisa</option>--}}
+{{--                                    <option value="3">Infração</option>--}}
+{{--                                </select>--}}
+{{--                            </div>--}}
                         </div>
 
                         <div class="row">
@@ -95,14 +95,14 @@
                             <div class="col-sm-1">
                                 <input class="form-control  text-center" name="valor_cf_09" id="input-valor_cf_09" placeholder="Qtd" required/>
                             </div>
-                            <div class="col-sm-2">
-                                <div class="form-group">
-                                    <select class="form-control" name="desc_09" id="desc_09" required>
-                                        <option value="">Selecione</option>
-                                        <option value="1">Ex - Oficio</option>
-                                    </select>
-                                </div>
-                            </div>
+{{--                            <div class="col-sm-2">--}}
+{{--                                <div class="form-group">--}}
+{{--                                    <select class="form-control" name="desc_09" id="desc_09" required>--}}
+{{--                                        <option value="">Selecione</option>--}}
+{{--                                        <option value="1">Ex - Oficio</option>--}}
+{{--                                    </select>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
                         </div>
                         <div class="text-center mt-3 mb-4">
                             <button type="submit" class="btn btn-success ">{{ __('Gerar Ocorrencia') }}</button>

@@ -37,15 +37,11 @@ class ComercioAmbulanteController extends Controller
             'valor_ca_01'=>$request->valor_ca_01,
             'valor_ca_02'=>$request->valor_ca_02,
             'valor_ca_03'=>$request->valor_ca_03,
-            'desc_03'=>$request->desc_03,
             'valor_ca_04'=>$request->valor_ca_04,
             'valor_ca_05'=>$request->valor_ca_05,
             'valor_ca_06'=>$request->valor_ca_06,
-            'desc_06'=>$request->desc_06,
             'valor_ca_07'=>$request->valor_ca_07,
-            'desc_07'=>$request->desc_07,
             'valor_ca_08'=>$request->valor_ca_08,
-            'desc_08'=>$request->desc_08,
             'valor_ca_09'=>$request->valor_ca_09
         ]);
         if($cad){return redirect('comercio_ambulante');}
@@ -105,14 +101,7 @@ class ComercioAmbulanteController extends Controller
             if (date('d/m/Y', strtotime($ambulante->data)) == $data_ambulante) {
                 foreach ($retorno as $key => $ret) {
                     if (date('d/m/Y', strtotime($ambulante->data)) == $ret->data) {
-                        // Insere um identificador sobre o que é o dado
-//                        if ($ambulante->desc_03 == 1) {
-//                            $desc[date('d/m/Y', strtotime($ambulante->data))]['praia'] += 1;
-//                        } else if($ambulante->desc_03 == 2) {
-//                            $desc[date('d/m/Y', strtotime($ambulante->data))]['camping'] += 1;
-//                        } else {
-//                            $desc[date('d/m/Y', strtotime($ambulante->data))]['tendas'] += 1;
-//                        }
+                        // Insere um identificador sobre o que é o dado em questão
 
 
                         $retorno[$key] = (object)[
@@ -120,7 +109,6 @@ class ComercioAmbulanteController extends Controller
                             'valor_ca_01' => $ambulante->valor_ca_01 + $ret->valor_ca_01,
                             'valor_ca_02' => $ambulante->valor_ca_02 + $ret->valor_ca_02,
                             'valor_ca_03' => $ambulante->valor_ca_03 + $ret->valor_ca_03,
-                            'desc_03' => $desc[date('d/m/Y', strtotime($ambulante->data))],
                             'valor_ca_04' => $ambulante->valor_ca_04 + $ret->valor_ca_04,
                             'valor_ca_05' => $ambulante->valor_ca_05 + $ret->valor_ca_05,
                             'valor_ca_06' => $ambulante->valor_ca_06 + $ret->valor_ca_06,
@@ -133,24 +121,11 @@ class ComercioAmbulanteController extends Controller
             } else {
                 $data_ambulante = date('d/m/Y', strtotime($ambulante->data));
 
-//                if ($ambulante->desc_03 == 1) {
-//                    $desc[$data_ambulante] = array(
-//                        'praia' => 1,
-//                        'camping' => 0
-//                    );
-//                } else {
-//                    $desc[$data_ambulante] = array(
-//                        'praia' => 0,
-//                        'camping' => 1
-//                    );
-//                }
-
                 $retorno[] = (object)[
                     'data' => $data_ambulante,
                     'valor_ca_01' => $ambulante->valor_ca_01,
                     'valor_ca_02' => $ambulante->valor_ca_02,
                     'valor_ca_03' => $ambulante->valor_ca_03,
-                    'desc_03' => $ambulante->desc_03,
                     'valor_ca_04' => $ambulante->valor_ca_04,
                     'valor_ca_05' => $ambulante->valor_ca_05,
                     'valor_ca_06' => $ambulante->valor_ca_06,
